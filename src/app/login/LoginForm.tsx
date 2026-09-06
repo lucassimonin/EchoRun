@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Field, TextInput } from '@/components/ui/Field';
 import { Surface } from '@/components/ui/Surface';
+import { SITE_URL } from '@/lib/site';
 import { createClient } from '@/lib/supabase/client';
 
 export function LoginForm({ next }: { next?: string }) {
@@ -22,7 +23,9 @@ export function LoginForm({ next }: { next?: string }) {
     setError(null);
 
     const supabase = createClient();
-    const redirect = new URL('/auth/callback', window.location.origin);
+    // Origine canonique (NEXT_PUBLIC_SITE_URL) : derrière Docker, window.origin
+    // vaudrait 0.0.0.0:3000 et le lien du mail serait injoignable.
+    const redirect = new URL('/auth/callback', SITE_URL);
     if (next) redirect.searchParams.set('next', next);
 
     const { error: authError } = await supabase.auth.signInWithOtp({

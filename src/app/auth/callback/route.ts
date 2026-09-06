@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { SITE_URL } from '@/lib/site';
 import { createServerSupabase } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
@@ -13,15 +14,15 @@ export async function GET(request: Request) {
   const destination = next && next.startsWith('/') && !next.startsWith('//') ? next : '/app';
 
   if (!code) {
-    return NextResponse.redirect(new URL('/login?error=lien-invalide', url.origin));
+    return NextResponse.redirect(new URL('/login?error=lien-invalide', SITE_URL));
   }
 
   const supabase = await createServerSupabase();
   const { error } = await supabase.auth.exchangeCodeForSession(code);
 
   if (error) {
-    return NextResponse.redirect(new URL('/login?error=lien-expire', url.origin));
+    return NextResponse.redirect(new URL('/login?error=lien-expire', SITE_URL));
   }
 
-  return NextResponse.redirect(new URL(destination, url.origin));
+  return NextResponse.redirect(new URL(destination, SITE_URL));
 }
