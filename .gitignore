@@ -20,3 +20,4 @@ supabase/.branches
 # Archive temporaire de vérification (à supprimer)
 _to_delete
 .idea
+ios

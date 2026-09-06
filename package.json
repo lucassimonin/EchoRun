@@ -20,7 +20,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@capacitor/core": "^6.2.2",
+    "@capacitor-community/background-geolocation": "^1.2.26",
+    "@capacitor/core": "^8.5.1",
+    "@capacitor/ios": "^8.5.1",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.48.1",
     "idb": "^8.0.1",
