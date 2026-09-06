@@ -1,0 +1,21 @@
+# EchoRun — reverse proxy + HTTPS automatique (Let's Encrypt).
+# Caddy obtient et renouvelle les certificats tout seul dès que le DNS de
+# echo-run.com pointe sur ce serveur et que les ports 80/443 sont ouverts.
+
+# www -> apex (redirection permanente)
+www.echo-run.com {
+	redir https://echo-run.com{uri} permanent
+}
+
+echo-run.com {
+	encode zstd gzip
+
+	# Le service `web` du compose, sur le réseau interne.
+	reverse_proxy web:3000
+
+	# Un log d'accès JSON, pratique pour débugger.
+	log {
+		output stdout
+		format json
+	}
+}

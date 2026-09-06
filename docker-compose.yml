@@ -1,0 +1,29 @@
+# Environnement de developpement.
+#
+# La base / auth / storage tournent via le CLI Supabase (`npm run db:start`),
+# qui orchestre sa propre stack Docker. Ce compose ne gere que l'app Next.
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: echorun-web
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+      - next_cache:/app/.next
+    env_file:
+      - .env
+    environment:
+      # Depuis le conteneur, la stack Supabase locale est sur l'hote.
+      - NEXT_PUBLIC_SUPABASE_URL=http://host.docker.internal:54321
+      - WATCHPACK_POLLING=true
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    command: npm run dev
+
+volumes:
+  node_modules:
+  next_cache:

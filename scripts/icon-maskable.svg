@@ -1,0 +1,16 @@
+<!--
+  Variante « maskable » pour l'installation PWA : fond à bord perdu (Android
+  découpe la forme selon le thème du lanceur) et marque réduite à 76 % pour
+  tenir dans la zone sûre, le cercle central de 80 % du canvas.
+  Généré depuis icon.svg — cf. scripts/generate-icons.mjs.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="EchoRun">
+  <rect width="512" height="512" fill="#3E5A47"/>
+  <g transform="translate(256 256) scale(0.76) translate(-256 -256)">
+    <circle cx="140" cy="256" r="52" fill="#FAF8F5"/>
+    <path d="M 232.4 137.8 A 150 150 0 0 1 232.4 374.2" fill="none" stroke="#FAF8F5"
+          stroke-width="44" stroke-linecap="round" opacity="0.95"/>
+    <path d="M 287.8 66.9 A 240 240 0 0 1 287.8 445.1" fill="none" stroke="#FAF8F5"
+          stroke-width="44" stroke-linecap="round" opacity="0.62"/>
+  </g>
+</svg>

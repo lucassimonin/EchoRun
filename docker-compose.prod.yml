@@ -1,0 +1,60 @@
+# ============================================================================
+# EchoRun — production (echo-run.com)
+#
+#   docker compose -f docker-compose.prod.yml --env-file .env.production up -d --build
+#
+# Deux services :
+#   - web   : l'app Next.js (image construite via Dockerfile, sortie standalone)
+#   - caddy : reverse proxy + HTTPS automatique (Let's Encrypt), ports 80/443
+#
+# IMPORTANT : les NEXT_PUBLIC_* sont inlinées AU BUILD (elles finissent dans le
+# bundle navigateur). Elles sont donc passées à la fois en `args` (build) ET en
+# `env_file` (runtime). Les secrets serveur (service_role, Stripe) ne sont
+# fournis QU'au runtime via env_file.
+# ============================================================================
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL}
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL}
+        NEXT_PUBLIC_LEGAL_ENTITY: ${NEXT_PUBLIC_LEGAL_ENTITY}
+        NEXT_PUBLIC_LEGAL_CONTACT_EMAIL: ${NEXT_PUBLIC_LEGAL_CONTACT_EMAIL}
+        NEXT_PUBLIC_MAP_TILE_URL: ${NEXT_PUBLIC_MAP_TILE_URL}
+        NEXT_PUBLIC_MAP_ATTRIBUTION: ${NEXT_PUBLIC_MAP_ATTRIBUTION}
+        NEXT_PUBLIC_MAP_SUBDOMAINS: ${NEXT_PUBLIC_MAP_SUBDOMAINS}
+        NEXT_PUBLIC_MAP_MAX_ZOOM: ${NEXT_PUBLIC_MAP_MAX_ZOOM}
+    container_name: echorun-web
+    restart: unless-stopped
+    env_file:
+      - .env.production
+    expose:
+      - '3000'
+    networks:
+      - echorun
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: echorun-caddy
+    restart: unless-stopped
+    depends_on:
+      - web
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - echorun
+
+networks:
+  echorun:
+
+volumes:
+  caddy_data:
+  caddy_config:

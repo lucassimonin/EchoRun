@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>EchoRun</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #faf8f5; color: #111812;
+        font-family: -apple-system, system-ui, sans-serif; }
+      .wrap { height: 100%; display: grid; place-items: center; text-align: center; padding: 24px; }
+      .dot { width: 12px; height: 12px; border-radius: 999px; background: #3e5a47;
+        display: inline-block; animation: p 1.2s ease-in-out infinite; }
+      @keyframes p { 0%,100% { opacity: .3 } 50% { opacity: 1 } }
+      p { color: #4b544d; font-size: 14px; margin-top: 16px; }
+    </style>
+  </head>
+  <body>
+    <!--
+      Page de secours de la coquille native. En fonctionnement normal, le
+      webview charge server.url (le site en ligne) et n'affiche jamais ceci.
+      On la voit seulement si le serveur est injoignable au démarrage.
+    -->
+    <div class="wrap">
+      <div>
+        <span class="dot"></span>
+        <p>Connexion à EchoRun…<br />Vérifie ta connexion internet.</p>
+      </div>
+    </div>
+  </body>
+</html>

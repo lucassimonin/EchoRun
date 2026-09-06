@@ -1,0 +1,24 @@
+<!--
+  EchoRun — marque applicative.
+
+  SOURCE UNIQUE de toutes les icônes du projet : les PNG du manifeste, l'icône
+  Apple et le favicon.ico en sont dérivés par `npm run icons`. Ne pas éditer
+  les fichiers générés à la main.
+
+  Le wordmark horizontal (voir components/marketing/Wordmark.tsx) est
+  illisible à 16 px : les arcs fins disparaissent. On reprend donc le même
+  concept — un point, deux ondes décroissantes — mais dans un carré, sur fond
+  matcha plein. Le fond plein est ce qui fait tenir la marque aussi bien sur
+  une barre d'onglets claire que sombre.
+
+  Géométrie retenue après comparaison visuelle en 16 / 24 / 32 / 48 px :
+  point r=52, arcs r=150 et 240, trait 44 (8,6 % du canvas), ouverture ±52°.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="EchoRun">
+  <rect width="512" height="512" rx="112" fill="#3E5A47"/>
+  <circle cx="140" cy="256" r="52" fill="#FAF8F5"/>
+  <path d="M 232.4 137.8 A 150 150 0 0 1 232.4 374.2" fill="none" stroke="#FAF8F5"
+        stroke-width="44" stroke-linecap="round" opacity="0.95"/>
+  <path d="M 287.8 66.9 A 240 240 0 0 1 287.8 445.1" fill="none" stroke="#FAF8F5"
+        stroke-width="44" stroke-linecap="round" opacity="0.62"/>
+</svg>

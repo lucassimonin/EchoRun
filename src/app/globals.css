@@ -1,0 +1,290 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   EchoRun — Design System "SF Matcha"
+   Neutre, naturel, aere. Zero encombrement visuel.
+   ============================================================ */
+
+@theme {
+  /* --- Couleurs --- */
+  --color-bone: #faf8f5; /* fond global off-white */
+  --color-bone-100: #f4f1ec; /* surfaces creusees */
+  --color-bone-200: #ece7df; /* separateurs chauds */
+  --color-paper: #ffffff;
+
+  --color-matcha-50: #f2f5f2;
+  --color-matcha-100: #e2e9e3;
+  --color-matcha-200: #c3d2c7;
+  --color-matcha-300: #9db3a3;
+  --color-matcha-400: #6d8a77;
+  --color-matcha-500: #3e5a47; /* accent principal */
+  --color-matcha-600: #344c3c;
+  --color-matcha-700: #283a2e;
+
+  --color-charcoal: #111812; /* texte + accents durs */
+  --color-charcoal-muted: #4b544d;
+  --color-charcoal-faint: #7c847d;
+
+  --color-clay: #b4694f; /* unique couleur "chaude" : alertes douces */
+
+  /* --- Typographie --- */
+  /*
+   * Pile systeme volontaire, pas de Google Fonts.
+   *   - zero requete tierce : coherent avec notre politique de confidentialite,
+   *     et une dependance reseau de moins au build ;
+   *   - rendu immediat, aucun FOUT ni saut de mise en page ;
+   *   - `Inter` en tete : les machines qui l'ont installee en profitent.
+   * Pour figer la typo : deposer Inter-Variable.woff2 dans public/fonts/,
+   * declarer un @font-face local et le prefixer ici.
+   */
+  --font-sans: 'Inter', 'Inter var', -apple-system, BlinkMacSystemFont,
+    'SF Pro Text', 'Segoe UI Variable Text', 'Segoe UI', Roboto, ui-sans-serif,
+    system-ui, 'Helvetica Neue', Arial, sans-serif;
+
+  --text-display: 3.5rem;
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.035em;
+  --text-display--font-weight: 600;
+
+  --text-title: 2rem;
+  --text-title--line-height: 1.12;
+  --text-title--letter-spacing: -0.025em;
+  --text-title--font-weight: 600;
+
+  --text-lede: 1.125rem;
+  --text-lede--line-height: 1.65;
+
+  /* --- Rayons & ombres --- */
+  --radius-card: 1.25rem;
+  --radius-sheet: 1.75rem;
+
+  --shadow-soft: 0 1px 2px rgb(17 24 18 / 0.04), 0 8px 24px -12px rgb(17 24 18 / 0.1);
+  --shadow-lift: 0 1px 2px rgb(17 24 18 / 0.05), 0 20px 48px -24px rgb(17 24 18 / 0.18);
+
+  /* --- Animations --- */
+  --animate-pulse-ring: pulse-ring 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  --animate-rise: rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-float: float 4.5s ease-in-out infinite;
+  --animate-draw: draw 2.2s cubic-bezier(0.65, 0, 0.35, 1) both;
+  --animate-bob: bob 2.6s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -8px); }
+}
+
+@keyframes draw {
+  from { stroke-dashoffset: 1200; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise, .animate-float, .animate-draw, .animate-bob, .animate-pulse-ring {
+    animation: none !important;
+  }
+}
+
+@layer base {
+  * {
+    border-color: color-mix(in oklab, var(--color-charcoal) 8%, transparent);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-bone);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Safe areas iOS pour la PWA plein ecran */
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  ::selection {
+    background-color: var(--color-matcha-200);
+    color: var(--color-matcha-700);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-matcha-500);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Contenu editorial des pages legales / "comment ca marche" */
+  .prose-echo {
+    max-width: 68ch;
+  }
+  .prose-echo h2 {
+    font-size: 1.375rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-top: 2.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-echo h3 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose-echo p,
+  .prose-echo li {
+    color: var(--color-charcoal-muted);
+    line-height: 1.75;
+  }
+  .prose-echo p {
+    margin-bottom: 1rem;
+  }
+  .prose-echo ul {
+    margin: 0 0 1.25rem 0;
+    padding-left: 1.1rem;
+    list-style: none;
+  }
+  .prose-echo li {
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+  .prose-echo li::before {
+    content: '';
+    position: absolute;
+    left: -1.1rem;
+    top: 0.7em;
+    width: 5px;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--color-matcha-300);
+  }
+  .prose-echo strong {
+    color: var(--color-charcoal);
+    font-weight: 600;
+  }
+  .prose-echo a {
+    color: var(--color-matcha-500);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+/* ============================================================
+   Leaflet — override minimaliste pour coller a la charte.
+   ============================================================ */
+.echo-map {
+  background: var(--color-bone-100) !important;
+  font-family: var(--font-sans) !important;
+}
+.echo-map .leaflet-control-zoom {
+  border: none !important;
+  box-shadow: var(--shadow-soft) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+.echo-map .leaflet-control-zoom a {
+  background: var(--color-paper) !important;
+  color: var(--color-charcoal) !important;
+  border: none !important;
+  width: 32px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  font-weight: 400 !important;
+}
+.echo-map .leaflet-control-zoom a:hover {
+  background: var(--color-bone-100) !important;
+}
+.echo-map .leaflet-control-attribution {
+  background: color-mix(in oklab, var(--color-bone) 80%, transparent) !important;
+  color: var(--color-charcoal-faint) !important;
+  font-size: 9px !important;
+  padding: 1px 6px !important;
+  border-radius: 6px 0 0 0;
+}
+.echo-map .leaflet-control-attribution a {
+  color: var(--color-charcoal-faint) !important;
+}
+.echo-map .leaflet-container {
+  outline: none;
+}
+
+/* Marqueurs : de simples pastilles, pas d'icone image. */
+.echo-pin {
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 2px solid var(--color-paper);
+  box-shadow: 0 2px 8px rgb(17 24 18 / 0.22);
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.echo-pin--existing {
+  background: var(--color-matcha-300);
+  width: 14px;
+  height: 14px;
+}
+.echo-pin--selected {
+  background: var(--color-charcoal);
+  width: 22px;
+  height: 22px;
+}
+.echo-pin--selected::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-bone);
+}
+.echo-pin--start {
+  background: var(--color-matcha-500);
+  width: 16px;
+  height: 16px;
+}
+.echo-pin--finish {
+  background: var(--color-clay);
+  width: 16px;
+  height: 16px;
+}
+
+.echo-tooltip {
+  background: var(--color-charcoal) !important;
+  color: var(--color-bone) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  padding: 3px 8px !important;
+}
+.echo-tooltip::before {
+  border-top-color: var(--color-charcoal) !important;
+}
