@@ -29,7 +29,7 @@ export default async function LoginPage({
           Créer ou retrouver ma course
         </h1>
         <p className="mt-3 text-center text-[14px] leading-relaxed text-charcoal-muted">
-          Pas de mot de passe. On t’envoie un lien à usage unique par e-mail.
+          Pas de mot de passe. On t’envoie un code à usage unique par e-mail.
         </p>
 
         <div className="mt-8">
