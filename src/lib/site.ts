@@ -13,7 +13,7 @@ export const SITE_TAGLINE = 'Les voix de tes proches, au bon kilomètre.';
 export const SITE_DESCRIPTION =
   'Tes proches déposent un message vocal sur un point précis de ton parcours. Le jour de la course, ton téléphone le déclenche tout seul quand tu passes devant. Sans réseau, sans notification à lire.';
 
-export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_LEGAL_CONTACT_EMAIL ?? 'contact@echo-run.com';
+export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_LEGAL_CONTACT_EMAIL ?? 'lsimonin2@gmail.com';
 
 /**
  * Routes publiques indexables. Sert à la fois au sitemap et à robots.txt :

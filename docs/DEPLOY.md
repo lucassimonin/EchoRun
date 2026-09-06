@@ -1,4 +1,4 @@
-# Déploiement d'EchoRun sur ton serveur (echo-run.com)
+# Déploiement d'EchoRun sur ton serveur (echo-run.app)
 
 Ce guide déploie EchoRun sur un serveur Linux que tu contrôles (VPS type
 Hetzner / OVH / Scaleway / DigitalOcean...), avec **Docker + Caddy** (HTTPS
@@ -18,7 +18,7 @@ Navigateur ──HTTPS──▶ Caddy (443)  ──http──▶  web (Next.js s
 ## 0. Ce qu'il te faut
 
 - Un serveur Linux (Ubuntu/Debian récent), 1 vCPU / 1–2 Go de RAM suffisent.
-- Le domaine **echo-run.com** (chez ton registrar).
+- Le domaine **echo-run.app** (chez ton registrar).
 - Le projet Supabase déjà créé (celui de dev convient, ou un projet dédié prod).
 - Les clés Stripe **live** + un webhook (voir §6).
 
@@ -31,10 +31,10 @@ pointent vers l'IP publique de ton serveur :
 
 | Type | Nom            | Valeur              |
 |------|----------------|---------------------|
-| A    | `@` (echo-run.com) | `IP_DU_SERVEUR` |
+| A    | `@` (echo-run.app) | `IP_DU_SERVEUR` |
 | A    | `www`          | `IP_DU_SERVEUR`     |
 
-Attends que ça se propage (`dig echo-run.com +short` doit renvoyer ton IP).
+Attends que ça se propage (`dig echo-run.app +short` doit renvoyer ton IP).
 Caddy ne pourra générer le certificat qu'une fois le DNS correct.
 
 ---
@@ -83,7 +83,7 @@ nano .env.production
 - `NEXT_PUBLIC_SUPABASE_URL` — l'URL de ton projet Supabase.
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY` — la clé anon (publique).
 - `SUPABASE_SERVICE_ROLE_KEY` — la clé service_role (**secrète**, serveur seul).
-- `NEXT_PUBLIC_SITE_URL` — `https://echo-run.com`.
+- `NEXT_PUBLIC_SITE_URL` — `https://echo-run.app`.
 - `STRIPE_SECRET_KEY` / `STRIPE_WEBHOOK_SECRET` — voir §6.
 - `NEXT_PUBLIC_LEGAL_CONTACT_EMAIL` — ton email de contact légal.
 
@@ -108,7 +108,7 @@ supabase db push     # applique les migrations sur le projet cloud
 Puis crée ton compte admin (magic link) et passe-le admin :
 
 ```bash
-# après t'être connecté une fois sur https://echo-run.com pour créer le profil
+# après t'être connecté une fois sur https://echo-run.app pour créer le profil
 npm run admin -- ton.email@exemple.com
 ```
 
@@ -119,7 +119,7 @@ npm run admin -- ton.email@exemple.com
 1. Passe en mode **live** dans le dashboard Stripe.
 2. Récupère la clé secrète `sk_live_...` → `STRIPE_SECRET_KEY`.
 3. Crée un webhook : *Developers → Webhooks → Add endpoint*
-   - URL : `https://echo-run.com/api/stripe/webhook`
+   - URL : `https://echo-run.app/api/stripe/webhook`
    - Événements : au minimum `checkout.session.completed`.
 4. Copie le *Signing secret* `whsec_...` → `STRIPE_WEBHOOK_SECRET`.
 
@@ -129,8 +129,8 @@ npm run admin -- ton.email@exemple.com
 
 Dans le dashboard Supabase → *Authentication → URL Configuration* :
 
-- **Site URL** : `https://echo-run.com`
-- **Redirect URLs** : ajoute `https://echo-run.com/auth/callback`
+- **Site URL** : `https://echo-run.app`
+- **Redirect URLs** : ajoute `https://echo-run.app/auth/callback`
 
 Sans ça, les liens magiques renverront vers localhost.
 
@@ -150,7 +150,7 @@ docker compose -f docker-compose.prod.yml ps      # les 2 services "up"
 docker compose -f docker-compose.prod.yml logs -f caddy   # obtention du certif
 ```
 
-Ouvre https://echo-run.com 🎉
+Ouvre https://echo-run.app 🎉
 
 ---
 
@@ -193,4 +193,4 @@ Si tu as ajouté des migrations : relance `supabase db push` (§5).
 
 Le build de l'app native (Capacitor) est décrit dans
 [`NATIVE.md`](./NATIVE.md). Elle pointe vers le site hébergé — pense à régler
-`CAP_SERVER_URL=https://echo-run.com` avant de la compiler.
+`CAP_SERVER_URL=https://echo-run.app` avant de la compiler.

@@ -21,7 +21,7 @@ const COLUMNS = [
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
-  const contact = process.env.NEXT_PUBLIC_LEGAL_CONTACT_EMAIL ?? 'contact@echo-run.com';
+  const contact = process.env.NEXT_PUBLIC_LEGAL_CONTACT_EMAIL ?? 'lsimonin2@gmail.com';
 
   return (
     <footer className="mt-24 border-t border-charcoal/[0.07] bg-bone-100/50">

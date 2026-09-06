@@ -23,7 +23,7 @@ const config: CapacitorConfig = {
   // fallback minimal (public/) ; le contenu réel vient de server.url.
   webDir: 'native/webdir',
   server: {
-    url: process.env.CAP_SERVER_URL || 'https://echo-run.com',
+    url: process.env.CAP_SERVER_URL || 'https://echo-run.app',
     // Passe à true UNIQUEMENT en dev pour charger un http://IP local.
     cleartext: process.env.CAP_CLEARTEXT === '1',
   },

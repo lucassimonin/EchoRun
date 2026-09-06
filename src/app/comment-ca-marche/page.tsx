@@ -113,7 +113,7 @@ export default function HowItWorksPage() {
       <h2>2. Le lien de partage</h2>
       <p>
         Chaque course reçoit une adresse courte et non devinable, du type{' '}
-        <code>echo-run.com/e/k7m2pq9xr4tz</code>. C’est le même principe qu’un Tricount&nbsp;: qui a
+        <code>echo-run.app/e/k7m2pq9xr4tz</code>. C’est le même principe qu’un Tricount&nbsp;: qui a
         le lien peut participer, sans compte ni installation. Vous le diffusez comme vous voulez —
         SMS, WhatsApp, groupe familial, mail.
       </p>

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/mentions-legales' },
 };
 
-const CONTACT = process.env.NEXT_PUBLIC_LEGAL_CONTACT_EMAIL ?? 'contact@echo-run.com';
+const CONTACT = process.env.NEXT_PUBLIC_LEGAL_CONTACT_EMAIL ?? 'lsimonin2@gmail.com';
 const ENTITY = process.env.NEXT_PUBLIC_LEGAL_ENTITY ?? 'EchoRun';
 
 export default function LegalPage() {

@@ -9,7 +9,7 @@
  *
  * Pour activer en production :
  *   RESEND_API_KEY=re_...              (clé Resend)
- *   EMAIL_FROM="EchoRun <bonjour@echo-run.com>"   (expéditeur, domaine vérifié)
+ *   EMAIL_FROM="EchoRun <bonjour@echo-run.app>"   (expéditeur, domaine vérifié)
  */
 
 const RESEND_ENDPOINT = 'https://api.resend.com/emails';
@@ -23,7 +23,7 @@ type SendArgs = {
 
 async function sendEmail({ to, subject, html, text }: SendArgs): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.EMAIL_FROM ?? 'EchoRun <bonjour@echo-run.com>';
+  const from = process.env.EMAIL_FROM ?? 'EchoRun <bonjour@echo-run.app>';
 
   if (!apiKey) {
     // Non configuré : on log en dev, on ne casse rien.
