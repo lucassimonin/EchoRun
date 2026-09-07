@@ -98,7 +98,7 @@ export function LoginForm({ next }: { next?: string }) {
               autoComplete="one-time-code"
               enterKeyHint="go"
               placeholder="123456"
-              maxLength={6}
+              maxLength={8}
               value={code}
               onChange={(e) => setCode(e.target.value.replace(/[^0-9]/g, ''))}
               onKeyDown={(e) => e.key === 'Enter' && void verifyCode()}
