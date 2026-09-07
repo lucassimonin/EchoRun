@@ -8,12 +8,13 @@ type Size = 'sm' | 'md' | 'lg';
 const BASE =
   'inline-flex items-center justify-center gap-2 font-bold uppercase tracking-[0.02em] ' +
   'rounded-lg transition-[transform,box-shadow,background-color,color] duration-100 ' +
-  'disabled:opacity-50 disabled:pointer-events-none select-none whitespace-nowrap';
+  'disabled:pointer-events-none select-none whitespace-nowrap';
 
 /* Effet "pression" : la carte s'enfonce et l'ombre disparaît au clic. */
 const HARD =
   'border-[3px] border-black shadow-[4px_4px_0_0_#000] ' +
-  'active:translate-x-[4px] active:translate-y-[4px] active:shadow-none';
+  'active:translate-x-[4px] active:translate-y-[4px] active:shadow-none ' +
+  'disabled:border-black/25 disabled:bg-black/[0.05] disabled:text-black/35 disabled:shadow-none';
 
 const VARIANTS: Record<Variant, string> = {
   primary: HARD + ' bg-orange text-black hover:bg-orange-dark hover:text-white',
@@ -21,7 +22,7 @@ const VARIANTS: Record<Variant, string> = {
   secondary: HARD + ' bg-off text-black hover:bg-yellow',
   ghost:
     'text-black underline decoration-orange decoration-[3px] underline-offset-4 ' +
-    'hover:decoration-black active:translate-y-[1px]',
+    'hover:decoration-black active:translate-y-[1px] disabled:opacity-40',
 };
 
 const SIZES: Record<Size, string> = {
