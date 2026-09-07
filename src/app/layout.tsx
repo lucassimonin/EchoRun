@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { AdSenseScript } from '@/components/ads/AdSenseScript';
 import { ConsentModeDefaults } from '@/components/consent/ConsentModeDefaults';
+import { GtmScript, GtmNoScript } from '@/components/analytics/GoogleTagManager';
 import { ConsentProvider } from '@/components/consent/ConsentProvider';
 import { CookieBanner } from '@/components/consent/CookieBanner';
 import { ServiceWorkerRegistrar } from '@/components/ServiceWorkerRegistrar';
@@ -85,9 +86,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   // Aucune régie active = aucun cookie non essentiel = aucune bannière.
   const adsAvailable = isValidAdSenseClientId(clientId);
 
+  // GTM : conteneur injecté sur tout le site s'il est renseigné et bien formé.
+  const gtmId =
+    settings.gtm_container_id && /^GTM-[A-Z0-9]{4,12}$/.test(settings.gtm_container_id)
+      ? settings.gtm_container_id
+      : null;
+
   return (
     <html lang="fr">
       <head>
+        {gtmId ? <GtmScript id={gtmId} /> : null}
         {/* Typographies brutalistes : titres Space Grotesk, métriques Space Mono. */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -100,9 +108,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           l'injecte dans le <head>, en amont du loader AdSense • qui n'est de
           toute façon monté qu'après un choix explicite de l'utilisateur.
         */}
-        {adsAvailable ? <ConsentModeDefaults /> : null}
+        {adsAvailable || gtmId ? <ConsentModeDefaults /> : null}
       </head>
       <body className="min-h-dvh antialiased">
+        {gtmId ? <GtmNoScript id={gtmId} /> : null}
         <ConsentProvider adsAvailable={adsAvailable}>
           {children}
           <CookieBanner />

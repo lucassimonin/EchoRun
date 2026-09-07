@@ -63,6 +63,8 @@ export interface AppSettings {
   unlocked_message_cap: number;
   per_contributor_cap: number;
   unlock_price_cents: number;
+  /** Conteneur Google Tag Manager (facultatif), format GTM-XXXXXXX. */
+  gtm_container_id: string | null;
 }
 
 /**

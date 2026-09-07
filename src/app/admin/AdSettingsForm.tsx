@@ -9,6 +9,7 @@ import type { AppSettings } from '@/types';
 
 const CLIENT_ID_RE = /^ca-pub-\d{10,20}$/;
 const SLOT_RE = /^\d{6,20}$/;
+const GTM_RE = /^GTM-[A-Z0-9]{4,12}$/i;
 
 export function AdSettingsForm({ settings }: { settings: AppSettings }) {
   const router = useRouter();
@@ -18,6 +19,7 @@ export function AdSettingsForm({ settings }: { settings: AppSettings }) {
     adsense_slot_landing: settings.adsense_slot_landing ?? '',
     adsense_slot_contributor: settings.adsense_slot_contributor ?? '',
     adsense_slot_finish: settings.adsense_slot_finish ?? '',
+    gtm_container_id: settings.gtm_container_id ?? '',
     free_message_cap: String(settings.free_message_cap),
     unlocked_message_cap: String(settings.unlocked_message_cap),
     per_contributor_cap: String(settings.per_contributor_cap),
@@ -33,6 +35,9 @@ export function AdSettingsForm({ settings }: { settings: AppSettings }) {
     form.adsense_client_id.length > 0 && !CLIENT_ID_RE.test(form.adsense_client_id.trim());
 
   const slotInvalid = (value: string) => value.length > 0 && !SLOT_RE.test(value.trim());
+
+  const gtmInvalid =
+    form.gtm_container_id.length > 0 && !GTM_RE.test(form.gtm_container_id.trim());
 
   const unlockPriceCents = Number(form.unlock_price_cents);
   const priceInvalid =
@@ -51,6 +56,7 @@ export function AdSettingsForm({ settings }: { settings: AppSettings }) {
           adsense_slot_landing: form.adsense_slot_landing.trim() || null,
           adsense_slot_contributor: form.adsense_slot_contributor.trim() || null,
           adsense_slot_finish: form.adsense_slot_finish.trim() || null,
+          gtm_container_id: form.gtm_container_id.trim().toUpperCase() || null,
           free_message_cap: Number(form.free_message_cap) || 0,
           unlocked_message_cap: Number(form.unlocked_message_cap) || 0,
           per_contributor_cap: Number(form.per_contributor_cap) || 1,
@@ -143,6 +149,22 @@ export function AdSettingsForm({ settings }: { settings: AppSettings }) {
             />
           </Field>
         </div>
+
+        <Field
+          label="Google Tag Manager (facultatif)"
+          htmlFor="gtm-id"
+          hint="ID de conteneur, format GTM-XXXXXXX. Injecté sur tout le site pour piloter tes tags Google."
+          error={gtmInvalid ? 'Format attendu : GTM- suivi de lettres et chiffres.' : null}
+        >
+          <TextInput
+            id="gtm-id"
+            value={form.gtm_container_id}
+            onChange={(e) => set('gtm_container_id', e.target.value)}
+            placeholder="GTM-XXXXXXX"
+            spellCheck={false}
+            autoComplete="off"
+          />
+        </Field>
       </div>
 
       <Divider className="my-7" />
@@ -215,7 +237,7 @@ export function AdSettingsForm({ settings }: { settings: AppSettings }) {
       <Button
         className="mt-7"
         onClick={() => void submit()}
-        disabled={busy || clientIdInvalid || priceInvalid}
+        disabled={busy || clientIdInvalid || priceInvalid || gtmInvalid}
       >
         {busy ? 'Enregistrement…' : 'Enregistrer'}
       </Button>

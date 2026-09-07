@@ -7,6 +7,7 @@ export const dynamic = 'force-dynamic';
 
 const CLIENT_ID_RE = /^ca-pub-\d{10,20}$/;
 const SLOT_RE = /^\d{6,20}$/;
+const GTM_RE = /^GTM-[A-Z0-9]{4,12}$/;
 
 /**
  * PUT /api/admin/settings
@@ -98,6 +99,15 @@ export async function PUT(request: Request) {
   const unlockPrice = intField(input.unlock_price_cents, 50, 5000);
   if (unlockPrice === 'invalid') return jsonError('Prix de deblocage invalide (50 a 5000 centimes).', 400);
   if (unlockPrice !== undefined) patch.unlock_price_cents = unlockPrice;
+
+  const gtm = normalizeText(input.gtm_container_id);
+  if (gtm !== undefined) {
+    const value = gtm ? gtm.toUpperCase() : null;
+    if (value !== null && !GTM_RE.test(value)) {
+      return jsonError('Identifiant GTM invalide (format GTM-XXXXXXX).', 400);
+    }
+    patch.gtm_container_id = value;
+  }
 
   const { data, error } = await supabase
     .from('app_settings')

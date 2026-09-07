@@ -13,6 +13,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   unlocked_message_cap: 50,
   per_contributor_cap: 5,
   unlock_price_cents: 199,
+  gtm_container_id: null,
 };
 
 /**
@@ -31,7 +32,7 @@ export async function getAppSettings(): Promise<AppSettings> {
     const { data, error } = await supabase
       .from('app_settings')
       .select(
-        'ads_enabled, adsense_client_id, adsense_slot_landing, adsense_slot_contributor, adsense_slot_finish, extra_message_price_cents, extra_message_credits, free_message_cap, unlocked_message_cap, per_contributor_cap, unlock_price_cents',
+        'ads_enabled, adsense_client_id, adsense_slot_landing, adsense_slot_contributor, adsense_slot_finish, extra_message_price_cents, extra_message_credits, free_message_cap, unlocked_message_cap, per_contributor_cap, unlock_price_cents, gtm_container_id',
       )
       .eq('id', 1)
       .single();
