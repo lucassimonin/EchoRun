@@ -11,6 +11,8 @@ declare global {
     adsbygoogle?: AdsByGoogleQueue;
     dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
+    /** CMP certifiée de Google (Privacy & messaging) : rappel du message. */
+    googlefc?: { showRevocationMessage?: () => void; callbackQueue?: unknown[] };
   }
 }
 

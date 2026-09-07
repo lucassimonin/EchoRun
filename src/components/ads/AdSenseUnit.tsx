@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useOptionalConsent } from '@/components/consent/ConsentProvider';
 import { isValidAdSenseClientId, isValidAdSenseSlotId } from '@/lib/adsense';
 import { cx } from '@/lib/utils';
 
@@ -60,14 +59,12 @@ export function AdSenseUnit({
   const insRef = useRef<HTMLModElement | null>(null);
   const pushedRef = useRef(false);
   const [status, setStatus] = useState<'idle' | 'filled' | 'unfilled'>('idle');
-  const consent = useOptionalConsent();
 
   const configured = isValidAdSenseClientId(clientId) && isValidAdSenseSlotId(slotId);
-  const allowed = !!consent?.consent;
   const isProd = process.env.NODE_ENV === 'production';
 
   useEffect(() => {
-    if (!configured || !allowed || !isProd) return;
+    if (!configured || !isProd) return;
     const ins = insRef.current;
     if (!ins || pushedRef.current) return;
     if (ins.getAttribute('data-adsbygoogle-status')) return;
@@ -87,11 +84,9 @@ export function AdSenseUnit({
     });
     observer.observe(ins, { attributes: true, attributeFilter: ['data-ad-status'] });
     return () => observer.disconnect();
-  }, [allowed, configured, isProd, slotId]);
+  }, [configured, isProd, slotId]);
 
   if (!configured) return null;
-  // Aucun choix exprime : on n'affiche meme pas le cadre.
-  if (!allowed) return null;
   if (status === 'unfilled') return null;
 
   if (!isProd) {

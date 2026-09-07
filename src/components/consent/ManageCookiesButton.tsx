@@ -23,7 +23,7 @@ export function ManageCookiesButton({
   return (
     <button
       type="button"
-      onClick={consent.openPreferences}
+      onClick={() => window.googlefc?.showRevocationMessage?.()}
       className={cx('text-left transition-colors hover:text-charcoal', className)}
     >
       {label}
