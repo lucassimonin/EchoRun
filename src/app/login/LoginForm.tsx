@@ -42,7 +42,13 @@ export function LoginForm({ next }: { next?: string }) {
 
     setBusy(false);
     if (authError) {
-      setError('Envoi impossible. Réessaie dans un instant.');
+      // On remonte la vraie raison : rate limit, inscriptions désactivées, SMTP…
+      const status = (authError as { status?: number }).status;
+      if (status === 429) {
+        setError('Trop de demandes en peu de temps. Attends quelques minutes.');
+      } else {
+        setError(authError.message || 'Envoi impossible. Réessaie dans un instant.');
+      }
       return;
     }
     setEmail(trimmed);

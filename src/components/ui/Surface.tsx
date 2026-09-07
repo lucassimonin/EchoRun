@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { cx } from '@/lib/utils';
 
-/** Carte de base : blanc casse, bord tres discret, ombre presque invisible. */
+/** Carte brutaliste : blanc cassé, bord noir 3px, ombre dure. */
 export function Surface({
   children,
   className,
@@ -16,7 +16,7 @@ export function Surface({
   return (
     <Tag
       className={cx(
-        'rounded-card border border-charcoal/[0.07] bg-paper shadow-soft',
+        'rounded-lg border-[3px] border-black bg-paper shadow-[4px_4px_0_0_#000]',
         padded && 'p-6',
         className,
       )}
@@ -26,11 +26,12 @@ export function Surface({
   );
 }
 
+/** Surtitre : mono, capitales, orange. */
 export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <p
       className={cx(
-        'text-[11px] font-semibold uppercase tracking-[0.16em] text-matcha-400',
+        'font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-orange',
         className,
       )}
     >
@@ -39,6 +40,7 @@ export function Eyebrow({ children, className }: { children: ReactNode; classNam
   );
 }
 
+/** Badge fluo à bord noir. */
 export function Badge({
   children,
   tone = 'neutral',
@@ -47,14 +49,15 @@ export function Badge({
   tone?: 'neutral' | 'matcha' | 'clay';
 }) {
   const tones = {
-    neutral: 'bg-charcoal/[0.05] text-charcoal-muted',
-    matcha: 'bg-matcha-100 text-matcha-600',
-    clay: 'bg-clay/10 text-clay',
+    neutral: 'bg-white text-black',
+    matcha: 'bg-neon text-black',
+    clay: 'bg-danger text-white',
   } as const;
   return (
     <span
       className={cx(
-        'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium tracking-[0.01em]',
+        'inline-flex items-center gap-1.5 rounded-md border-2 border-black px-2.5 py-0.5 ' +
+          'text-[11px] font-bold uppercase tracking-[0.04em]',
         tones[tone],
       )}
     >
@@ -64,5 +67,5 @@ export function Badge({
 }
 
 export function Divider({ className }: { className?: string }) {
-  return <hr className={cx('border-0 border-t border-charcoal/[0.07]', className)} />;
+  return <hr className={cx('border-0 border-t-2 border-black/15', className)} />;
 }

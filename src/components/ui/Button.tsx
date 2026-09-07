@@ -6,22 +6,28 @@ type Variant = 'primary' | 'secondary' | 'ghost' | 'dark';
 type Size = 'sm' | 'md' | 'lg';
 
 const BASE =
-  'inline-flex items-center justify-center gap-2 font-medium tracking-[-0.01em] rounded-full ' +
-  'transition-[transform,background-color,border-color,opacity] duration-200 ' +
-  'active:scale-[0.985] disabled:opacity-45 disabled:pointer-events-none select-none whitespace-nowrap';
+  'inline-flex items-center justify-center gap-2 font-bold uppercase tracking-[0.02em] ' +
+  'rounded-lg transition-[transform,box-shadow,background-color,color] duration-100 ' +
+  'disabled:opacity-50 disabled:pointer-events-none select-none whitespace-nowrap';
+
+/* Effet "pression" : la carte s'enfonce et l'ombre disparaît au clic. */
+const HARD =
+  'border-[3px] border-black shadow-[4px_4px_0_0_#000] ' +
+  'active:translate-x-[4px] active:translate-y-[4px] active:shadow-none';
 
 const VARIANTS: Record<Variant, string> = {
-  primary: 'bg-matcha-500 text-bone hover:bg-matcha-600 shadow-soft',
-  dark: 'bg-charcoal text-bone hover:bg-charcoal/90 shadow-soft',
-  secondary:
-    'bg-paper text-charcoal border border-charcoal/10 hover:border-charcoal/20 hover:bg-bone-100 shadow-soft',
-  ghost: 'text-charcoal-muted hover:text-charcoal hover:bg-charcoal/5',
+  primary: HARD + ' bg-orange text-black hover:bg-orange-dark hover:text-white',
+  dark: HARD + ' bg-black text-yellow hover:bg-[#141414]',
+  secondary: HARD + ' bg-off text-black hover:bg-yellow',
+  ghost:
+    'text-black underline decoration-orange decoration-[3px] underline-offset-4 ' +
+    'hover:decoration-black active:translate-y-[1px]',
 };
 
 const SIZES: Record<Size, string> = {
-  sm: 'h-9 px-4 text-[13px]',
-  md: 'h-11 px-5 text-sm',
-  lg: 'h-14 px-7 text-[15px]',
+  sm: 'h-10 px-4 text-[12px]',
+  md: 'h-12 px-6 text-[13px]',
+  lg: 'h-14 px-8 text-[15px]',
 };
 
 interface CommonProps {

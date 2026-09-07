@@ -2,9 +2,9 @@ import type { ComponentProps, ReactNode } from 'react';
 import { cx } from '@/lib/utils';
 
 const CONTROL =
-  'w-full rounded-2xl border border-charcoal/10 bg-paper px-4 text-[15px] text-charcoal ' +
-  'placeholder:text-charcoal-faint/70 transition-colors duration-200 ' +
-  'hover:border-charcoal/20 focus:border-matcha-400 focus:outline-none focus:ring-4 focus:ring-matcha-500/10';
+  'w-full rounded-lg border-[3px] border-black bg-white px-4 text-[15px] text-black ' +
+  'placeholder:text-black/35 transition-shadow duration-100 ' +
+  'focus:outline-none focus:shadow-[3px_3px_0_0_#000]';
 
 export function Field({
   label,
@@ -23,13 +23,13 @@ export function Field({
     <div className="space-y-2">
       <label
         htmlFor={htmlFor}
-        className="block text-[13px] font-medium tracking-[-0.005em] text-charcoal"
+        className="block text-[12px] font-bold uppercase tracking-[0.04em] text-black"
       >
         {label}
       </label>
       {children}
       {error ? (
-        <p className="text-[12.5px] text-clay">{error}</p>
+        <p className="font-mono text-[12px] text-danger">{error}</p>
       ) : hint ? (
         <p className="text-[12.5px] leading-relaxed text-charcoal-faint">{hint}</p>
       ) : null}
@@ -57,7 +57,7 @@ export function Toggle({
   return (
     <div className="flex items-start justify-between gap-6">
       <div className="space-y-0.5">
-        <label htmlFor={id} className="block text-[14px] font-medium text-charcoal">
+        <label htmlFor={id} className="block text-[14px] font-bold text-black">
           {label}
         </label>
         {description ? (
@@ -73,14 +73,14 @@ export function Toggle({
         aria-checked={checked}
         onClick={() => onChange(!checked)}
         className={cx(
-          'relative mt-0.5 h-6 w-11 shrink-0 rounded-full transition-colors duration-200',
-          checked ? 'bg-matcha-500' : 'bg-charcoal/15',
+          'relative mt-0.5 h-7 w-12 shrink-0 rounded-md border-[3px] border-black transition-colors duration-150',
+          checked ? 'bg-neon' : 'bg-white',
         )}
       >
         <span
           className={cx(
-            'absolute top-0.5 size-5 rounded-full bg-paper shadow-sm transition-transform duration-200',
-            checked ? 'translate-x-[22px]' : 'translate-x-0.5',
+            'absolute top-[2px] size-[18px] rounded-[3px] border-2 border-black bg-black transition-transform duration-150',
+            checked ? 'translate-x-[20px]' : 'translate-x-[2px]',
           )}
         />
       </button>

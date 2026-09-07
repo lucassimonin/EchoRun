@@ -1,65 +1,72 @@
 @import 'tailwindcss';
 
 /* ============================================================
-   EchoRun — Design System "SF Matcha"
-   Neutre, naturel, aere. Zero encombrement visuel.
+   EchoRun — Design System "SIGNAL"
+   Neo-Brutalist / Retro-Tech / Streetwear.
+   Jaune électrique, bordures noires épaisses, ombres dures,
+   typo lourde en capitales + monospace pour les métriques.
    ============================================================ */
 
 @theme {
-  /* --- Couleurs --- */
-  --color-bone: #faf8f5; /* fond global off-white */
-  --color-bone-100: #f4f1ec; /* surfaces creusees */
-  --color-bone-200: #ece7df; /* separateurs chauds */
-  --color-paper: #ffffff;
+  /* --- Palette de marque --- */
+  --color-yellow: #ffe600; /* jaune électrique — fond principal */
+  --color-orange: #ff5500; /* orange signal — action */
+  --color-orange-dark: #e64a00;
+  --color-neon: #00ff66; /* vert néon — succès / accents */
+  --color-off: #f4f4f0; /* blanc cassé */
+  --color-ink: #000000; /* noir pur — texte + bordures */
+  --color-danger: #ff2d2d; /* rouge — alertes / clôture */
 
-  --color-matcha-50: #f2f5f2;
-  --color-matcha-100: #e2e9e3;
-  --color-matcha-200: #c3d2c7;
-  --color-matcha-300: #9db3a3;
-  --color-matcha-400: #6d8a77;
-  --color-matcha-500: #3e5a47; /* accent principal */
-  --color-matcha-600: #344c3c;
-  --color-matcha-700: #283a2e;
+  /* --- Tokens historiques REMAPPÉS sur la nouvelle charte ---
+     On garde les noms (bone/paper/charcoal/matcha/clay) pour que tout le
+     code existant bascule d'un coup, mais on leur donne les valeurs SIGNAL. */
+  --color-bone: #ffe600; /* fond global -> jaune */
+  --color-bone-100: #f4f4f0; /* surfaces creusées -> blanc cassé */
+  --color-bone-200: #e6e6df;
+  --color-paper: #f4f4f0; /* cartes -> blanc cassé */
 
-  --color-charcoal: #111812; /* texte + accents durs */
-  --color-charcoal-muted: #4b544d;
-  --color-charcoal-faint: #7c847d;
+  --color-matcha-50: #fff4d6;
+  --color-matcha-100: #00ff66; /* fonds de badge -> néon */
+  --color-matcha-200: #7dffb0;
+  --color-matcha-300: #00ff66; /* pastilles carte -> néon */
+  --color-matcha-400: #ff5500; /* eyebrow -> orange */
+  --color-matcha-500: #ff5500; /* accent principal -> orange */
+  --color-matcha-600: #000000; /* "texte sur accent" -> noir */
+  --color-matcha-700: #000000;
 
-  --color-clay: #b4694f; /* unique couleur "chaude" : alertes douces */
+  --color-charcoal: #000000; /* texte + bordures -> noir pur */
+  --color-charcoal-muted: #1a1a1a;
+  --color-charcoal-faint: #4d4d4d;
+
+  --color-clay: #ff2d2d; /* alertes -> rouge signal */
 
   /* --- Typographie --- */
-  /*
-   * Pile systeme volontaire, pas de Google Fonts.
-   *   - zero requete tierce : coherent avec notre politique de confidentialite,
-   *     et une dependance reseau de moins au build ;
-   *   - rendu immediat, aucun FOUT ni saut de mise en page ;
-   *   - `Inter` en tete : les machines qui l'ont installee en profitent.
-   * Pour figer la typo : deposer Inter-Variable.woff2 dans public/fonts/,
-   * declarer un @font-face local et le prefixer ici.
-   */
-  --font-sans: 'Inter', 'Inter var', -apple-system, BlinkMacSystemFont,
-    'SF Pro Text', 'Segoe UI Variable Text', 'Segoe UI', Roboto, ui-sans-serif,
-    system-ui, 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', 'JetBrains Mono',
+    'Menlo', monospace;
 
-  --text-display: 3.5rem;
-  --text-display--line-height: 1.02;
-  --text-display--letter-spacing: -0.035em;
-  --text-display--font-weight: 600;
+  --text-display: 4rem;
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 700;
 
-  --text-title: 2rem;
-  --text-title--line-height: 1.12;
-  --text-title--letter-spacing: -0.025em;
-  --text-title--font-weight: 600;
+  --text-title: 2.25rem;
+  --text-title--line-height: 1.02;
+  --text-title--letter-spacing: -0.01em;
+  --text-title--font-weight: 700;
 
   --text-lede: 1.125rem;
-  --text-lede--line-height: 1.65;
+  --text-lede--line-height: 1.55;
 
-  /* --- Rayons & ombres --- */
-  --radius-card: 1.25rem;
-  --radius-sheet: 1.75rem;
+  /* --- Rayons : légèrement arrondis, pas de rondeur molle --- */
+  --radius-card: 0.625rem;
+  --radius-sheet: 0.75rem;
 
-  --shadow-soft: 0 1px 2px rgb(17 24 18 / 0.04), 0 8px 24px -12px rgb(17 24 18 / 0.1);
-  --shadow-lift: 0 1px 2px rgb(17 24 18 / 0.05), 0 20px 48px -24px rgb(17 24 18 / 0.18);
+  /* --- Ombres DURES, sans flou --- */
+  --shadow-soft: 3px 3px 0 0 #000;
+  --shadow-lift: 5px 5px 0 0 #000;
+  --shadow-hard: 4px 4px 0 0 #000;
 
   /* --- Animations --- */
   --animate-pulse-ring: pulse-ring 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
@@ -67,15 +74,16 @@
   --animate-float: float 4.5s ease-in-out infinite;
   --animate-draw: draw 2.2s cubic-bezier(0.65, 0, 0.35, 1) both;
   --animate-bob: bob 2.6s ease-in-out infinite;
+  --animate-blink: blink 1.1s steps(1) infinite;
 }
 
 @keyframes pulse-ring {
   0% {
     transform: scale(1);
-    opacity: 0.5;
+    opacity: 0.6;
   }
   100% {
-    transform: scale(1.9);
+    transform: scale(2);
     opacity: 0;
   }
 }
@@ -83,7 +91,7 @@
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -106,15 +114,21 @@
   50% { transform: translateY(-3px); }
 }
 
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0.15; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-rise, .animate-float, .animate-draw, .animate-bob, .animate-pulse-ring {
+  .animate-rise, .animate-float, .animate-draw, .animate-bob,
+  .animate-pulse-ring, .animate-blink {
     animation: none !important;
   }
 }
 
 @layer base {
   * {
-    border-color: color-mix(in oklab, var(--color-charcoal) 8%, transparent);
+    border-color: var(--color-ink);
   }
 
   html {
@@ -123,55 +137,62 @@
   }
 
   body {
-    background-color: var(--color-bone);
-    color: var(--color-charcoal);
+    background-color: var(--color-yellow);
+    color: var(--color-ink);
     font-family: var(--font-sans);
-    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    /* Safe areas iOS pour la PWA plein ecran */
     padding-bottom: env(safe-area-inset-bottom);
   }
 
   ::selection {
-    background-color: var(--color-matcha-200);
-    color: var(--color-matcha-700);
+    background-color: var(--color-neon);
+    color: var(--color-ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-matcha-500);
+    outline: 3px solid var(--color-ink);
     outline-offset: 2px;
     border-radius: 4px;
   }
 
-  /* Contenu editorial des pages legales / "comment ca marche" */
+  /* Chiffres tabulaires pour les compteurs / métriques */
+  .tnum {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  /* Contenu éditorial des pages légales / "comment ça marche" */
   .prose-echo {
     max-width: 68ch;
   }
   .prose-echo h2 {
-    font-size: 1.375rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
     margin-top: 2.75rem;
     margin-bottom: 0.75rem;
   }
   .prose-echo h3 {
-    font-size: 1.0625rem;
-    font-weight: 600;
+    font-size: 1.125rem;
+    font-weight: 700;
     margin-top: 1.75rem;
     margin-bottom: 0.5rem;
   }
   .prose-echo p,
   .prose-echo li {
     color: var(--color-charcoal-muted);
-    line-height: 1.75;
+    line-height: 1.7;
   }
   .prose-echo p {
     margin-bottom: 1rem;
   }
   .prose-echo ul {
     margin: 0 0 1.25rem 0;
-    padding-left: 1.1rem;
+    padding-left: 1.25rem;
     list-style: none;
   }
   .prose-echo li {
@@ -181,55 +202,73 @@
   .prose-echo li::before {
     content: '';
     position: absolute;
-    left: -1.1rem;
-    top: 0.7em;
-    width: 5px;
-    height: 5px;
-    border-radius: 999px;
-    background: var(--color-matcha-300);
+    left: -1.25rem;
+    top: 0.55em;
+    width: 8px;
+    height: 8px;
+    background: var(--color-orange);
+    border: 2px solid var(--color-ink);
   }
   .prose-echo strong {
-    color: var(--color-charcoal);
-    font-weight: 600;
+    color: var(--color-ink);
+    font-weight: 700;
+    background: var(--color-neon);
+    padding: 0 2px;
+    box-decoration-break: clone;
   }
   .prose-echo a {
-    color: var(--color-matcha-500);
+    color: var(--color-ink);
+    font-weight: 700;
     text-decoration: underline;
+    text-decoration-color: var(--color-orange);
+    text-decoration-thickness: 3px;
     text-underline-offset: 2px;
+  }
+  .prose-echo code {
+    font-family: var(--font-mono);
+    background: var(--color-ink);
+    color: var(--color-neon);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
   }
 }
 
 /* ============================================================
-   Leaflet — override minimaliste pour coller a la charte.
+   Leaflet — override brutaliste.
    ============================================================ */
 .echo-map {
-  background: var(--color-bone-100) !important;
-  font-family: var(--font-sans) !important;
+  background: var(--color-off) !important;
+  font-family: var(--font-mono) !important;
 }
 .echo-map .leaflet-control-zoom {
-  border: none !important;
-  box-shadow: var(--shadow-soft) !important;
-  border-radius: 12px !important;
+  border: 3px solid var(--color-ink) !important;
+  box-shadow: var(--shadow-hard) !important;
+  border-radius: 8px !important;
   overflow: hidden;
 }
 .echo-map .leaflet-control-zoom a {
-  background: var(--color-paper) !important;
-  color: var(--color-charcoal) !important;
+  background: var(--color-off) !important;
+  color: var(--color-ink) !important;
   border: none !important;
-  width: 32px !important;
-  height: 32px !important;
-  line-height: 32px !important;
-  font-weight: 400 !important;
+  width: 34px !important;
+  height: 34px !important;
+  line-height: 34px !important;
+  font-weight: 700 !important;
 }
 .echo-map .leaflet-control-zoom a:hover {
-  background: var(--color-bone-100) !important;
+  background: var(--color-yellow) !important;
+}
+.echo-map .leaflet-control-zoom a:first-child {
+  border-bottom: 3px solid var(--color-ink) !important;
 }
 .echo-map .leaflet-control-attribution {
-  background: color-mix(in oklab, var(--color-bone) 80%, transparent) !important;
+  background: var(--color-off) !important;
   color: var(--color-charcoal-faint) !important;
   font-size: 9px !important;
   padding: 1px 6px !important;
-  border-radius: 6px 0 0 0;
+  border-top: 2px solid var(--color-ink) !important;
+  border-left: 2px solid var(--color-ink) !important;
 }
 .echo-map .leaflet-control-attribution a {
   color: var(--color-charcoal-faint) !important;
@@ -238,53 +277,54 @@
   outline: none;
 }
 
-/* Marqueurs : de simples pastilles, pas d'icone image. */
+/* Marqueurs : pastilles à bord noir franc. */
 .echo-pin {
   display: grid;
   place-items: center;
   border-radius: 999px;
-  border: 2px solid var(--color-paper);
-  box-shadow: 0 2px 8px rgb(17 24 18 / 0.22);
-  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 3px solid var(--color-ink);
+  box-shadow: 2px 2px 0 0 var(--color-ink);
+  transition: transform 0.14s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .echo-pin--existing {
-  background: var(--color-matcha-300);
-  width: 14px;
-  height: 14px;
+  background: var(--color-neon);
+  width: 16px;
+  height: 16px;
 }
 .echo-pin--selected {
-  background: var(--color-charcoal);
-  width: 22px;
-  height: 22px;
+  background: var(--color-orange);
+  width: 24px;
+  height: 24px;
 }
 .echo-pin--selected::after {
   content: '';
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 999px;
-  background: var(--color-bone);
+  background: var(--color-ink);
 }
 .echo-pin--start {
-  background: var(--color-matcha-500);
-  width: 16px;
-  height: 16px;
+  background: var(--color-neon);
+  width: 18px;
+  height: 18px;
 }
 .echo-pin--finish {
-  background: var(--color-clay);
-  width: 16px;
-  height: 16px;
+  background: var(--color-danger);
+  width: 18px;
+  height: 18px;
 }
 
 .echo-tooltip {
-  background: var(--color-charcoal) !important;
-  color: var(--color-bone) !important;
+  background: var(--color-ink) !important;
+  color: var(--color-yellow) !important;
   border: none !important;
-  border-radius: 8px !important;
+  border-radius: 6px !important;
   box-shadow: none !important;
+  font-family: var(--font-mono) !important;
   font-size: 11px !important;
-  font-weight: 500 !important;
+  font-weight: 700 !important;
   padding: 3px 8px !important;
 }
 .echo-tooltip::before {
-  border-top-color: var(--color-charcoal) !important;
+  border-top-color: var(--color-ink) !important;
 }
