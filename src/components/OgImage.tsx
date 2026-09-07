@@ -12,7 +12,8 @@ export const OG_CONTENT_TYPE = 'image/png';
  *
  * Contraintes de Satori à connaître : pas de `gap`, pas de pseudo-éléments,
  * flexbox uniquement, et `display: flex` explicite sur tout conteneur à
- * plusieurs enfants.
+ * plusieurs enfants. `boxShadow`, `border` et `borderRadius` sont supportés :
+ * on s'en sert pour l'esthétique brutaliste (bords noirs, ombres dures).
  */
 export function OgImage() {
   return (
@@ -23,95 +24,145 @@ export function OgImage() {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        backgroundColor: '#FAF8F5',
-        padding: '72px 80px',
-        // Halo matcha discret, comme le hero de la landing.
-        backgroundImage:
-          'radial-gradient(circle at 78% 12%, rgba(62,90,71,0.14) 0%, rgba(62,90,71,0) 55%)',
+        backgroundColor: '#FFE600',
+        padding: '64px 72px',
+        border: '14px solid #000000',
       }}
     >
-      {/* Marque */}
+      {/* Marque : icône orange encadrée + nom */}
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <svg width="44" height="44" viewBox="0 0 512 512">
-          <rect width="512" height="512" rx="112" fill="#3E5A47" />
-          <circle cx="140" cy="256" r="52" fill="#FAF8F5" />
-          <path
-            d="M 232.4 137.8 A 150 150 0 0 1 232.4 374.2"
-            fill="none"
-            stroke="#FAF8F5"
-            strokeWidth="44"
-            strokeLinecap="round"
-            opacity="0.95"
-          />
-          <path
-            d="M 287.8 66.9 A 240 240 0 0 1 287.8 445.1"
-            fill="none"
-            stroke="#FAF8F5"
-            strokeWidth="44"
-            strokeLinecap="round"
-            opacity="0.62"
-          />
-        </svg>
-        <span
+        <div
           style={{
-            marginLeft: 18,
-            fontSize: 30,
-            fontWeight: 600,
-            letterSpacing: '-0.02em',
-            color: '#111812',
+            display: 'flex',
+            width: 68,
+            height: 68,
+            border: '4px solid #000000',
+            borderRadius: 15,
+            backgroundColor: '#FF5500',
+            boxShadow: '6px 6px 0 0 #000000',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
-          {SITE_NAME}
+          <svg width="42" height="42" viewBox="0 0 32 32">
+            <circle cx="11" cy="16" r="2.6" fill="#ffffff" />
+            <path
+              d="M15.5 12a5.5 5.5 0 0 1 0 8"
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="2.4"
+              strokeLinecap="round"
+            />
+            <path
+              d="M19.5 9.5a9.5 9.5 0 0 1 0 13"
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="2.4"
+              strokeLinecap="round"
+              opacity="0.85"
+            />
+          </svg>
+        </div>
+        <span
+          style={{
+            marginLeft: 22,
+            fontSize: 36,
+            fontWeight: 700,
+            letterSpacing: '-0.01em',
+            color: '#000000',
+          }}
+        >
+          EchoRun
         </span>
       </div>
 
-      {/* Accroche */}
+      {/* Accroche : deux lignes noires + une ligne surlignée orange */}
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div
           style={{
-            fontSize: 78,
-            fontWeight: 600,
-            lineHeight: 1.04,
-            letterSpacing: '-0.035em',
-            color: '#111812',
-            maxWidth: 900,
+            fontSize: 74,
+            fontWeight: 700,
+            lineHeight: 1.02,
+            letterSpacing: '-0.02em',
+            color: '#000000',
           }}
         >
-          Les voix de tes proches,
+          LES VOIX DE
         </div>
         <div
           style={{
-            fontSize: 78,
-            fontWeight: 600,
-            lineHeight: 1.04,
-            letterSpacing: '-0.035em',
-            color: '#3E5A47',
-            maxWidth: 900,
+            fontSize: 74,
+            fontWeight: 700,
+            lineHeight: 1.02,
+            letterSpacing: '-0.02em',
+            color: '#000000',
+            marginTop: 2,
           }}
         >
-          au bon kilomètre.
+          TES PROCHES,
         </div>
+        <div style={{ display: 'flex', marginTop: 14 }}>
+          <div
+            style={{
+              display: 'flex',
+              backgroundColor: '#FF5500',
+              border: '4px solid #000000',
+              boxShadow: '6px 6px 0 0 #000000',
+              padding: '4px 20px',
+            }}
+          >
+            <span
+              style={{
+                fontSize: 74,
+                fontWeight: 700,
+                lineHeight: 1.02,
+                letterSpacing: '-0.02em',
+                color: '#ffffff',
+              }}
+            >
+              AU BON KM.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Sous-titre */}
+      <div style={{ display: 'flex' }}>
         <div
           style={{
-            marginTop: 26,
-            fontSize: 27,
+            fontSize: 26,
             lineHeight: 1.45,
-            color: '#4B544D',
-            maxWidth: 780,
+            color: '#111111',
+            maxWidth: 840,
           }}
         >
           Un message vocal déposé sur ton parcours, déclenché par le GPS pendant ta course.
         </div>
       </div>
 
-      {/* Pied : les trois arguments, sans icônes pour rester lisible en vignette */}
+      {/* Pied : arguments en badges bordés */}
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        {['Sans application', 'Sans réseau', '2 messages offerts'].map((label, index) => (
-          <div key={label} style={{ display: 'flex', alignItems: 'center' }}>
-            {index > 0 ? (
-              <span style={{ color: '#9DB3A3', margin: '0 18px', fontSize: 22 }}>·</span>
-            ) : null}
-            <span style={{ fontSize: 23, color: '#4B544D' }}>{label}</span>
+        {['SANS APPLICATION', 'SANS RÉSEAU', '15 MESSAGES OFFERTS'].map((label) => (
+          <div
+            key={label}
+            style={{
+              display: 'flex',
+              border: '3px solid #000000',
+              backgroundColor: '#F4F4F0',
+              padding: '7px 16px',
+              marginRight: 14,
+            }}
+          >
+            <span
+              style={{
+                fontSize: 20,
+                fontWeight: 700,
+                letterSpacing: '0.02em',
+                color: '#000000',
+              }}
+            >
+              {label}
+            </span>
           </div>
         ))}
       </div>

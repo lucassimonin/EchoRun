@@ -92,10 +92,20 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       ? settings.gtm_container_id
       : null;
 
+  // Balise de validation AdSense : présente dès que l'identifiant est renseigné
+  // et valide, même si la régie n'est pas encore activée (Google doit pouvoir
+  // valider le compte avant la première diffusion).
+  const adsenseAccount = isValidAdSenseClientId(settings.adsense_client_id)
+    ? settings.adsense_client_id
+    : null;
+
   return (
     <html lang="fr">
       <head>
         {gtmId ? <GtmScript id={gtmId} /> : null}
+        {adsenseAccount ? (
+          <meta name="google-adsense-account" content={adsenseAccount} />
+        ) : null}
         {/* Typographies brutalistes : titres Space Grotesk, métriques Space Mono. */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
