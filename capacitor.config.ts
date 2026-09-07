@@ -2,13 +2,13 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 /**
  * ============================================================================
- * Capacitor — empaquetage natif iOS / Android
+ * Capacitor • empaquetage natif iOS / Android
  * ============================================================================
  *
  * Stratégie : l'app native est une COQUILLE qui charge le site hébergé
  * (`server.url`) dans un webview natif, et y injecte les plugins natifs
  * (géolocalisation en arrière-plan). On ne ré-exporte PAS le Next.js en
- * statique — impossible avec nos Server Components, API routes et middleware.
+ * statique • impossible avec nos Server Components, API routes et middleware.
  * Le webview charge donc la version en ligne, et le service worker + IndexedDB
  * assurent le hors-ligne une fois la course préparée.
  *

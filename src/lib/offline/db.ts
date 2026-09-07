@@ -3,7 +3,7 @@ import type { OfflineMessage, TrackPoint } from '@/types';
 
 /**
  * ============================================================================
- * Cache hors-ligne — le jour J, l'app ne doit dependre d'AUCUN reseau.
+ * Cache hors-ligne • le jour J, l'app ne doit dependre d'AUCUN reseau.
  * ============================================================================
  *
  * Repartition :

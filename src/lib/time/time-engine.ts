@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * TimeEngine — déclenchement des vocaux par chronomètre (mode « temps »)
+ * TimeEngine • déclenchement des vocaux par chronomètre (mode « temps »)
  * ============================================================================
  *
  * Pendant du GeoEngine pour les courses sans GPX. Le coureur a annoncé une
@@ -8,7 +8,7 @@
  * 45 min »). Ici, aucun GPS : on démarre un chronomètre au départ et on
  * déclenche chaque message quand le temps écoulé atteint son instant.
  *
- * C'est plus simple ET plus fiable que le GPS — pas de dérive, pas d'attente
+ * C'est plus simple ET plus fiable que le GPS • pas de dérive, pas d'attente
  * de fix. La SEULE contrainte partagée avec le mode GPX est l'autoplay audio :
  * la lecture n'est autorisée qu'au premier plan, donc l'écran doit rester
  * allumé et l'app active. On garde donc le Wake Lock.

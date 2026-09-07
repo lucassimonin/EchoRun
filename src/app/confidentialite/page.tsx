@@ -55,7 +55,7 @@ export default function PrivacyPage() {
         Conséquence pratique&nbsp;: nous sommes techniquement incapables de reconstituer votre
         itinéraire, votre allure ou vos horaires de passage. La seule information qui remonte, et
         uniquement si le réseau est disponible, est <strong>le fait qu’un message a été lu</strong>
-        {' '}— un identifiant et un horodatage, sans coordonnées.
+        {' '}• un identifiant et un horodatage, sans coordonnées.
       </p>
 
       <h2>3. Données que nous traitons effectivement</h2>
@@ -96,7 +96,7 @@ export default function PrivacyPage() {
           matérialisé par l’acte d’enregistrer et d’envoyer.
         </li>
         <li>
-          <strong>Le point du parcours choisi</strong> — une position sur un tracé, pas la position
+          <strong>Le point du parcours choisi</strong> • une position sur un tracé, pas la position
           du proche, qui n’est jamais demandée.
         </li>
         <li>
@@ -162,17 +162,17 @@ export default function PrivacyPage() {
       <h2>6. Sous-traitants et hébergement</h2>
       <ul>
         <li>
-          <strong>Supabase</strong> — base de données, authentification et stockage des fichiers.
+          <strong>Supabase</strong> • base de données, authentification et stockage des fichiers.
           Hébergement dans l’Union européenne.
         </li>
         <li>
-          <strong>Vercel</strong> — hébergement de l’application web.
+          <strong>Vercel</strong> • hébergement de l’application web.
         </li>
         <li>
-          <strong>Stripe Payments Europe</strong> — traitement des paiements.
+          <strong>Stripe Payments Europe</strong> • traitement des paiements.
         </li>
         <li>
-          <strong>Google AdSense</strong> — affichage de publicités, lorsque cette fonctionnalité est
+          <strong>Google AdSense</strong> • affichage de publicités, lorsque cette fonctionnalité est
           activée (voir section suivante).
         </li>
       </ul>
@@ -183,7 +183,7 @@ export default function PrivacyPage() {
         mesure d’audience tiers, ni bouton de réseau social, ni enregistrement de session.
       </p>
 
-      <h3>Strictement nécessaires — pas de consentement requis</h3>
+      <h3>Strictement nécessaires • pas de consentement requis</h3>
       <p>
         Ces traceurs sont exemptés de consentement car le service ne peut pas fonctionner sans eux.
         Aucun n’est utilisé à des fins publicitaires.
@@ -209,7 +209,7 @@ export default function PrivacyPage() {
         </li>
       </ul>
 
-      <h3>Publicité — soumis à votre consentement</h3>
+      <h3>Publicité • soumis à votre consentement</h3>
       <p>
         Le service peut afficher des publicités Google AdSense sur les pages publiques, sur la page
         de dépôt de message et sur la page de fin de course.{' '}

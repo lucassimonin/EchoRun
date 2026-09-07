@@ -20,7 +20,7 @@ export interface AdSenseUnitProps {
 
 /**
  * ============================================================================
- * <AdSenseUnit /> — bloc publicitaire integre a la charte SF Matcha
+ * <AdSenseUnit /> • bloc publicitaire integre a la charte SF Matcha
  * ============================================================================
  *
  * Garde-fous, dans l'ordre d'importance :

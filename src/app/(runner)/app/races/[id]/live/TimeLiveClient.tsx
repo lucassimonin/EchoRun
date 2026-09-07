@@ -36,12 +36,12 @@ interface TimeLiveClientProps {
 
 /**
  * ============================================================================
- * Écran de course — mode « temps » (chronomètre)
+ * Écran de course • mode « temps » (chronomètre)
  * ============================================================================
  *
- * Jumeau de LiveClient pour les courses sans GPX. Même socle exactement —
+ * Jumeau de LiveClient pour les courses sans GPX. Même socle exactement •
  * déblocage audio, préparation hors-ligne, file de lecture, synchro des
- * lectures — mais piloté par un TimeEngine plutôt qu'un GeoEngine, et une UI
+ * lectures • mais piloté par un TimeEngine plutôt qu'un GeoEngine, et une UI
  * de chronomètre au lieu d'une carte.
  *
  * On duplique volontairement plutôt que de brancher un composant unique de

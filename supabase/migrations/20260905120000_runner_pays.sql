@@ -1,8 +1,8 @@
 -- ============================================================================
--- EchoRun — bascule du modèle : c'est le COUREUR qui paie, par palier.
+-- EchoRun • bascule du modèle : c'est le COUREUR qui paie, par palier.
 --
 --   * les proches ne paient JAMAIS et ne sont jamais facturés
---   * 5 messages max par personne (per_contributor_cap) — anti-spam
+--   * 5 messages max par personne (per_contributor_cap) • anti-spam
 --   * 15 messages offerts par course (free_message_cap)
 --   * au-delà, le coureur débloque jusqu'à 50 (unlocked_message_cap) pour 1,99 €
 --   * quand les 15 sont atteints, un e-mail part vers le coureur (cap_notified_at

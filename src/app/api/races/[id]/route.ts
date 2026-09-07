@@ -49,7 +49,7 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
   return NextResponse.json({ race: data });
 }
 
-/** DELETE /api/races/:id — supprime la course, ses messages et ses audios. */
+/** DELETE /api/races/:id • supprime la course, ses messages et ses audios. */
 export async function DELETE(_request: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 

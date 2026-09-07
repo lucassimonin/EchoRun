@@ -17,7 +17,7 @@ const MAX_GPX_BYTES = 10 * 1024 * 1024;
  *
  * Deux modes de création :
  *   - GPX  : champ `gpx` (fichier). Le parsing se fait ici et pas dans le
- *            navigateur — un fichier de 40 000 points ferait ramer un téléphone,
+ *            navigateur • un fichier de 40 000 points ferait ramer un téléphone,
  *            et on ne veut pas d'un tracé simplifié côté client pour le
  *            déclenchement en course.
  *   - temps: champ `mode=time` + `duration_s`. Pas de fichier, la course est
@@ -77,8 +77,8 @@ export async function POST(request: Request) {
   } else if (form.get('source') === 'draw') {
     // ------------------------------------------------ mode GPX : dessiné ----
     // Le client envoie un tracé déjà calé sur les routes (points [lat,lng]).
-    // On lui fait confiance sur la géométrie — c'est la course du coureur, RLS
-    // garantit qu'il en est propriétaire — mais on borne et on recalcule
+    // On lui fait confiance sur la géométrie • c'est la course du coureur, RLS
+    // garantit qu'il en est propriétaire • mais on borne et on recalcule
     // nous-mêmes distance cumulée et bounds côté serveur.
     let raw: unknown;
     try {

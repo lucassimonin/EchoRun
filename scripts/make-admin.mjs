@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * Promotion / rétrogradation d'un administrateur — `npm run admin`
+ * Promotion / rétrogradation d'un administrateur • `npm run admin`
  * ============================================================================
  *
  * Usage :
@@ -14,7 +14,7 @@
  *
  * `is_admin` est protégé par RLS côté application (personne ne peut s'auto-
  * promouvoir) ; ce script est le canal d'administration légitime, réservé à
- * qui détient la clé service_role — donc à toi, pas à un visiteur.
+ * qui détient la clé service_role • donc à toi, pas à un visiteur.
  */
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -95,7 +95,7 @@ async function main() {
     }
     console.log('Administrateurs (' + data.length + ') :');
     for (const row of data) {
-      console.log('  • ' + (row.email ?? '(sans e-mail)') + (row.display_name ? ' — ' + row.display_name : ''));
+      console.log('  • ' + (row.email ?? '(sans e-mail)') + (row.display_name ? ' • ' + row.display_name : ''));
     }
     return;
   }

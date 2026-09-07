@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * Keep-alive audio — garder la course active écran éteint (app native)
+ * Keep-alive audio • garder la course active écran éteint (app native)
  * ============================================================================
  *
  * LE point qui justifie le passage au natif, et le plus délicat.

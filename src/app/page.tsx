@@ -8,7 +8,7 @@ import { adSlotFor, getAppSettings } from '@/lib/settings';
 import { formatPrice } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'EchoRun — les voix de tes proches, au bon kilomètre',
+  title: 'EchoRun • les voix de tes proches, au bon kilomètre',
   alternates: { canonical: '/' },
 };
 
@@ -28,7 +28,7 @@ const STEPS = [
   {
     step: '03',
     title: 'Le jour J fait le reste',
-    body: 'Pendant la course, ton téléphone annonce « Message de Camille » puis joue son vocal, pile au bon endroit — ou à la bonne minute. Sans réseau.',
+    body: 'Pendant la course, ton téléphone annonce « Message de Camille » puis joue son vocal, pile au bon endroit • ou à la bonne minute. Sans réseau.',
   },
 ];
 
@@ -37,7 +37,7 @@ const CREATION_MODES = [
     key: 'gpx',
     tag: 'Le plus précis',
     title: 'Importe ton GPX',
-    body: 'Le fichier de ta course — celui de l’organisateur ou ton export Strava. On en tire le tracé au mètre près.',
+    body: 'Le fichier de ta course • celui de l’organisateur ou ton export Strava. On en tire le tracé au mètre près.',
   },
   {
     key: 'draw',
@@ -49,7 +49,7 @@ const CREATION_MODES = [
     key: 'time',
     tag: 'Pas de tracé ?',
     title: 'Cale sur le temps',
-    body: 'Annonce ta durée — disons 2 h — et tes proches déposent leurs voix sur une frise. Le chrono les déclenche à la minute pile.',
+    body: 'Annonce ta durée • disons 2 h • et tes proches déposent leurs voix sur une frise. Le chrono les déclenche à la minute pile.',
   },
 ];
 
@@ -62,7 +62,7 @@ const USE_CASES = [
   {
     tag: 'TRAIL',
     title: 'Là où personne ne vient',
-    body: 'Cols, forêts, ravitaillements inaccessibles. Tes proches ne peuvent pas être au bord du chemin — leur voix, si.',
+    body: 'Cols, forêts, ravitaillements inaccessibles. Tes proches ne peuvent pas être au bord du chemin • leur voix, si.',
   },
   {
     tag: '10 KM',
@@ -372,7 +372,7 @@ export default async function LandingPage() {
               Ta prochaine course a une date. Donne-lui des voix.
             </h2>
             <p className="mx-auto mt-4 max-w-md font-medium text-black">
-              GPX, tracé dessiné ou simple chrono — crée ta course et envoie le lien à tes proches.
+              GPX, tracé dessiné ou simple chrono • crée ta course et envoie le lien à tes proches.
               Il te reste juste à courir.
             </p>
             <div className="mt-8 flex justify-center">

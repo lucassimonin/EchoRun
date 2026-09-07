@@ -1,13 +1,13 @@
 /**
  * ============================================================================
- * Routage « snap-to-roads » — calcul d'un chemin qui suit les rues
+ * Routage « snap-to-roads » • calcul d'un chemin qui suit les rues
  * ============================================================================
  *
  * Quand le coureur dessine son parcours, chaque segment entre deux clics est
  * calé sur le réseau routier réel par un service de routage compatible OSRM.
  *
  * Pourquoi OSRM par défaut : le serveur de démonstration public
- * (router.project-osrm.org) est libre et sans clé — parfait pour démarrer et
+ * (router.project-osrm.org) est libre et sans clé • parfait pour démarrer et
  * pour le dev. Il n'a AUCUNE garantie de disponibilité et interdit l'usage en
  * production : d'où la configuration par variables d'environnement, pour
  * pointer vers une instance auto-hébergée ou un fournisseur avec clé le jour du

@@ -17,14 +17,14 @@ export const metadata: Metadata = {
  *
  * Elle alimente à la fois le rendu de la page et le balisage FAQPage. Une
  * FAQPage qui décrit des questions absentes de la page visible est un motif de
- * rejet chez Google — et c'est exactement ce qui finit par arriver quand les
+ * rejet chez Google • et c'est exactement ce qui finit par arriver quand les
  * deux sont saisies séparément.
  */
 const FAQ: readonly FaqEntry[] = [
   {
     question: 'Faut-il un fichier GPX pour créer une course ?',
     answer:
-      'Non. Trois options s’offrent à vous : importer un GPX, dessiner votre parcours directement sur la carte (il est calé sur les vraies routes), ou choisir le mode chrono si vous n’avez pas de tracé — vous annoncez une durée et vos proches déposent leurs voix sur une frise temporelle.',
+      'Non. Trois options s’offrent à vous : importer un GPX, dessiner votre parcours directement sur la carte (il est calé sur les vraies routes), ou choisir le mode chrono si vous n’avez pas de tracé • vous annoncez une durée et vos proches déposent leurs voix sur une frise temporelle.',
   },
   {
     question: 'Faut-il des écouteurs ?',
@@ -44,7 +44,7 @@ const FAQ: readonly FaqEntry[] = [
   {
     question: 'Mes proches voient-ils les messages des autres ?',
     answer:
-      'Ils voient qu’un point (ou un moment, en mode chrono) est déjà pris et par qui — utile pour se répartir le parcours — mais ils ne peuvent pas écouter les messages des autres. Seul le coureur les entend.',
+      'Ils voient qu’un point (ou un moment, en mode chrono) est déjà pris et par qui • utile pour se répartir le parcours • mais ils ne peuvent pas écouter les messages des autres. Seul le coureur les entend.',
   },
   {
     question: 'Est-ce que ça fonctionne sans réseau ?',
@@ -78,7 +78,7 @@ export default function HowItWorksPage() {
     >
       <FaqJsonLd entries={FAQ} />
 
-      <h2>1. Le coureur crée sa course — trois façons</h2>
+      <h2>1. Le coureur crée sa course • trois façons</h2>
       <p>
         Selon ce que vous avez sous la main, vous choisissez la méthode la plus simple. Les trois
         aboutissent au même résultat&nbsp;: une course prête à partager.
@@ -97,7 +97,7 @@ export default function HowItWorksPage() {
         </li>
         <li>
           <strong>Le mode chrono.</strong> Aucun tracé du tout&nbsp;? Annoncez simplement une durée
-          prévue — disons 2&nbsp;h — et vos proches déposeront leurs voix sur une{' '}
+          prévue • disons 2&nbsp;h • et vos proches déposeront leurs voix sur une{' '}
           <strong>frise temporelle</strong> plutôt que sur une carte. Le déclenchement se fait alors
           à la minute de course choisie, pas à un kilomètre.
         </li>
@@ -105,7 +105,7 @@ export default function HowItWorksPage() {
       <p>
         Pour un GPX ou un tracé dessiné, nous ne conservons que la suite des coordonnées du tracé.
         Les points sont <strong>simplifiés</strong> (algorithme de Douglas-Peucker) pour passer d’un
-        fichier qui peut contenir 40&nbsp;000 points à environ 1&nbsp;500 — assez pour un tracé
+        fichier qui peut contenir 40&nbsp;000 points à environ 1&nbsp;500 • assez pour un tracé
         fidèle au mètre près, assez léger pour s’afficher instantanément sur un téléphone. La
         distance totale et la distance cumulée de chaque point sont calculées à ce moment-là.
       </p>
@@ -114,7 +114,7 @@ export default function HowItWorksPage() {
       <p>
         Chaque course reçoit une adresse courte et non devinable, du type{' '}
         <code>echo-run.app/e/k7m2pq9xr4tz</code>. C’est le même principe qu’un Tricount&nbsp;: qui a
-        le lien peut participer, sans compte ni installation. Vous le diffusez comme vous voulez —
+        le lien peut participer, sans compte ni installation. Vous le diffusez comme vous voulez •
         SMS, WhatsApp, groupe familial, mail.
       </p>
       <p>
@@ -140,7 +140,7 @@ export default function HowItWorksPage() {
       <p>
         Chaque proche peut déposer <strong>jusqu’à 5 messages</strong>, gratuitement et sans compte.
         Une course accueille <strong>15 messages offerts</strong>&nbsp;; au-delà, c’est le
-        <strong> coureur</strong> — prévenu par e-mail — qui débloque la course pour 1,99&nbsp;€
+        <strong> coureur</strong> • prévenu par e-mail • qui débloque la course pour 1,99&nbsp;€
         (jusqu’à 50 messages). Vos proches, eux, ne paient jamais rien.
       </p>
 
@@ -171,7 +171,7 @@ export default function HowItWorksPage() {
       <p>
         Tout est stocké localement (IndexedDB pour les audios, cache du navigateur pour
         l’application elle-même). Conséquence directe&nbsp;: le jour J, vous pouvez courir en mode
-        avion, dans un tunnel ou au fond d’une vallée sans réseau — les messages se déclencheront
+        avion, dans un tunnel ou au fond d’une vallée sans réseau • les messages se déclencheront
         quand même. Nous demandons également au navigateur un stockage persistant, pour éviter que
         le système ne vide le cache entre la préparation et le départ.
       </p>
@@ -232,7 +232,7 @@ export default function HowItWorksPage() {
         C’est précisément pour lever cette contrainte qu’existe l’<strong>application mobile
         native</strong>&nbsp;: elle, a le droit de suivre votre position en arrière-plan. Vous
         démarrez la course, vous rangez le téléphone écran éteint, et les messages se déclenchent
-        quand même — sans vider la batterie. Le mode chrono, lui, n’a jamais eu besoin de l’écran
+        quand même • sans vider la batterie. Le mode chrono, lui, n’a jamais eu besoin de l’écran
         allumé, puisqu’il ne dépend pas du GPS.
       </p>
 

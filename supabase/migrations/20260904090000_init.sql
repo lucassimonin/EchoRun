@@ -1,5 +1,5 @@
 -- ============================================================================
--- EchoRun — schema initial
+-- EchoRun • schema initial
 --
 -- Principes :
 --   * Le coureur est authentifie (magic link) -> il passe par RLS.

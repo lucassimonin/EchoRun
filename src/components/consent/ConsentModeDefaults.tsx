@@ -19,7 +19,7 @@
  * Le script pèse ~300 octets : le coût d'un inline est nul comparé au risque
  * d'un tag Google qui démarrerait avant que le refus soit déclaré.
  *
- * Tout est refusé par défaut — position exigée en Europe, et seule façon de
+ * Tout est refusé par défaut • position exigée en Europe, et seule façon de
  * rendre la bannière véridique.
  */
 

@@ -22,7 +22,7 @@ const MIN_GAP_S = 60;
 type AdminClient = ReturnType<typeof createAdminClient>;
 
 /**
- * Previent le coureur — une seule fois — que sa course a atteint le plafond
+ * Previent le coureur • une seule fois • que sa course a atteint le plafond
  * offert. `cap_notified_at` sert de garde atomique : seul le premier appel qui
  * bascule la colonne envoie l'e-mail.
  */

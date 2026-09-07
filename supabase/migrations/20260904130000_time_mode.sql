@@ -4,7 +4,7 @@
 -- Le coureur qui n'a pas de fichier GPX annonce simplement une durée prévue
 -- (ex. 2 h). Ses proches choisissent un moment sur une frise (ex. « à 45 min »)
 -- plutôt qu'un point sur une carte. Le jour J, un simple chronomètre déclenche
--- les vocaux à la minute prévue — pas de GPS, donc plus fiable et sans dérive.
+-- les vocaux à la minute prévue • pas de GPS, donc plus fiable et sans dérive.
 --
 -- On étend le schéma existant plutôt que de créer des tables parallèles : une
 -- course porte un `mode`, et chaque type de donnée (position OU instant) est

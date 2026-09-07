@@ -1,10 +1,10 @@
 /* eslint-disable no-restricted-globals */
 /**
- * EchoRun — Service Worker minimal, ecrit a la main.
+ * EchoRun • Service Worker minimal, ecrit a la main.
  *
  * Pourquoi pas next-pwa / serwist ? Le seul besoin offline critique est
  * l'ecran de course. Les audios ET leurs metadonnees sont stockes par
- * l'application dans IndexedDB (cf. src/lib/offline/db.ts) — donc le SW n'a
+ * l'application dans IndexedDB (cf. src/lib/offline/db.ts) • donc le SW n'a
  * qu'un role : garantir que le shell de l'app se charge sans reseau.
  * Moins de magie de build = comportement previsible le jour J.
  */

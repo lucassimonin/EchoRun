@@ -20,7 +20,7 @@ interface TimelineProps {
 
 /**
  * ============================================================================
- * Frise — choix d'un instant sur la durée de course (mode « temps »)
+ * Frise • choix d'un instant sur la durée de course (mode « temps »)
  * ============================================================================
  *
  * Équivalent de la carte Leaflet pour le mode GPX : le proche fait glisser un
@@ -66,7 +66,7 @@ export function Timeline({ durationS, selectedS, onSelect, taken = [] }: Timelin
             Ton message se déclenche à
           </p>
           <p className="mt-1 font-mono text-[1.75rem] leading-none tracking-[-0.02em] text-charcoal">
-            {selectedS === null ? '—' : formatClock(selectedS)}
+            {selectedS === null ? '•' : formatClock(selectedS)}
           </p>
         </div>
         {selectedS !== null ? (

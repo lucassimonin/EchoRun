@@ -12,7 +12,7 @@ import { CONTACT_EMAIL, SITE_DESCRIPTION, SITE_NAME, SITE_URL, SITE_TAGLINE } fr
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: SITE_NAME + ' — ' + SITE_TAGLINE.replace(/\.$/, ''),
+    default: SITE_NAME + ' • ' + SITE_TAGLINE.replace(/\.$/, ''),
     template: '%s · ' + SITE_NAME,
   },
   description: SITE_DESCRIPTION,
@@ -40,14 +40,14 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: SITE_NAME + ' — ' + SITE_TAGLINE.replace(/\.$/, ''),
+    title: SITE_NAME + ' • ' + SITE_TAGLINE.replace(/\.$/, ''),
     description: SITE_DESCRIPTION,
     // L'image vient de la convention de fichier app/opengraph-image.tsx.
     emails: [CONTACT_EMAIL],
   },
   twitter: {
     card: 'summary_large_image',
-    title: SITE_NAME + ' — ' + SITE_TAGLINE.replace(/\.$/, ''),
+    title: SITE_NAME + ' • ' + SITE_TAGLINE.replace(/\.$/, ''),
     description: SITE_DESCRIPTION,
   },
   alternates: {
@@ -97,7 +97,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         />
         {/*
           Consent Mode doit être posé avant tout tag Google. `beforeInteractive`
-          l'injecte dans le <head>, en amont du loader AdSense — qui n'est de
+          l'injecte dans le <head>, en amont du loader AdSense • qui n'est de
           toute façon monté qu'après un choix explicite de l'utilisateur.
         */}
         {adsAvailable ? <ConsentModeDefaults /> : null}

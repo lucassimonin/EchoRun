@@ -5,7 +5,7 @@
 Un coureur importe le `.gpx` de sa course et partage un lien. Ses proches ouvrent
 ce lien, cliquent sur un point du tracé et enregistrent un vocal. Le jour J, le
 GPS du coureur annonce « Message de Camille » puis joue le vocal, pile à cet
-endroit — **sans réseau**.
+endroit • **sans réseau**.
 
 ---
 
@@ -13,7 +13,7 @@ endroit — **sans réseau**.
 
 ### Prérequis
 
-- **Node 22** (ligne LTS) — voir ci-dessous
+- **Node 22** (ligne LTS) • voir ci-dessous
 - [Supabase CLI](https://supabase.com/docs/guides/cli) (orchestre sa propre stack Docker)
 - [Stripe CLI](https://stripe.com/docs/stripe-cli) pour tester les webhooks en local
 
@@ -36,7 +36,7 @@ nvm install      # si la 22 n'est pas encore installée
 On épingle la **ligne majeure** (`22`) et pas un patch exact : tout le monde
 travaille sur une version compatible sans avoir à modifier le fichier à chaque
 correctif de sécurité. Si tu veux du strictement identique, remplace le contenu
-de `.nvmrc` et `.node-version` par le numéro complet (`22.23.2`) — au prix d'un
+de `.nvmrc` et `.node-version` par le numéro complet (`22.23.2`) • au prix d'un
 `nvm install` pour chaque nouvelle personne.
 
 Pour que le changement de version soit automatique en entrant dans le dossier,
@@ -116,7 +116,7 @@ DOCKER_BUILD=1 docker build -t echorun .
 |---|---|---|
 | Framework | Next.js 15, App Router | Server Components pour injecter la config AdSense au rendu (zéro CLS, zéro appel client) |
 | Styles | Tailwind CSS v4 (`@theme` CSS-first) | Le design system tient dans un seul fichier, `src/app/globals.css` |
-| Données | Supabase — Postgres, Auth, Storage, RLS | RLS = cloisonnement au niveau base, pas au niveau applicatif |
+| Données | Supabase • Postgres, Auth, Storage, RLS | RLS = cloisonnement au niveau base, pas au niveau applicatif |
 | Auth | Magic link (OTP e-mail) | Aucun mot de passe à stocker, aucun écran de reset à construire |
 | Carte | Leaflet en impératif, **sans** react-leaflet | 3 besoins seulement (tracé, pastilles, clic) ; pas de dépendance au cycle React |
 | Paiement | Stripe Checkout hébergé | PCI sans effort, Apple/Google Pay natifs, proches anonymes |
@@ -180,11 +180,11 @@ src/
 ```
 
 Les trois fichiers marqués ★ portent l'essentiel de la difficulté du produit.
-Ils sont commentés en conséquence — commencer par là.
+Ils sont commentés en conséquence • commencer par là.
 
 Décisions détaillées, pièges iOS et roadmap : **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**.
 
-Application native (iOS/Android) via Capacitor — échafaudage en place, build et
+Application native (iOS/Android) via Capacitor • échafaudage en place, build et
 publication : **[docs/NATIVE.md](docs/NATIVE.md)**.
 
 ---
@@ -193,10 +193,10 @@ publication : **[docs/NATIVE.md](docs/NATIVE.md)**.
 
 Une course peut être créée de deux façons :
 
-- **GPX** — le coureur importe son tracé (fichier) **ou le dessine sur la carte**
+- **GPX** • le coureur importe son tracé (fichier) **ou le dessine sur la carte**
   (chemin calé sur les routes, cf. docs section 7 quinquies), ses proches cliquent
   un point sur la carte, le **GPS** déclenche les vocaux au bon endroit.
-- **Temps** — le coureur annonce une durée prévue (ex. 2 h), ses proches
+- **Temps** • le coureur annonce une durée prévue (ex. 2 h), ses proches
   placent leurs vocaux sur une **frise** (« à 45 min »), un **chronomètre** les
   déclenche à la bonne minute. Pas de GPS : plus simple et plus fiable, mais
   l'écran doit rester allumé (contrainte de l'autoplay audio, comme en GPX).
@@ -221,7 +221,7 @@ atomique appelé par le webhook), `is_admin()` / `owns_race()` (helpers RLS).
 
 ### Modèle de sécurité
 
-Deux populations, deux mécanismes — c'est le point à retenir :
+Deux populations, deux mécanismes • c'est le point à retenir :
 
 - **Le coureur est authentifié** → toutes ses lectures/écritures passent par
   l'`anon key` avec RLS active. Un coureur ne peut techniquement pas voir la
@@ -260,9 +260,9 @@ télécharge via des URL signées à 30 minutes, générées côté serveur.
 1. rien ne s'affiche si `client_id`/`slot_id` ne passent pas la validation regex ;
 2. un seul `push()` par `<ins>`, même en React Strict Mode ;
 3. remontage propre au changement de slot (via `key`) ;
-4. repli du conteneur si Google ne remplit pas — pas de trou dans la maquette ;
+4. repli du conteneur si Google ne remplit pas • pas de trou dans la maquette ;
 5. placeholder hors production, pour ne jamais générer d'impression de test ;
-6. **rien avant le consentement** — le loader lui-même n'est pas monté.
+6. **rien avant le consentement** • le loader lui-même n'est pas monté.
 
 Emplacements : landing, page proche, page de fin de course. **Jamais pendant une
 course.**
@@ -274,7 +274,7 @@ course.**
 - les signaux `ad_storage`, `ad_user_data`, `ad_personalization` et
   `analytics_storage` sont posés à `denied` en `beforeInteractive`, donc avant
   tout tag Google ;
-- tant qu'aucun choix n'est exprimé, **le script AdSense n'est pas chargé** —
+- tant qu'aucun choix n'est exprimé, **le script AdSense n'est pas chargé** •
   zéro requête vers Google ;
 - en cas de refus, le script est chargé avec Consent Mode toujours `denied` et
   `requestNonPersonalizedAds` armé : annonces contextuelles, aucun cookie
@@ -312,7 +312,7 @@ npm run icons
 
 Ne pas éditer les fichiers générés à la main : modifier le SVG et rejouer la
 commande. La géométrie a été arrêtée après comparaison visuelle en 16 / 24 /
-32 / 48 px — le wordmark horizontal du site est illisible en favicon, d'où une
+32 / 48 px • le wordmark horizontal du site est illisible en favicon, d'où une
 marque carrée distincte sur fond matcha plein.
 
 `scripts/generate-icons.mjs` assemble aussi le `.ico` à la main (en-tête de
@@ -322,7 +322,7 @@ dépendance de plus pour ça serait disproportionné.
 ### Fond de carte
 
 Le fond des cartes est **configurable et sans clé par défaut** (Esri World
-Light Gray, clair et sobre) — cf. `src/lib/map-tiles.ts`. CARTO, qu'on utilisait
+Light Gray, clair et sobre) • cf. `src/lib/map-tiles.ts`. CARTO, qu'on utilisait
 au départ, exige désormais une clé API : ses tuiles renvoient
 « API KEY REQUIRED » sans elle.
 
@@ -354,7 +354,7 @@ Trois points d'attention :
   inconnu. Les courses ne sont pas listées dans le sitemap pour la même raison.
 - **La FAQ est une donnée**, dans `comment-ca-marche/page.tsx`. Elle alimente
   le rendu *et* le balisage `FAQPage`. Un balisage décrivant des questions
-  absentes de la page visible est un motif de rejet chez Google — ce qui
+  absentes de la page visible est un motif de rejet chez Google • ce qui
   finit toujours par arriver quand les deux sont saisies séparément.
 - **L'image OG passe par `next/og`, pas par sharp.** Satori convertit le texte
   en tracés : le rendu ne dépend d'aucune police installée sur la machine.
@@ -383,8 +383,8 @@ alors dans le sitemap et reste autorisée par `robots.txt`.
 
 Le profil (`public.profiles`) est créé par le trigger `on_auth_user_created`
 au moment de l'inscription. Ce trigger est le chemin nominal, **mais pas la
-seule garantie** : tout compte créé avant que le trigger existe — ou pendant
-une panne — se retrouverait authentifié sans profil, et bloqué en écriture
+seule garantie** : tout compte créé avant que le trigger existe • ou pendant
+une panne • se retrouverait authentifié sans profil, et bloqué en écriture
 (violation de clé étrangère `23503`) sans recours depuis l'interface.
 
 Trois filets, posés par la migration `20260904120000_profile_self_heal.sql` et
@@ -396,7 +396,7 @@ Trois filets, posés par la migration `20260904120000_profile_self_heal.sql` et
    la volée s'il manque, à l'entrée de l'espace coureur (`(runner)/layout.tsx`),
    du back-office et de `POST /api/races`. L'écriture passe par RLS.
 3. **Trigger résilient** : `handle_new_user()` ne peut plus faire échouer une
-   inscription — en cas d'erreur imprévue il journalise et laisse le compte se
+   inscription • en cas d'erreur imprévue il journalise et laisse le compte se
    créer, l'auto-réparation prend le relais.
 
 La policy d'insertion borne la création à `id = auth.uid()` **et**
@@ -424,9 +424,9 @@ que `/admin` s'ouvre.
 ## Ce qui reste à faire avant une mise en production
 
 - [ ] Compléter les mentions légales (forme juridique, RCS, éditeur)
-- [x] ~~Bannière de consentement cookies~~ — faite, Consent Mode v2
-- [x] ~~Icônes PWA~~ — faites, régénérables par `npm run icons`
-- [ ] **SMTP personnalisé** (Resend / Brevo / Postmark) — le service e-mail intégré de
+- [x] ~~Bannière de consentement cookies~~ • faite, Consent Mode v2
+- [x] ~~Icônes PWA~~ • faites, régénérables par `npm run icons`
+- [ ] **SMTP personnalisé** (Resend / Brevo / Postmark) • le service e-mail intégré de
       Supabase est plafonné à 2 envois/heure et n'envoie qu'aux membres de
       l'organisation. Bloquant dès les premiers testeurs.
 - [ ] Rate limiting distribué (l'implémentation actuelle est en mémoire, mono-instance)

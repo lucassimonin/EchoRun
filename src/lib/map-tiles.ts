@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * Fond de carte — configuration des tuiles
+ * Fond de carte • configuration des tuiles
  * ============================================================================
  *
  * CARTO (l'ancien fond « Positron » clair) exige désormais une clé API : ses
@@ -10,7 +10,7 @@
  *
  * Tout est surchargeable par variables d'environnement, pour brancher un
  * fournisseur payant plus élégant en production (CARTO, MapTiler, Stadia…) sans
- * toucher au code — il suffit de coller l'URL de tuiles fournie avec la clé.
+ * toucher au code • il suffit de coller l'URL de tuiles fournie avec la clé.
  *
  *   NEXT_PUBLIC_MAP_TILE_URL      URL des tuiles ({z}/{x}/{y} ou {z}/{y}/{x})
  *   NEXT_PUBLIC_MAP_ATTRIBUTION   mention d'attribution affichée en bas

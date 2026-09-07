@@ -116,7 +116,7 @@ export default async function AdminPage() {
         <p className="mt-2 max-w-2xl text-[13.5px] leading-relaxed text-charcoal-muted">
           Les identifiants AdSense sont injectés au rendu des pages, côté serveur. Une publicité ne
           s’affiche que si la régie est activée <em>et</em> que le couple client&nbsp;/&nbsp;slot est
-          valide — un champ mal rempli n’émet aucun appel plutôt que d’en émettre un invalide.
+          valide • un champ mal rempli n’émet aucun appel plutôt que d’en émettre un invalide.
         </p>
         <div className="mt-6">
           <AdSettingsForm settings={settings} />

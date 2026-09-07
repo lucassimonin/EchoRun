@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 
 /**
- * Client `service_role` — CONTOURNE RLS.
+ * Client `service_role` • CONTOURNE RLS.
  *
  * Usage strictement limite aux Route Handlers qui servent le tunnel "proche"
  * (anonyme) et au webhook Stripe. Ne jamais importer depuis un composant

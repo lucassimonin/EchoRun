@@ -2,7 +2,7 @@
 
 Ce guide déploie EchoRun sur un serveur Linux que tu contrôles (VPS type
 Hetzner / OVH / Scaleway / DigitalOcean...), avec **Docker + Caddy** (HTTPS
-automatique). Supabase reste **hébergé chez Supabase** (cloud) — on ne
+automatique). Supabase reste **hébergé chez Supabase** (cloud) • on ne
 l'auto-héberge pas ici.
 
 Architecture en prod :
@@ -80,12 +80,12 @@ nano .env.production
 
 À remplir impérativement :
 
-- `NEXT_PUBLIC_SUPABASE_URL` — l'URL de ton projet Supabase.
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY` — la clé anon (publique).
-- `SUPABASE_SERVICE_ROLE_KEY` — la clé service_role (**secrète**, serveur seul).
-- `NEXT_PUBLIC_SITE_URL` — `https://echo-run.app`.
-- `STRIPE_SECRET_KEY` / `STRIPE_WEBHOOK_SECRET` — voir §6.
-- `NEXT_PUBLIC_LEGAL_CONTACT_EMAIL` — ton email de contact légal.
+- `NEXT_PUBLIC_SUPABASE_URL` • l'URL de ton projet Supabase.
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` • la clé anon (publique).
+- `SUPABASE_SERVICE_ROLE_KEY` • la clé service_role (**secrète**, serveur seul).
+- `NEXT_PUBLIC_SITE_URL` • `https://echo-run.app`.
+- `STRIPE_SECRET_KEY` / `STRIPE_WEBHOOK_SECRET` • voir §6.
+- `NEXT_PUBLIC_LEGAL_CONTACT_EMAIL` • ton email de contact légal.
 
 > ⚠️ Les `NEXT_PUBLIC_*` sont **inlinées au build**. Si tu en changes une, il
 > faut **rebuild** (`up -d --build`), pas juste redémarrer.
@@ -125,7 +125,7 @@ npm run admin -- ton.email@exemple.com
 
 ---
 
-## 7. Supabase — URLs de redirection
+## 7. Supabase • URLs de redirection
 
 Dans le dashboard Supabase → *Authentication → URL Configuration* :
 
@@ -171,7 +171,7 @@ Si tu as ajouté des migrations : relance `supabase db push` (§5).
 - **Base de données** : Supabase gère les backups automatiques (voir le plan de
   ton projet dans le dashboard). Pour un dump manuel : `supabase db dump`.
 - **Certificats & état Caddy** : persistés dans le volume `caddy_data`
-  (ne le supprime pas, sinon régénération des certifs — quota Let's Encrypt).
+  (ne le supprime pas, sinon régénération des certifs • quota Let's Encrypt).
 - **Logs** : `docker compose -f docker-compose.prod.yml logs -f web`.
 - **Redémarrage propre** : `docker compose -f docker-compose.prod.yml restart`.
 
@@ -192,5 +192,5 @@ Si tu as ajouté des migrations : relance `supabase db push` (§5).
 ## Application mobile
 
 Le build de l'app native (Capacitor) est décrit dans
-[`NATIVE.md`](./NATIVE.md). Elle pointe vers le site hébergé — pense à régler
+[`NATIVE.md`](./NATIVE.md). Elle pointe vers le site hébergé • pense à régler
 `CAP_SERVER_URL=https://echo-run.app` avant de la compiler.

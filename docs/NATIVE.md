@@ -1,4 +1,4 @@
-# EchoRun — application native (iOS / Android)
+# EchoRun • application native (iOS / Android)
 
 Ce document est le mode d'emploi pour transformer la PWA en application native
 avec **Capacitor**, afin d'obtenir le **GPS en arrière-plan** (écran éteint,
@@ -31,7 +31,7 @@ apps de coaching running, **mais à confirmer sur ton matériel** (§6).
 Si ça ne tient pas de façon fiable, le plan B est le SDK commercial
 [`@transistorsoft/capacitor-background-geolocation`](https://github.com/transistorsoft/capacitor-background-geolocation)
 (~payant, licence unique), qui gère lui-même le maintien en vie natif. Le reste
-du code (FenceDetector, factory) ne change pas — seule l'implémentation de
+du code (FenceDetector, factory) ne change pas • seule l'implémentation de
 `NativeGeoEngine` serait à réécrire au-dessus de ce SDK.
 
 ---
@@ -61,7 +61,7 @@ npm install @capacitor-community/background-geolocation
 ```
 
 Puis générer les projets natifs (crée les dossiers `ios/` et `android/`, à
-**commiter** — tu vas y éditer des fichiers) :
+**commiter** • tu vas y éditer des fichiers) :
 
 ```bash
 npx cap add ios
@@ -76,7 +76,7 @@ npx cap sync
 
 ---
 
-## 3. iOS — permissions et modes de fond
+## 3. iOS • permissions et modes de fond
 
 Ouvre `ios/App/App/Info.plist` (via `npx cap open ios` puis l'éditeur Xcode, ou
 directement) et ajoute :
@@ -106,7 +106,7 @@ directement) et ajoute :
 
 ---
 
-## 4. Android — permissions et service de premier plan
+## 4. Android • permissions et service de premier plan
 
 Ouvre `android/app/src/main/AndroidManifest.xml` et ajoute, dans `<manifest>` :
 
@@ -143,7 +143,7 @@ config Capacitor ou un plugin natif.
 
 ## 6. LE test qui compte : audio écran éteint
 
-Sur un **vrai téléphone** (pas le simulateur — le simulateur ne reproduit ni le
+Sur un **vrai téléphone** (pas le simulateur • le simulateur ne reproduit ni le
 GPS réel ni la suspension d'app) :
 
 1. Prépare une course avec un message placé ~200 m après ton point de départ.
@@ -182,13 +182,13 @@ pendant un vocal.
 
 ## 8. Rappels d'architecture
 
-- `src/lib/geo/fence-detector.ts` — logique de déclenchement PURE, partagée.
-- `src/lib/geo/geo-engine.ts` — source de position WEB (watchPosition).
-- `src/lib/geo/native-geo-engine.ts` — source de position NATIVE (plugin).
-- `src/lib/geo/create-geo-engine.ts` — la fabrique qui choisit.
-- `src/lib/native/audio-keepalive.ts` — le keep-alive audio (§0).
-- `src/lib/native/platform.ts` — détection web/natif.
-- `capacitor.config.ts` — coquille pointant sur `server.url`.
+- `src/lib/geo/fence-detector.ts` • logique de déclenchement PURE, partagée.
+- `src/lib/geo/geo-engine.ts` • source de position WEB (watchPosition).
+- `src/lib/geo/native-geo-engine.ts` • source de position NATIVE (plugin).
+- `src/lib/geo/create-geo-engine.ts` • la fabrique qui choisit.
+- `src/lib/native/audio-keepalive.ts` • le keep-alive audio (§0).
+- `src/lib/native/platform.ts` • détection web/natif.
+- `capacitor.config.ts` • coquille pointant sur `server.url`.
 
 Sur le web, **rien de tout ceci ne s'active** : `isNativeApp()` renvoie `false`,
 le moteur web et le Wake Lock prennent le relais. Le même code sert les deux.

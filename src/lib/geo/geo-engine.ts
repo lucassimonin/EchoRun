@@ -12,7 +12,7 @@ export type { Geofence, PositionSnapshot, TriggerReason };
 
 /**
  * ============================================================================
- * GeoEngine — moteur GPS WEB (watchPosition, premier plan)
+ * GeoEngine • moteur GPS WEB (watchPosition, premier plan)
  * ============================================================================
  *
  * Source de position pour la PWA. La logique de déclenchement, elle, vit dans

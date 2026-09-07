@@ -1,11 +1,11 @@
 /**
  * ============================================================================
- * Consentement cookies — état et persistance
+ * Consentement cookies • état et persistance
  * ============================================================================
  *
  * Le service n'a qu'UNE seule catégorie non essentielle : la publicité. Pas de
  * mesure d'audience tierce, pas de réseaux sociaux, pas de heatmap. La bannière
- * reste donc volontairement simple — c'est aussi ce qui la rend honnête.
+ * reste donc volontairement simple • c'est aussi ce qui la rend honnête.
  *
  * Règles CNIL appliquées ici :
  *   - aucun cookie publicitaire avant un choix explicite ;
@@ -29,7 +29,7 @@ export interface ConsentState {
   version: number;
   /** Publicité personnalisée : cookies Google et partenaires. */
   advertising: boolean;
-  /** Horodatage du choix — preuve de consentement exigée par le RGPD. */
+  /** Horodatage du choix • preuve de consentement exigée par le RGPD. */
   decidedAt: string;
 }
 

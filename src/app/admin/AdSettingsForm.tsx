@@ -102,7 +102,7 @@ export function AdSettingsForm({ settings }: { settings: AppSettings }) {
 
         <div className="grid gap-5 sm:grid-cols-3">
           <Field
-            label="Slot — Landing"
+            label="Slot • Landing"
             htmlFor="slot-landing"
             error={slotInvalid(form.adsense_slot_landing) ? 'Chiffres uniquement.' : null}
           >
@@ -116,7 +116,7 @@ export function AdSettingsForm({ settings }: { settings: AppSettings }) {
           </Field>
 
           <Field
-            label="Slot — Page proche"
+            label="Slot • Page proche"
             htmlFor="slot-contributor"
             error={slotInvalid(form.adsense_slot_contributor) ? 'Chiffres uniquement.' : null}
           >
@@ -130,7 +130,7 @@ export function AdSettingsForm({ settings }: { settings: AppSettings }) {
           </Field>
 
           <Field
-            label="Slot — Fin de course"
+            label="Slot • Fin de course"
             htmlFor="slot-finish"
             error={slotInvalid(form.adsense_slot_finish) ? 'Chiffres uniquement.' : null}
           >

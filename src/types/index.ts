@@ -38,12 +38,12 @@ export interface AudioMessage {
   audio_path: string;
   mime_type: string;
   duration_ms: number;
-  /** Position (mode GPX) — null en mode temps. */
+  /** Position (mode GPX) • null en mode temps. */
   lat: number | null;
   lng: number | null;
   distance_m: number;
   trigger_radius_m: number;
-  /** Instant de déclenchement en secondes depuis le départ (mode temps) — null en GPX. */
+  /** Instant de déclenchement en secondes depuis le départ (mode temps) • null en GPX. */
   trigger_at_s: number | null;
   is_billable: boolean;
   played_at: string | null;

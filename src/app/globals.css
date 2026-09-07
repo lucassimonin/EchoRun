@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 /* ============================================================
-   EchoRun — Design System "SIGNAL"
+   EchoRun • Design System "SIGNAL"
    Neo-Brutalist / Retro-Tech / Streetwear.
    Jaune électrique, bordures noires épaisses, ombres dures,
    typo lourde en capitales + monospace pour les métriques.
@@ -9,13 +9,13 @@
 
 @theme {
   /* --- Palette de marque --- */
-  --color-yellow: #ffe600; /* jaune électrique — fond principal */
-  --color-orange: #ff5500; /* orange signal — action */
+  --color-yellow: #ffe600; /* jaune électrique • fond principal */
+  --color-orange: #ff5500; /* orange signal • action */
   --color-orange-dark: #e64a00;
-  --color-neon: #00ff66; /* vert néon — succès / accents */
+  --color-neon: #00ff66; /* vert néon • succès / accents */
   --color-off: #f4f4f0; /* blanc cassé */
-  --color-ink: #000000; /* noir pur — texte + bordures */
-  --color-danger: #ff2d2d; /* rouge — alertes / clôture */
+  --color-ink: #000000; /* noir pur • texte + bordures */
+  --color-danger: #ff2d2d; /* rouge • alertes / clôture */
 
   /* --- Tokens historiques REMAPPÉS sur la nouvelle charte ---
      On garde les noms (bone/paper/charcoal/matcha/clay) pour que tout le
@@ -235,7 +235,7 @@
 }
 
 /* ============================================================
-   Leaflet — override brutaliste.
+   Leaflet • override brutaliste.
    ============================================================ */
 .echo-map {
   background: var(--color-off) !important;

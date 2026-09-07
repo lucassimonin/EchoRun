@@ -95,7 +95,7 @@ export function CookieBanner() {
 
         <p className="mt-2.5 text-[12.5px] leading-relaxed text-charcoal-faint">
           Nous n’utilisons aucun outil de mesure d’audience tiers. Ta position GPS pendant une
-          course ne quitte jamais ton téléphone —{' '}
+          course ne quitte jamais ton téléphone •{' '}
           <Link href="/confidentialite" className="underline underline-offset-2">
             voir la politique de confidentialité
           </Link>

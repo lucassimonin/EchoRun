@@ -2,7 +2,7 @@
  * Enregistreur micro pour la page proche.
  *
  * Format : Opus/WebM partout, MP4/AAC sur Safari (qui n'encode pas WebM).
- * On ne transcode pas cote client — le format est stocke tel quel et lu par le
+ * On ne transcode pas cote client • le format est stocke tel quel et lu par le
  * meme type de navigateur ou par le coureur, qui supporte les deux.
  */
 

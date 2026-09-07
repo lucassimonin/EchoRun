@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * Génération des icônes — `npm run icons`
+ * Génération des icônes • `npm run icons`
  * ============================================================================
  *
  * Source unique : src/app/icon.svg (+ scripts/icon-maskable.svg pour la

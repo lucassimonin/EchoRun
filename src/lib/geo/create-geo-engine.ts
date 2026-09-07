@@ -3,7 +3,7 @@ import { GeoEngine, type GeoEngineOptions } from './geo-engine';
 import { NativeGeoEngine } from './native-geo-engine';
 
 /**
- * Interface commune aux deux moteurs — c'est tout ce que LiveClient manipule.
+ * Interface commune aux deux moteurs • c'est tout ce que LiveClient manipule.
  * Le choix web/natif est invisible pour lui.
  */
 export interface IGeoEngine {

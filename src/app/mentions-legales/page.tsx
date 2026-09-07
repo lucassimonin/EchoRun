@@ -97,8 +97,8 @@ export default function LegalPage() {
       <p>
         L’utilisation du service pendant une activité sportive relève de la seule responsabilité de
         l’utilisateur. Il lui appartient de rester attentif à son environnement, de respecter le
-        règlement de l’épreuve à laquelle il participe — certains organisateurs interdisent le port
-        d’écouteurs — et le code de la route. Nous recommandons des écouteurs laissant passer les
+        règlement de l’épreuve à laquelle il participe • certains organisateurs interdisent le port
+        d’écouteurs • et le code de la route. Nous recommandons des écouteurs laissant passer les
         sons extérieurs.
       </p>
 

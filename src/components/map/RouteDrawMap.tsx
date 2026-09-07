@@ -34,7 +34,7 @@ interface Segment {
 
 /**
  * ============================================================================
- * RouteDrawMap — dessiner un parcours calé sur les routes
+ * RouteDrawMap • dessiner un parcours calé sur les routes
  * ============================================================================
  *
  * Le coureur clique des points d'étape ; chaque nouveau clic route le segment
@@ -120,7 +120,7 @@ export function RouteDrawMap({ onChange, center = [46.6, 2.4], className }: Rout
   }, []);
 
   // ------------------------------------------------- traitement de la file ---
-  // IMPORTANT : le routage est fait ICI, en code séquentiel pur — jamais à
+  // IMPORTANT : le routage est fait ICI, en code séquentiel pur • jamais à
   // l'intérieur d'un updater setState. Un effet de bord dans un updater est
   // ré-exécuté par React en mode dev (Strict Mode), ce qui ajoutait le segment
   // deux fois et dessinait un aller-retour fantôme.

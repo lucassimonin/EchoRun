@@ -38,7 +38,7 @@ export interface RaceMapProps {
  *
  * Pourquoi : react-leaflet impose son cycle de vie React sur une lib qui gere
  * deja le sien, et sa compatibilite suit les majeures de React. Ici on a
- * besoin de trois choses (un trace, des pastilles, un clic) — 150 lignes
+ * besoin de trois choses (un trace, des pastilles, un clic) • 150 lignes
  * d'imperatif sont plus lisibles et ne bougeront pas.
  *
  * A charger via `next/dynamic` avec `ssr: false` (Leaflet touche `window`).

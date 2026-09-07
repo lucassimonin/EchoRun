@@ -19,7 +19,7 @@ interface RecorderPanelProps {
 
 /**
  * Bloc micro : un seul gros bouton, un anneau qui réagit à la voix, et une
- * relecture avant envoi. Rien d'autre — c'est la partie que des gens de
+ * relecture avant envoi. Rien d'autre • c'est la partie que des gens de
  * 70 ans utilisent depuis un lien reçu par SMS.
  */
 export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanelProps) {

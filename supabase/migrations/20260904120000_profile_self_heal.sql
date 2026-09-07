@@ -4,8 +4,8 @@
 -- POURQUOI CETTE MIGRATION
 --
 -- Faire dependre l'existence du profil du seul trigger `on_auth_user_created`
--- est fragile : tout compte cree AVANT que le trigger existe — ou pendant une
--- panne du trigger — se retrouve authentifie mais sans ligne dans `profiles`.
+-- est fragile : tout compte cree AVANT que le trigger existe • ou pendant une
+-- panne du trigger • se retrouve authentifie mais sans ligne dans `profiles`.
 -- L'utilisateur est alors bloque de facon permanente et silencieuse : il se
 -- connecte sans probleme, puis chaque ecriture echoue en violation de cle
 -- etrangere (23503), sans aucun moyen de s'en sortir depuis l'interface.

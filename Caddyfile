@@ -1,4 +1,4 @@
-# EchoRun — reverse proxy + HTTPS automatique (Let's Encrypt).
+# EchoRun • reverse proxy + HTTPS automatique (Let's Encrypt).
 # Caddy obtient et renouvelle les certificats tout seul dès que le DNS de
 # echo-run.app pointe sur ce serveur et que les ports 80/443 sont ouverts.
 

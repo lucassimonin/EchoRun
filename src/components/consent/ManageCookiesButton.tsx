@@ -4,7 +4,7 @@ import { useOptionalConsent } from './ConsentProvider';
 import { cx } from '@/lib/utils';
 
 /**
- * Point d'entrée pour revenir sur son choix — exigence RGPD : le retrait doit
+ * Point d'entrée pour revenir sur son choix • exigence RGPD : le retrait doit
  * être aussi simple que le consentement. Placé en pied de page et sur la page
  * de confidentialité.
  *

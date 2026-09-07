@@ -3,7 +3,7 @@ import { fastDistance } from './geometry';
 
 /**
  * ============================================================================
- * FenceDetector — logique PURE de déclenchement par proximité
+ * FenceDetector • logique PURE de déclenchement par proximité
  * ============================================================================
  *
  * Extraite de GeoEngine pour être partagée entre le moteur web (watchPosition)

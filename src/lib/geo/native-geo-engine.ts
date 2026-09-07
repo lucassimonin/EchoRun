@@ -5,7 +5,7 @@ import type { GeoEngineOptions } from './geo-engine';
 
 /**
  * ============================================================================
- * NativeGeoEngine — moteur GPS NATIF (app Capacitor, arrière-plan)
+ * NativeGeoEngine • moteur GPS NATIF (app Capacitor, arrière-plan)
  * ============================================================================
  *
  * Même interface publique que GeoEngine (start/stop/seedConsumed/pendingCount)

@@ -360,7 +360,7 @@ export function LiveClient({ raceId, raceName, distanceM, serverMessageCount }: 
             En course
           </p>
           <p className="mt-1.5 font-mono text-[2.25rem] leading-none tabular-nums tracking-[-0.02em] text-charcoal">
-            {position ? (position.progressM / 1000).toFixed(2).replace('.', ',') : '—'}
+            {position ? (position.progressM / 1000).toFixed(2).replace('.', ',') : '•'}
             <span className="ml-1.5 text-[1rem] text-charcoal-faint">km</span>
           </p>
         </div>

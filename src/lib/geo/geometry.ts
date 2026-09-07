@@ -147,7 +147,7 @@ export interface SnapResult {
 
 /**
  * Projette un clic sur le trace : renvoie le point du trace le plus proche.
- * Le proche clique "a peu pres" sur la ligne, on recale exactement dessus —
+ * Le proche clique "a peu pres" sur la ligne, on recale exactement dessus •
  * indispensable pour que le declenchement GPS soit fiable le jour J.
  */
 export function snapToTrack(

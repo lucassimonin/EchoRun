@@ -2,7 +2,7 @@ import { sleep } from '@/lib/utils';
 
 /**
  * ============================================================================
- * ChainedAudioPlayer — "Message de [Prenom]" puis lecture du vocal
+ * ChainedAudioPlayer • "Message de [Prenom]" puis lecture du vocal
  * ============================================================================
  *
  * Trois pieges resolus ici, tous specifiques a iOS/Safari :
@@ -201,7 +201,7 @@ export class ChainedAudioPlayer {
     }
   }
 
-  /** "Message de Camille" — resout meme si `onend` ne vient jamais. */
+  /** "Message de Camille" • resout meme si `onend` ne vient jamais. */
   private announce(authorName: string): Promise<void> {
     const text = 'Message de ' + authorName;
     if (!this.ttsAvailable) return Promise.resolve();

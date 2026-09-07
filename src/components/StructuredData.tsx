@@ -61,7 +61,7 @@ export function SiteJsonLd() {
  * L'application elle-même.
  *
  * `WebApplication` et non `SoftwareApplication` : il n'y a rien à installer
- * depuis un store. Les deux offres décrivent honnêtement le modèle — gratuit
+ * depuis un store. Les deux offres décrivent honnêtement le modèle • gratuit
  * pour le coureur, payant au-delà de deux vocaux pour un proche.
  */
 export function AppJsonLd({ extraMessagePriceCents }: { extraMessagePriceCents: number }) {

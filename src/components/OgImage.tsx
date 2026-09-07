@@ -120,4 +120,4 @@ export function OgImage() {
 }
 
 /** Texte alternatif, réutilisé par les deux routes d'image. */
-export const OG_ALT = SITE_NAME + ' — ' + SITE_TAGLINE;
+export const OG_ALT = SITE_NAME + ' • ' + SITE_TAGLINE;

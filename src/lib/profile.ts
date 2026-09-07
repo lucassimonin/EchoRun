@@ -9,18 +9,18 @@ export interface RunnerProfile {
 
 /**
  * ============================================================================
- * Profil du coureur — lecture auto-réparante
+ * Profil du coureur • lecture auto-réparante
  * ============================================================================
  *
  * Le trigger `on_auth_user_created` reste le chemin nominal. Mais un compte
- * créé avant que le trigger existe — ou pendant une panne du trigger — se
+ * créé avant que le trigger existe • ou pendant une panne du trigger • se
  * retrouve authentifié SANS ligne dans `profiles`. L'utilisateur se connecte
  * alors normalement, puis chaque écriture échoue en violation de clé étrangère,
  * sans aucun moyen de s'en sortir depuis l'interface.
  *
  * Cette fonction ferme le trou : si le profil manque, on le crée à la volée
  * depuis la session vérifiée. L'écriture passe par le client de session, donc
- * par RLS — la policy `profiles: creation de son propre profil` la borne à son
+ * par RLS • la policy `profiles: creation de son propre profil` la borne à son
  * propre identifiant et interdit `is_admin = true`. Pas de service_role ici.
  *
  * Idempotent et sans coût dans le cas normal : un seul SELECT quand le profil
@@ -75,7 +75,7 @@ export async function getOrCreateProfile(
 
   if (error) {
     console.error(
-      `[echorun] getOrCreateProfile — code=${error.code} message=${error.message}`,
+      `[echorun] getOrCreateProfile • code=${error.code} message=${error.message}`,
     );
   }
 

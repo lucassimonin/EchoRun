@@ -1,5 +1,5 @@
 # ============================================================================
-# EchoRun — image de production (Next.js standalone)
+# EchoRun • image de production (Next.js standalone)
 #
 # À SAVOIR : les variables NEXT_PUBLIC_* sont INLINÉES au BUILD par Next.js
 # (elles finissent dans le bundle navigateur). Elles doivent donc être passées

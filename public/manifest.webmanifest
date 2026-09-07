@@ -1,5 +1,5 @@
 {
-  "name": "EchoRun — les voix de tes proches sur ta course",
+  "name": "EchoRun • les voix de tes proches sur ta course",
   "short_name": "EchoRun",
   "description": "Reçois les messages vocaux de tes proches, déclenchés par le GPS aux points précis de ta course.",
   "start_url": "/app?source=pwa",

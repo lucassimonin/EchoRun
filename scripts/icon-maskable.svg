@@ -2,7 +2,7 @@
   Variante « maskable » pour l'installation PWA : fond à bord perdu (Android
   découpe la forme selon le thème du lanceur) et marque réduite à 76 % pour
   tenir dans la zone sûre, le cercle central de 80 % du canvas.
-  Généré depuis icon.svg — cf. scripts/generate-icons.mjs.
+  Généré depuis icon.svg • cf. scripts/generate-icons.mjs.
 -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="EchoRun">
   <rect width="512" height="512" fill="#3E5A47"/>

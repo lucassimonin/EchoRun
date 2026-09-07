@@ -29,7 +29,7 @@ export function isValidSlug(value: unknown): value is string {
  * Diagnostic des erreurs Postgres / PostgREST
  * ============================================================================
  *
- * Un « Creation de la course impossible. » ne dit rien a personne — ni a
+ * Un « Creation de la course impossible. » ne dit rien a personne • ni a
  * l'utilisateur, ni au developpeur qui debugge. Cette fonction traduit les
  * codes d'erreur reellement rencontres en message actionnable, journalise le
  * detail cote serveur, et en developpement renvoie la cause technique au
@@ -93,7 +93,7 @@ export function jsonDbError(
 
   // Toujours dans les logs serveur : c'est la que le developpeur regarde.
   console.error(
-    `[echorun] ${context} — code=${code} message=${error?.message ?? 'n/a'}` +
+    `[echorun] ${context} • code=${code} message=${error?.message ?? 'n/a'}` +
       (error?.details ? ` details=${error.details}` : '') +
       (error?.hint ? ` hint=${error.hint}` : ''),
   );

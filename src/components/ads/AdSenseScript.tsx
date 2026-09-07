@@ -7,7 +7,7 @@ import { isValidAdSenseClientId } from '@/lib/adsense';
 
 /**
  * ============================================================================
- * Loader AdSense — piloté par le consentement
+ * Loader AdSense • piloté par le consentement
  * ============================================================================
  *
  * Trois états, trois comportements :
@@ -19,14 +19,14 @@ import { isValidAdSenseClientId } from '@/lib/adsense';
  *  2. REFUS → le script est chargé, mais Consent Mode est resté sur `denied` et
  *     `requestNonPersonalizedAds` est armé. Google sert alors des annonces
  *     contextuelles sans déposer de cookie publicitaire. Le refus ne fait donc
- *     pas disparaître le revenu, il le diminue — c'est ce qui rend le modèle
+ *     pas disparaître le revenu, il le diminue • c'est ce qui rend le modèle
  *     tenable tout en étant conforme.
  *
  *  3. ACCEPTATION → Consent Mode passe en `granted` (cf. ConsentProvider) et
  *     les annonces sont personnalisées.
  *
  * `afterInteractive` : le script pèse ~150 ko et ne doit pas peser sur le LCP
- * de la landing — un critère de qualité qu'AdSense évalue lui-même.
+ * de la landing • un critère de qualité qu'AdSense évalue lui-même.
  */
 export function AdSenseScript({ clientId }: { clientId: string | null }) {
   const consent = useOptionalConsent();
@@ -40,7 +40,7 @@ export function AdSenseScript({ clientId }: { clientId: string | null }) {
    *
    * Google fige les signaux au moment où il demande les annonces : sans ça, un
    * utilisateur qui refuse puis accepte resterait servi en non-personnalisé
-   * jusqu'à sa prochaine navigation — du revenu perdu alors qu'il a consenti.
+   * jusqu'à sa prochaine navigation • du revenu perdu alors qu'il a consenti.
    * L'inverse est plus grave encore : accepter puis refuser laisserait des
    * annonces personnalisées à l'écran.
    */

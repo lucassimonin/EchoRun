@@ -1,5 +1,5 @@
 -- ============================================================================
--- EchoRun — RLS, helpers et RPC
+-- EchoRun • RLS, helpers et RPC
 -- ============================================================================
 
 alter table public.profiles       enable row level security;

@@ -2,7 +2,7 @@
  * Envoi d'e-mails transactionnels via Resend.
  *
  * Volontairement « best-effort » et OPTIONNEL : sans `RESEND_API_KEY`, rien
- * n'est envoyé et la fonction ne jette jamais — le flux applicatif (poser un
+ * n'est envoyé et la fonction ne jette jamais • le flux applicatif (poser un
  * message, débloquer une course) ne doit jamais échouer parce qu'un mail n'est
  * pas parti. On passe par `fetch` plutôt que par le SDK pour ne pas ajouter de
  * dépendance.
@@ -27,7 +27,7 @@ async function sendEmail({ to, subject, html, text }: SendArgs): Promise<boolean
 
   if (!apiKey) {
     // Non configuré : on log en dev, on ne casse rien.
-    console.info('[email] RESEND_API_KEY absent — e-mail non envoyé :', subject, '->', to);
+    console.info('[email] RESEND_API_KEY absent • e-mail non envoyé :', subject, '->', to);
     return false;
   }
 
@@ -74,7 +74,7 @@ export async function sendCapReachedEmail(args: {
     '',
     `Débloquer : ${unlockUrl}`,
     '',
-    '— EchoRun',
+    '• EchoRun',
   ].join('\n');
 
   const html = `
@@ -85,7 +85,7 @@ export async function sendCapReachedEmail(args: {
         « ${raceName} ». C'est le nombre offert.
       </p>
       <p style="font-size:15px;line-height:1.6;color:#3f4a42;">
-        Pour continuer à en recevoir — jusqu'à <strong>${unlockedCap} au total</strong> —
+        Pour continuer à en recevoir • jusqu'à <strong>${unlockedCap} au total</strong> •
         tu peux débloquer ta course pour <strong>${priceLabel}</strong>. Tes proches, eux, ne
         paient jamais rien.
       </p>
@@ -95,7 +95,7 @@ export async function sendCapReachedEmail(args: {
           Débloquer ma course
         </a>
       </p>
-      <p style="font-size:13px;color:#8a938c;">— EchoRun</p>
+      <p style="font-size:13px;color:#8a938c;">• EchoRun</p>
     </div>`.trim();
 
   return sendEmail({ to, subject, html, text });
