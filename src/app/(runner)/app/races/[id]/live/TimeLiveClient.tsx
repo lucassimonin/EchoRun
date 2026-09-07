@@ -247,7 +247,7 @@ export function TimeLiveClient({
       <main className="mx-auto max-w-lg px-5 py-12 sm:px-8">
         <BackLink raceId={raceId} />
         <Surface className="mt-6">
-          <h1 className="text-[20px] font-semibold tracking-[-0.025em] text-charcoal">
+          <h1 className="text-[20px] font-bold uppercase tracking-[-0.01em] text-charcoal">
             Préparer {raceName}
           </h1>
           <p className="mt-3 text-[14px] leading-relaxed text-charcoal-muted">
@@ -261,15 +261,15 @@ export function TimeLiveClient({
 
           {progress ? (
             <div className="mt-6">
-              <div className="h-1.5 overflow-hidden rounded-full bg-charcoal/[0.07]">
+              <div className="h-3 overflow-hidden rounded-md border-2 border-black bg-white">
                 <div
-                  className="h-full rounded-full bg-matcha-500 transition-[width] duration-300"
+                  className="h-full bg-orange transition-[width] duration-300"
                   style={{
                     width: progress.total ? (progress.done / progress.total) * 100 + '%' : '0%',
                   }}
                 />
               </div>
-              <p className="mt-2.5 text-[12.5px] text-charcoal-faint">
+              <p className="mt-2.5 font-mono text-[12px] uppercase tracking-[0.04em] text-black/60">
                 {progress.done} / {progress.total}
                 {progress.currentAuthor ? ' · ' + progress.currentAuthor : ''}
               </p>
@@ -292,7 +292,7 @@ export function TimeLiveClient({
         <BackLink raceId={raceId} />
         <Surface className="mt-6">
           <Badge tone="matcha">Prêt à courir</Badge>
-          <h1 className="mt-4 text-[22px] font-semibold tracking-[-0.028em] text-charcoal">
+          <h1 className="mt-4 text-[22px] font-bold uppercase tracking-[-0.01em] text-charcoal">
             {raceName}
           </h1>
           <p className="mt-2 text-[14px] text-charcoal-muted">
@@ -328,7 +328,7 @@ export function TimeLiveClient({
           <button
             type="button"
             onClick={() => void prepare()}
-            className="mt-4 w-full text-center text-[12.5px] text-charcoal-faint underline underline-offset-2 hover:text-charcoal"
+            className="mt-4 w-full text-center font-mono text-[12px] font-bold uppercase tracking-[0.04em] text-black/60 underline decoration-orange decoration-2 underline-offset-2 hover:text-black"
           >
             Re-télécharger les messages
           </button>
@@ -344,43 +344,43 @@ export function TimeLiveClient({
     <main className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-lg flex-col px-5 py-6 sm:px-8">
       <div className="flex items-baseline justify-between gap-4">
         <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-matcha-400">
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-orange">
             En course
           </p>
           <p className="mt-1.5 font-mono text-[2.75rem] leading-none tabular-nums tracking-[-0.02em] text-charcoal">
             {formatStopwatch(elapsedS)}
           </p>
-          <p className="mt-1 text-[12px] text-charcoal-faint">objectif {formatClock(durationS)}</p>
+          <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.06em] text-black/55">objectif {formatClock(durationS)}</p>
         </div>
         <div className="text-right">
-          <p className="text-[12px] text-charcoal-faint">Messages restants</p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-black/55">Messages restants</p>
           <p className="mt-1 font-mono text-[1.75rem] leading-none tabular-nums text-charcoal">
             {remaining.length}
           </p>
         </div>
       </div>
 
-      <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-charcoal/[0.07]">
+      <div className="mt-4 h-3 overflow-hidden rounded-md border-2 border-black bg-white">
         <div
-          className="h-full rounded-full bg-matcha-500 transition-[width] duration-500"
+          className="h-full bg-orange transition-[width] duration-500"
           style={{ width: progressPct + '%' }}
         />
       </div>
 
       <div className="mt-5 min-h-[76px]">
         {phase !== 'idle' && nowPlaying ? (
-          <div className="flex items-center gap-4 rounded-card bg-charcoal p-4 text-bone animate-rise">
-            <span className="relative grid size-11 shrink-0 place-items-center rounded-full bg-bone/15">
-              <span className="absolute inset-0 rounded-full bg-bone/20 animate-pulse-ring" />
+          <div className="flex items-center gap-4 rounded-lg border-[3px] border-black bg-black p-4 text-yellow shadow-[4px_4px_0_0_#000] animate-rise">
+            <span className="relative grid size-11 shrink-0 place-items-center rounded-full bg-yellow/20">
+              <span className="absolute inset-0 rounded-full bg-yellow/25 animate-pulse-ring" />
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M5 3.5v9l7-4.5-7-4.5Z" fill="currentColor" />
               </svg>
             </span>
             <div className="min-w-0">
-              <p className="truncate text-[15px] font-medium">
+              <p className="truncate text-[15px] font-bold">
                 {phase === 'announcing' ? 'Message de ' + nowPlaying.authorName : nowPlaying.authorName}
               </p>
-              <p className="mt-0.5 text-[12px] text-bone/60">
+              <p className="mt-0.5 font-mono text-[11px] uppercase tracking-[0.04em] text-yellow/70">
                 {phase === 'announcing' ? 'Annonce…' : 'Lecture du vocal'}
                 {queueLength > 1 ? ' · ' + (queueLength - 1) + ' en file' : ''}
               </p>
@@ -388,16 +388,16 @@ export function TimeLiveClient({
             <button
               type="button"
               onClick={() => playerRef.current?.skip()}
-              className="ml-auto shrink-0 rounded-full px-3 py-1.5 text-[12px] text-bone/70 transition-colors hover:bg-bone/10 hover:text-bone"
+              className="ml-auto shrink-0 rounded-md border-2 border-yellow/40 px-3 py-1.5 font-mono text-[11px] font-bold uppercase text-yellow/80 transition-colors hover:bg-yellow hover:text-black"
             >
               Passer
             </button>
           </div>
         ) : nextMessage ? (
-          <div className="rounded-card border border-charcoal/[0.07] bg-paper p-4">
-            <p className="text-[12px] text-charcoal-faint">Prochain message</p>
+          <div className="rounded-lg border-[3px] border-black bg-paper p-4">
+            <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-black/55">Prochain message</p>
             <p className="mt-1 text-[14.5px] text-charcoal">
-              <strong className="font-medium">{nextMessage.author_name}</strong> · à{' '}
+              <strong className="font-bold">{nextMessage.author_name}</strong> · à{' '}
               {formatClock(nextMessage.trigger_at_s ?? 0)}
               {(nextMessage.trigger_at_s ?? 0) > elapsedS ? (
                 <span className="text-charcoal-faint">
@@ -408,7 +408,7 @@ export function TimeLiveClient({
             </p>
           </div>
         ) : (
-          <div className="rounded-card border border-charcoal/[0.07] bg-paper p-4">
+          <div className="rounded-lg border-[3px] border-black bg-paper p-4">
             <p className="text-[14px] text-charcoal">Tous les messages ont été lus.</p>
             <p className="mt-1 text-[12.5px] text-charcoal-faint">Il ne reste plus qu’à finir.</p>
           </div>
@@ -417,33 +417,33 @@ export function TimeLiveClient({
 
       {/* Frise de progression : les repères des messages restants sur la durée */}
       <div className="mt-6 flex-1">
-        <div className="relative h-2 rounded-full bg-charcoal/[0.07]">
+        <div className="relative h-3 rounded-md border-2 border-black bg-white">
           <div
-            className="absolute inset-y-0 left-0 rounded-full bg-matcha-400"
+            className="absolute inset-y-0 left-0 bg-orange"
             style={{ width: progressPct + '%' }}
           />
           {remaining.map((m) => (
             <span
               key={m.id}
-              className="absolute top-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-bone bg-matcha-500"
+              className="absolute top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-black bg-neon"
               style={{ left: ((m.trigger_at_s ?? 0) / durationS) * 100 + '%' }}
               title={m.author_name + ' · ' + formatClock(m.trigger_at_s ?? 0)}
             />
           ))}
           {/* Position du coureur */}
           <span
-            className="absolute top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-bone bg-charcoal shadow-lift"
+            className="absolute top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-black bg-black shadow-[2px_2px_0_0_#000]"
             style={{ left: progressPct + '%' }}
           />
         </div>
-        <div className="mt-2 flex justify-between text-[10.5px] text-charcoal-faint">
+        <div className="mt-2 flex justify-between font-mono text-[10px] uppercase tracking-[0.06em] text-black/50">
           <span>Départ</span>
           <span>{formatClock(durationS)}</span>
         </div>
       </div>
 
-      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11.5px] text-charcoal-faint">
-        <span className="text-matcha-500">Chrono actif</span>
+      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 font-mono text-[10.5px] uppercase tracking-[0.04em] text-black/50">
+        <span className="text-orange">Chrono actif</span>
         <span>{wakeLockHeld ? 'Écran maintenu allumé' : 'Écran non verrouillé requis'}</span>
         <span>Hors-ligne OK</span>
       </div>
@@ -471,7 +471,7 @@ function BackLink({ raceId }: { raceId: string }) {
   return (
     <Link
       href={'/app/races/' + raceId}
-      className="text-[13px] text-charcoal-faint transition-colors hover:text-charcoal"
+      className="font-mono text-[12px] font-bold uppercase tracking-[0.04em] text-black/60 transition-colors hover:text-black"
     >
       ← Retour à la course
     </Link>
@@ -481,11 +481,11 @@ function BackLink({ raceId }: { raceId: string }) {
 function CenteredNote({ children }: { children: React.ReactNode }) {
   return (
     <main className="grid min-h-[60dvh] place-items-center px-5">
-      <p className="text-[14px] text-charcoal-faint">{children}</p>
+      <p className="font-mono text-[13px] uppercase tracking-[0.06em] text-black/55">{children}</p>
     </main>
   );
 }
 
 function Dot() {
-  return <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-matcha-300" />;
+  return <span className="mt-[6px] size-2 shrink-0 border-2 border-black bg-orange" />;
 }

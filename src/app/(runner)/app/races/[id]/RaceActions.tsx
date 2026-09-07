@@ -34,7 +34,7 @@ export function RaceActions({ raceId, status }: { raceId: string; status: string
 
   return (
     <Surface className="bg-transparent shadow-none">
-      <h2 className="text-[14px] font-medium text-charcoal">Gérer la course</h2>
+      <h2 className="text-[14px] font-bold uppercase tracking-[0.04em] text-charcoal">Gérer la course</h2>
 
       <div className="mt-4 flex flex-wrap gap-2.5">
         {status === 'finished' ? (

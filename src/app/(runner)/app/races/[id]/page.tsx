@@ -53,7 +53,7 @@ export default async function RaceDetailPage({ params }: { params: Promise<{ id:
     <main className="mx-auto max-w-3xl px-5 py-12 sm:px-8">
       <Link
         href="/app"
-        className="text-[13px] text-charcoal-faint transition-colors hover:text-charcoal"
+        className="font-mono text-[12px] font-bold uppercase tracking-[0.04em] text-black/60 transition-colors hover:text-black"
       >
         ← Mes courses
       </Link>
@@ -63,12 +63,12 @@ export default async function RaceDetailPage({ params }: { params: Promise<{ id:
           <Eyebrow>{formatRaceDate(race.race_date)}</Eyebrow>
           <Badge tone={status.tone}>{status.label}</Badge>
         </div>
-        <h1 className="mt-3 text-title text-charcoal">{race.name}</h1>
-        <p className="mt-2 text-[14px] text-charcoal-muted">
+        <h1 className="mt-3 text-title uppercase text-charcoal">{race.name}</h1>
+        <p className="mt-2 font-mono text-[13px] uppercase tracking-[0.02em] text-black/70">
           {race.mode === 'time'
             ? 'Objectif ' + formatClock(race.duration_s ?? 0)
             : formatDistance(race.distance_m)}{' '}
-          · {list.length} / {messageCap} messages
+          · <span className="tnum">{list.length} / {messageCap}</span> messages
         </p>
       </header>
 
@@ -86,7 +86,7 @@ export default async function RaceDetailPage({ params }: { params: Promise<{ id:
 
         {/* --------------------------------------------------- jour de course */}
         <Surface>
-          <h2 className="text-[16px] font-semibold tracking-[-0.018em] text-charcoal">
+          <h2 className="text-[16px] font-bold uppercase tracking-[-0.01em] text-charcoal">
             Le jour de la course
           </h2>
           <p className="mt-2 text-[13.5px] leading-relaxed text-charcoal-muted">
@@ -107,17 +107,17 @@ export default async function RaceDetailPage({ params }: { params: Promise<{ id:
 
         {/* ------------------------------------------------------- les messages */}
         <Surface padded={false}>
-          <div className="flex items-center justify-between gap-4 p-6 pb-4">
-            <h2 className="text-[16px] font-semibold tracking-[-0.018em] text-charcoal">
+          <div className="flex items-center justify-between gap-4 border-b-[3px] border-black p-6 pb-4">
+            <h2 className="text-[16px] font-bold uppercase tracking-[-0.01em] text-charcoal">
               Messages reçus
             </h2>
-            <span className="text-[12.5px] text-charcoal-faint">
+            <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-black/50">
               Classés par point du parcours
             </span>
           </div>
 
           {list.length === 0 ? (
-            <p className="px-6 pb-7 text-[13.5px] leading-relaxed text-charcoal-muted">
+            <p className="px-6 py-7 text-[13.5px] leading-relaxed text-charcoal-muted">
               Personne n’a encore déposé de message. Envoie le lien de partage&nbsp;: c’est la
               seule chose qui manque.
             </p>
@@ -125,20 +125,22 @@ export default async function RaceDetailPage({ params }: { params: Promise<{ id:
             <ul>
               {list.map((message, index) => (
                 <li key={message.id}>
-                  {index > 0 ? <Divider /> : <Divider />}
+                  {index > 0 ? <Divider /> : null}
                   <div className="flex items-center gap-4 px-6 py-4">
-                    <span className="grid size-9 shrink-0 place-items-center rounded-full bg-matcha-100 text-[12px] font-semibold text-matcha-600">
+                    <span className="grid size-10 shrink-0 place-items-center rounded-md border-2 border-black bg-neon text-[12px] font-bold text-black">
                       {message.author_name.slice(0, 2).toUpperCase()}
                     </span>
                     <div className="min-w-0 flex-1">
-                      <p className="truncate text-[14px] font-medium text-charcoal">
+                      <p className="truncate text-[14px] font-bold text-charcoal">
                         {message.author_name}
                       </p>
-                      <p className="mt-0.5 text-[12.5px] text-charcoal-faint">
-                        {message.trigger_at_s !== null
-                          ? 'À ' + formatClock(message.trigger_at_s)
-                          : 'Km ' + (message.distance_m / 1000).toFixed(1).replace('.', ',')}{' '}
-                        · {formatDuration(message.duration_ms)}
+                      <p className="mt-0.5 font-mono text-[11.5px] uppercase tracking-[0.02em] text-black/60">
+                        <span className="tnum">
+                          {message.trigger_at_s !== null
+                            ? 'À ' + formatClock(message.trigger_at_s)
+                            : 'Km ' + (message.distance_m / 1000).toFixed(1).replace('.', ',')}
+                        </span>{' '}
+                        · <span className="tnum">{formatDuration(message.duration_ms)}</span>
                       </p>
                     </div>
                     {message.played_at ? (

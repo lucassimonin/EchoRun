@@ -11,7 +11,7 @@ export default function OfflinePage() {
         <div className="flex justify-center">
           <Wordmark />
         </div>
-        <h1 className="mt-8 text-[26px] font-semibold tracking-[-0.03em] text-charcoal">
+        <h1 className="mt-8 text-[26px] font-bold uppercase tracking-[-0.01em] text-charcoal">
           Pas de connexion
         </h1>
         <p className="mt-3 text-[14.5px] leading-relaxed text-charcoal-muted">

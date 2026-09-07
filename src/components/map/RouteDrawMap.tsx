@@ -261,12 +261,12 @@ export function RouteDrawMap({ onChange, center = [46.6, 2.4], className }: Rout
       <div className="relative">
         <div
           ref={containerRef}
-          className="echo-map h-[360px] w-full overflow-hidden rounded-card border border-charcoal/[0.07] sm:h-[440px]"
+          className="echo-map h-[360px] w-full overflow-hidden rounded-lg border-[3px] border-black sm:h-[440px]"
           role="application"
           aria-label="Carte de dessin du parcours"
         />
         {/* Compteur de distance, en surimpression */}
-        <div className="pointer-events-none absolute left-3 top-3 z-[500] rounded-full bg-paper/95 px-3.5 py-2 text-[13px] font-medium text-charcoal shadow-soft backdrop-blur">
+        <div className="pointer-events-none absolute left-3 top-3 z-[500] rounded-md border-2 border-black bg-white px-3.5 py-2 text-[12px] font-bold uppercase tracking-[0.02em] text-black shadow-[2px_2px_0_0_#000]">
           {waypoints.length === 0
             ? 'Touche la carte pour poser le départ'
             : formatDistance(distanceM) + (routing ? ' · calcul…' : '')}

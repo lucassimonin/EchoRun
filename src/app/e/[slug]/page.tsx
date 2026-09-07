@@ -45,12 +45,12 @@ export default async function ContributorPage({ params }: PageProps) {
 
   return (
     <div className="min-h-dvh bg-bone">
-      <header className="border-b border-charcoal/[0.06] bg-bone/85 backdrop-blur-xl">
+      <header className="border-b-[3px] border-black bg-yellow pt-[env(safe-area-inset-top)]">
         <div className="mx-auto flex h-14 max-w-2xl items-center justify-between px-5">
           <Link href="/" aria-label="EchoRun">
             <Wordmark />
           </Link>
-          <span className="text-[12px] text-charcoal-faint">Dépôt de message vocal</span>
+          <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-black/55">Dépôt de message vocal</span>
         </div>
       </header>
 

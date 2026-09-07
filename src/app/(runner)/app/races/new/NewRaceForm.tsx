@@ -13,7 +13,7 @@ import type { DrawnRoute } from '@/components/map/RouteDrawMap';
 // Leaflet touche `window` : jamais rendu côté serveur.
 const RouteDrawMap = dynamic(
   () => import('@/components/map/RouteDrawMap').then((m) => m.RouteDrawMap),
-  { ssr: false, loading: () => <div className="h-[360px] animate-pulse rounded-card bg-bone-100 sm:h-[440px]" /> },
+  { ssr: false, loading: () => <div className="h-[360px] animate-pulse rounded-lg border-[3px] border-black bg-off sm:h-[440px]" /> },
 );
 
 /** Méthode d'entrée du parcours, distincte du mode de course côté API. */
@@ -131,7 +131,7 @@ export function NewRaceForm() {
   return (
     <Surface>
       {/* --------------------------------------------------- choix du mode */}
-      <div className="grid grid-cols-3 gap-2 rounded-2xl bg-bone-100/70 p-1">
+      <div className="grid grid-cols-3 gap-2 rounded-lg border-[3px] border-black bg-off p-2">
         {(
           [
             { value: 'file', label: 'Fichier GPX', hint: 'J’ai le tracé' },
@@ -148,14 +148,14 @@ export function NewRaceForm() {
               setDebug(null);
             }}
             className={cx(
-              'rounded-xl px-3 py-2.5 text-left transition-colors',
+              'rounded-md border-2 border-black px-3 py-2.5 text-left transition-colors',
               inputMode === option.value
-                ? 'bg-paper shadow-soft'
-                : 'text-charcoal-muted hover:text-charcoal',
+                ? 'bg-yellow shadow-[2px_2px_0_0_#000]'
+                : 'bg-white text-black/60 hover:bg-neon hover:text-black',
             )}
           >
-            <span className="block text-[13px] font-medium text-charcoal">{option.label}</span>
-            <span className="mt-0.5 block text-[11px] text-charcoal-faint">{option.hint}</span>
+            <span className="block text-[13px] font-bold uppercase tracking-[0.02em] text-black">{option.label}</span>
+            <span className="mt-0.5 block font-mono text-[10px] uppercase tracking-[0.06em] text-black/55">{option.hint}</span>
           </button>
         ))}
       </div>
@@ -174,8 +174,8 @@ export function NewRaceForm() {
             pick(e.dataTransfer.files[0] ?? null);
           }}
           className={cx(
-            'mt-5 rounded-2xl border border-dashed p-8 text-center transition-colors',
-            dragging ? 'border-matcha-400 bg-matcha-50' : 'border-charcoal/15 bg-bone-100/50',
+            'mt-5 rounded-lg border-[3px] border-dashed border-black p-8 text-center transition-colors',
+            dragging ? 'bg-neon' : 'bg-off',
           )}
         >
           <input
@@ -187,14 +187,14 @@ export function NewRaceForm() {
           />
           {file ? (
             <>
-              <p className="text-[14px] font-medium text-charcoal">{file.name}</p>
-              <p className="mt-1 text-[12.5px] text-charcoal-faint">
+              <p className="text-[14px] font-bold text-charcoal">{file.name}</p>
+              <p className="mt-1 font-mono text-[12px] text-black/60">
                 {(file.size / 1024).toFixed(0)} ko
               </p>
               <button
                 type="button"
                 onClick={() => pick(null)}
-                className="mt-4 text-[13px] text-charcoal-faint underline underline-offset-2 hover:text-charcoal"
+                className="mt-4 text-[13px] font-bold uppercase tracking-[0.02em] text-black underline decoration-orange decoration-2 underline-offset-2 hover:decoration-black"
               >
                 Choisir un autre fichier
               </button>
@@ -240,10 +240,10 @@ export function NewRaceForm() {
                   type="button"
                   onClick={() => setDurationMin(preset.minutes)}
                   className={cx(
-                    'rounded-full border px-4 py-2 text-[13.5px] transition-colors',
+                    'rounded-md border-2 border-black px-4 py-2 text-[13px] font-bold uppercase tracking-[0.02em] transition-colors',
                     durationMin === preset.minutes
-                      ? 'border-matcha-500 bg-matcha-500 text-bone'
-                      : 'border-charcoal/10 bg-paper text-charcoal-muted hover:border-charcoal/20 hover:text-charcoal',
+                      ? 'bg-orange text-black shadow-[2px_2px_0_0_#000]'
+                      : 'bg-white text-black/70 hover:bg-neon hover:text-black',
                   )}
                 >
                   {preset.label}
@@ -272,7 +272,7 @@ export function NewRaceForm() {
           </div>
 
           {durationMin !== null && durationMin >= 5 ? (
-            <p className="mt-3 text-[13px] text-matcha-600">
+            <p className="mt-3 text-[13px] font-bold text-black">
               Course de {formatClock(durationMin * 60)}.
             </p>
           ) : null}
@@ -309,7 +309,7 @@ export function NewRaceForm() {
         <div className="mt-5 space-y-2">
           <p className="text-[13px] leading-relaxed text-clay">{error}</p>
           {debug ? (
-            <details className="rounded-xl bg-charcoal/[0.04] px-3 py-2">
+            <details className="rounded-md border-2 border-black/20 bg-black/[0.03] px-3 py-2">
               <summary className="cursor-pointer text-[11.5px] text-charcoal-faint">
                 Détail technique (visible en développement uniquement)
               </summary>

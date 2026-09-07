@@ -101,7 +101,7 @@ export function UnlockCard({
       </div>
 
       {justUnlocked ? (
-        <div className="mt-4 rounded-2xl bg-matcha-100 px-4 py-3 text-[13.5px] text-matcha-600">
+        <div className="mt-4 rounded-lg border-[3px] border-black bg-neon px-4 py-3 text-[13.5px] font-bold text-black">
           Paiement confirmé&nbsp;! Ta course accepte désormais jusqu’à {unlockedCap} messages.
         </div>
       ) : null}

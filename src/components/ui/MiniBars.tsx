@@ -37,10 +37,10 @@ export function MiniBars({ title, data, className }: MiniBarsProps) {
   const maxIndex = data.reduce((best, d, i) => (d.value > (data[best]?.value ?? 0) ? i : best), 0);
 
   return (
-    <figure className={cx('rounded-card border border-charcoal/[0.07] bg-paper p-6 shadow-soft', className)}>
+    <figure className={cx('rounded-lg border-[3px] border-black bg-paper p-6 shadow-[4px_4px_0_0_#000]', className)}>
       <figcaption className="flex items-baseline justify-between gap-4">
-        <span className="text-[13px] font-medium text-charcoal">{title}</span>
-        <span className="text-[11.5px] text-charcoal-faint">14 derniers jours</span>
+        <span className="text-[13px] font-bold uppercase tracking-[0.02em] text-charcoal">{title}</span>
+        <span className="font-mono text-[10px] uppercase tracking-[0.06em] text-black/50">14 derniers jours</span>
       </figcaption>
 
       <svg
@@ -55,8 +55,8 @@ export function MiniBars({ title, data, className }: MiniBarsProps) {
           y1={BASELINE + 0.5}
           x2={WIDTH}
           y2={BASELINE + 0.5}
-          stroke="#111812"
-          strokeOpacity="0.1"
+          stroke="#000000"
+          strokeOpacity="0.15"
           strokeWidth="1"
         />
 
@@ -74,7 +74,7 @@ export function MiniBars({ title, data, className }: MiniBarsProps) {
                 `L${x + barWidth - r} ${y} Q${x + barWidth} ${y} ${x + barWidth} ${y + r} ` +
                 `L${x + barWidth} ${BASELINE} Z`
               }
-              fill="#3E5A47"
+              fill="#FF5500"
               fillOpacity={datum.value === 0 ? 0.14 : index === maxIndex ? 1 : 0.55}
             >
               <title>
@@ -110,7 +110,7 @@ export function MiniBars({ title, data, className }: MiniBarsProps) {
         </tbody>
       </table>
 
-      <div className="mt-3 flex justify-between text-[10.5px] text-charcoal-faint">
+      <div className="mt-3 flex justify-between font-mono text-[10px] uppercase tracking-[0.06em] text-black/50">
         <span>{data[0]?.label ?? ''}</span>
         <span>{data[data.length - 1]?.label ?? ''}</span>
       </div>

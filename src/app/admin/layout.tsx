@@ -26,20 +26,20 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
   return (
     <div className="min-h-dvh bg-bone">
-      <header className="sticky top-0 z-40 border-b border-charcoal/[0.06] bg-bone/85 backdrop-blur-xl">
+      <header className="sticky top-0 z-40 border-b-[3px] border-black bg-yellow pt-[env(safe-area-inset-top)]">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5 sm:px-8">
           <div className="flex items-center gap-3">
             <Link href="/app" aria-label="EchoRun">
               <Wordmark compact />
             </Link>
-            <span className="text-[14px] font-medium tracking-[-0.015em] text-charcoal">
+            <span className="font-mono text-[12px] font-bold uppercase tracking-[0.08em] text-black">
               Back-office
             </span>
           </div>
           <div className="flex items-center gap-1">
             <Link
               href="/app"
-              className="rounded-full px-3.5 py-2 text-[13px] text-charcoal-muted transition-colors hover:bg-charcoal/[0.04] hover:text-charcoal"
+              className="rounded-lg border-2 border-black bg-white px-3.5 py-2 text-[12px] font-bold uppercase tracking-[0.04em] text-black transition-colors hover:bg-neon"
             >
               Mes courses
             </Link>

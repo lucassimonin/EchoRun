@@ -69,13 +69,13 @@ export function CookieBanner() {
     >
       <div
         className={cx(
-          'mx-auto w-full max-w-2xl rounded-sheet border border-charcoal/[0.09] bg-paper/97',
-          'p-6 shadow-lift backdrop-blur-xl animate-rise sm:p-7',
+          'mx-auto w-full max-w-2xl rounded-lg border-[3px] border-black bg-paper',
+          'p-6 shadow-[6px_6px_0_0_#000] animate-rise sm:p-7',
         )}
       >
         <h2
           id="cookie-banner-title"
-          className="text-[16.5px] font-semibold tracking-[-0.018em] text-charcoal"
+          className="text-[16.5px] font-bold uppercase tracking-[-0.01em] text-charcoal"
         >
           Un mot sur les cookies
         </h2>
@@ -86,7 +86,7 @@ export function CookieBanner() {
         >
           Ce site affiche des publicités, qui financent la gratuité du service pour les coureurs.
           Elles peuvent déposer des cookies pour être personnalisées.{' '}
-          <strong className="font-medium text-charcoal">
+          <strong className="font-bold text-charcoal">
             Si tu refuses, tu verras des publicités non personnalisées et aucun cookie
             publicitaire ne sera déposé.
           </strong>{' '}
@@ -187,12 +187,12 @@ function Purpose({
   return (
     <div className="flex items-start justify-between gap-5">
       <div className="min-w-0">
-        <p className="text-[13.5px] font-medium text-charcoal">{title}</p>
+        <p className="text-[13.5px] font-bold text-charcoal">{title}</p>
         <p className="mt-1 text-[12.5px] leading-relaxed text-charcoal-faint">{description}</p>
       </div>
 
       {locked ? (
-        <span className="mt-0.5 shrink-0 rounded-full bg-charcoal/[0.05] px-2.5 py-1 text-[11px] font-medium text-charcoal-faint">
+        <span className="mt-0.5 shrink-0 rounded-md border-2 border-black bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.04em] text-black">
           Toujours actifs
         </span>
       ) : (
@@ -204,14 +204,14 @@ function Purpose({
           aria-label={title}
           onClick={() => onChange?.(!checked)}
           className={cx(
-            'relative mt-0.5 h-6 w-11 shrink-0 rounded-full transition-colors duration-200',
-            checked ? 'bg-matcha-500' : 'bg-charcoal/15',
+            'relative mt-0.5 h-6 w-11 shrink-0 rounded-md border-2 border-black transition-colors duration-200',
+            checked ? 'bg-neon' : 'bg-white',
           )}
         >
           <span
             className={cx(
-              'absolute top-0.5 size-5 rounded-full bg-paper shadow-sm transition-transform duration-200',
-              checked ? 'translate-x-[22px]' : 'translate-x-0.5',
+              'absolute top-1/2 size-4 -translate-y-1/2 rounded-sm bg-black transition-transform duration-200',
+              checked ? 'translate-x-[24px]' : 'translate-x-[3px]',
             )}
           />
         </button>

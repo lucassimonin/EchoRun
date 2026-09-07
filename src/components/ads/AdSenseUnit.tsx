@@ -98,7 +98,7 @@ export function AdSenseUnit({
     return (
       <div
         className={cx(
-          'rounded-card border border-dashed border-charcoal/12 bg-bone-100/60',
+          'rounded-lg border-[3px] border-dashed border-black bg-off',
           'grid place-items-center text-[11px] uppercase tracking-[0.16em] text-charcoal-faint',
           className,
         )}
@@ -124,7 +124,7 @@ export function AdSenseUnit({
         <span className="h-px flex-1 bg-charcoal/[0.07]" />
       </div>
       <div
-        className="overflow-hidden rounded-card bg-bone-100/40"
+        className="overflow-hidden rounded-lg border-[3px] border-black bg-off"
         style={{ minHeight: status === 'filled' ? undefined : minHeight }}
       >
         <ins

@@ -16,7 +16,7 @@ import type { ContributorIdentity, ContributorPostState, PublicRace } from '@/ty
 // Leaflet touche `window` : jamais rendu côté serveur.
 const RaceMap = dynamic(() => import('@/components/map/RaceMap').then((m) => m.RaceMap), {
   ssr: false,
-  loading: () => <div className="h-full w-full animate-pulse bg-bone-100" />,
+  loading: () => <div className="h-full w-full animate-pulse bg-off" />,
 });
 
 const TRIGGER_RADIUS_M = 70;
@@ -236,7 +236,7 @@ export function ContributorFlow({ race, closed, adClientId, adSlotId }: Contribu
       ) : (
         <>
           {notice ? (
-            <div className="mt-6 rounded-2xl bg-matcha-100 px-4 py-3 text-[13.5px] text-matcha-600">
+            <div className="mt-6 rounded-lg border-[3px] border-black bg-neon px-4 py-3 text-[13.5px] font-bold text-black">
               {notice}
             </div>
           ) : null}

@@ -41,12 +41,11 @@ export function ShareCard({ shareUrl, raceName }: { shareUrl: string; raceName: 
 
   return (
     <Surface>
-      <h2 className="text-[16px] font-semibold tracking-[-0.018em] text-charcoal">
+      <h2 className="text-[16px] font-bold uppercase tracking-[-0.01em] text-charcoal">
         Le lien à envoyer à tes proches
       </h2>
       <p className="mt-2 text-[13.5px] leading-relaxed text-charcoal-muted">
-        Aucun compte, aucune application. Ils ouvrent, ils parlent. Chacun a droit à deux messages
-        offerts.
+        Aucun compte, aucune application. Ils ouvrent, ils parlent — 5 messages max par personne.
       </p>
 
       <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
@@ -54,7 +53,7 @@ export function ShareCard({ shareUrl, raceName }: { shareUrl: string; raceName: 
           readOnly
           value={shareUrl}
           onFocus={(e) => e.currentTarget.select()}
-          className="h-12 min-w-0 flex-1 rounded-2xl border border-charcoal/10 bg-bone-100/60 px-4 font-mono text-[13px] text-charcoal-muted"
+          className="h-12 min-w-0 flex-1 rounded-lg border-[3px] border-black bg-off px-4 font-mono text-[13px] text-black"
           aria-label="Lien de partage"
         />
         <Button onClick={() => void copy()} size="md" variant={copied ? 'secondary' : 'primary'}>

@@ -94,7 +94,7 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
 
   if (!supported) {
     return (
-      <p className="rounded-2xl bg-clay/8 p-4 text-[13px] leading-relaxed text-clay">
+      <p className="rounded-lg border-[3px] border-black bg-danger/10 p-4 text-[13px] font-medium leading-relaxed text-danger">
         Ce navigateur ne permet pas d’enregistrer un vocal. Ouvre ce lien dans Safari (iPhone) ou
         Chrome (Android) plutôt que dans le navigateur intégré de ta messagerie.
       </p>
@@ -112,7 +112,7 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
             {isRecording && (
               <span
                 aria-hidden
-                className="absolute rounded-full bg-matcha-500/25 transition-transform duration-100"
+                className="absolute rounded-full bg-orange/25 transition-transform duration-100"
                 style={{
                   width: 96,
                   height: 96,
@@ -126,13 +126,13 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
               onClick={() => (isRecording ? void stop() : void start())}
               aria-label={isRecording ? 'Arrêter l’enregistrement' : 'Démarrer l’enregistrement'}
               className={cx(
-                'relative grid size-24 place-items-center rounded-full transition-[transform,background-color] duration-200',
+                'relative grid size-24 place-items-center rounded-full border-[3px] border-black transition-[transform,background-color] duration-200',
                 'active:scale-95 disabled:opacity-40 disabled:pointer-events-none',
-                isRecording ? 'bg-charcoal text-bone' : 'bg-matcha-500 text-bone shadow-lift',
+                isRecording ? 'bg-danger text-white' : 'bg-orange text-black shadow-[4px_4px_0_0_#000]',
               )}
             >
               {isRecording ? (
-                <span className="size-7 rounded-md bg-bone" />
+                <span className="size-7 rounded-sm bg-white" />
               ) : (
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
@@ -155,19 +155,19 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
               <>
                 <p
                   className={cx(
-                    'font-mono text-[15px] tabular-nums',
-                    nearLimit ? 'text-clay' : 'text-charcoal',
+                    'tnum text-[15px]',
+                    nearLimit ? 'text-danger' : 'text-charcoal',
                   )}
                 >
                   {formatDuration(elapsed)}{' '}
                   <span className="text-charcoal-faint">/ {formatDuration(MAX_RECORDING_MS)}</span>
                 </p>
-                <p className="mt-1 text-[12.5px] text-charcoal-faint">
+                <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.04em] text-black/55">
                   {nearLimit ? 'Bientôt la fin, conclus !' : 'Appuie pour arrêter'}
                 </p>
               </>
             ) : (
-              <p className="text-[13px] text-charcoal-faint">
+              <p className="font-mono text-[12px] uppercase tracking-[0.04em] text-black/55">
                 Appuie et parle · 30 secondes maximum
               </p>
             )}
@@ -175,7 +175,7 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
         </div>
       ) : (
         <div className="space-y-4">
-          <div className="flex items-center gap-3 rounded-2xl border border-charcoal/[0.07] bg-bone-100/60 p-3">
+          <div className="flex items-center gap-3 rounded-lg border-[3px] border-black bg-off p-3">
             {previewUrl ? (
               <audio
                 src={previewUrl}
@@ -187,7 +187,7 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
             ) : null}
           </div>
           <div className="flex items-center justify-between gap-3">
-            <p className="text-[12.5px] text-charcoal-faint">
+            <p className="font-mono text-[11px] uppercase tracking-[0.04em] text-black/55">
               {formatDuration(recording.durationMs)} enregistré
             </p>
             <Button variant="ghost" size="sm" onClick={() => onRecorded(null)}>
@@ -197,7 +197,7 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
         </div>
       )}
 
-      {error ? <p className="text-[13px] text-clay">{error}</p> : null}
+      {error ? <p className="text-[13px] font-bold text-danger">{error}</p> : null}
     </div>
   );
 }

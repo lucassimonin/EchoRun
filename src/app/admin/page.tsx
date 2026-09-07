@@ -55,10 +55,10 @@ export default async function AdminPage() {
   return (
     <main className="mx-auto max-w-5xl px-5 py-12 sm:px-8">
       <Eyebrow>Administration</Eyebrow>
-      <h1 className="mt-3 text-title text-charcoal">Vue d’ensemble</h1>
+      <h1 className="mt-3 text-title uppercase text-charcoal">Vue d’ensemble</h1>
 
       {error ? (
-        <p className="mt-6 rounded-2xl bg-clay/8 px-4 py-3 text-[13px] text-clay">
+        <p className="mt-6 rounded-lg border-[3px] border-black bg-danger/10 px-4 py-3 text-[13px] font-bold text-danger">
           Les statistiques n’ont pas pu être chargées. Vérifie que la migration
           <code className="mx-1">admin_stats</code> est appliquée.
         </p>
@@ -110,7 +110,7 @@ export default async function AdminPage() {
 
       {/* ---------------------------------------------------- configuration */}
       <section className="mt-12">
-        <h2 className="text-[18px] font-semibold tracking-[-0.022em] text-charcoal">
+        <h2 className="text-[18px] font-bold uppercase tracking-[-0.01em] text-charcoal">
           Régie publicitaire et tarifs
         </h2>
         <p className="mt-2 max-w-2xl text-[13.5px] leading-relaxed text-charcoal-muted">
@@ -138,12 +138,12 @@ function Metric({
   emphasis?: boolean;
 }) {
   return (
-    <Surface className={emphasis ? 'bg-matcha-50' : undefined}>
-      <p className="text-[11.5px] text-charcoal-faint">{label}</p>
-      <p className="mt-2.5 font-mono text-[1.75rem] leading-none tabular-nums tracking-[-0.025em] text-charcoal">
+    <Surface className={emphasis ? 'bg-neon' : undefined}>
+      <p className="font-mono text-[10.5px] uppercase tracking-[0.06em] text-black/55">{label}</p>
+      <p className="tnum mt-2.5 text-[1.85rem] leading-none tracking-[-0.02em] text-charcoal">
         {value}
       </p>
-      {detail ? <p className="mt-2 text-[11.5px] text-charcoal-faint">{detail}</p> : null}
+      {detail ? <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.02em] text-black/55">{detail}</p> : null}
     </Surface>
   );
 }

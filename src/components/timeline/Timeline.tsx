@@ -62,25 +62,25 @@ export function Timeline({ durationS, selectedS, onSelect, taken = [] }: Timelin
     <div className="select-none">
       <div className="mb-4 flex items-baseline justify-between">
         <div>
-          <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-charcoal-faint">
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-orange">
             Ton message se déclenche à
           </p>
-          <p className="mt-1 font-mono text-[1.75rem] leading-none tracking-[-0.02em] text-charcoal">
+          <p className="tnum mt-1 text-[1.85rem] leading-none tracking-[-0.02em] text-charcoal">
             {selectedS === null ? '•' : formatClock(selectedS)}
           </p>
         </div>
         {selectedS !== null ? (
-          <p className="text-[12px] text-charcoal-faint">
+          <p className="font-mono text-[11px] uppercase tracking-[0.04em] text-black/55">
             {Math.round((selectedS / durationS) * 100)} % de la course
           </p>
         ) : null}
       </div>
 
       <div ref={trackRef} className="relative py-4">
-        <div className="relative h-1.5 rounded-full bg-charcoal/[0.09]">
+        <div className="relative h-3 rounded-md border-2 border-black bg-white">
           {selectedS !== null ? (
             <div
-              className="absolute inset-y-0 left-0 rounded-full bg-matcha-400"
+              className="absolute inset-y-0 left-0 bg-orange"
               style={{ width: pct(selectedS) + '%' }}
             />
           ) : null}
@@ -88,7 +88,7 @@ export function Timeline({ durationS, selectedS, onSelect, taken = [] }: Timelin
           {taken.map((t, i) => (
             <span
               key={i}
-              className="absolute top-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-paper bg-matcha-300"
+              className="absolute top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-black bg-neon"
               style={{ left: pct(t.trigger_at_s) + '%' }}
               title={t.author_name + ' · ' + formatClock(t.trigger_at_s)}
             />
@@ -97,17 +97,17 @@ export function Timeline({ durationS, selectedS, onSelect, taken = [] }: Timelin
           {selectedS !== null ? (
             <span
               className={cx(
-                'absolute top-1/2 grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-paper bg-charcoal shadow-lift transition-[width,height]',
+                'absolute top-1/2 grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-black bg-black shadow-[2px_2px_0_0_#000] transition-[width,height]',
                 dragging ? 'size-6' : 'size-5',
               )}
               style={{ left: pct(selectedS) + '%' }}
             >
-              <span className="size-1.5 rounded-full bg-bone" />
+              <span className="size-1.5 rounded-full bg-yellow" />
             </span>
           ) : null}
         </div>
 
-        <div className="mt-3 flex justify-between text-[10.5px] text-charcoal-faint">
+        <div className="mt-3 flex justify-between font-mono text-[10px] uppercase tracking-[0.04em] text-black/50">
           {marks.map((atS, i) => (
             <span key={i} className="shrink-0 whitespace-nowrap">
               {formatClock(atS)}
@@ -134,7 +134,7 @@ export function Timeline({ durationS, selectedS, onSelect, taken = [] }: Timelin
       </div>
 
       {selectedS === null ? (
-        <p className="mt-1 text-center text-[12.5px] text-charcoal-faint">
+        <p className="mt-1 text-center font-mono text-[11px] uppercase tracking-[0.04em] text-black/55">
           Fais glisser pour choisir un moment
         </p>
       ) : (
@@ -148,7 +148,7 @@ export function Timeline({ durationS, selectedS, onSelect, taken = [] }: Timelin
               key={preset.label}
               type="button"
               onClick={() => commit(preset.atS)}
-              className="rounded-full border border-charcoal/10 bg-paper px-3 py-1.5 text-[12px] text-charcoal-muted transition-colors hover:border-charcoal/20 hover:text-charcoal"
+              className="rounded-md border-2 border-black bg-white px-3 py-1.5 text-[12px] font-bold uppercase tracking-[0.02em] text-black transition-colors hover:bg-neon"
             >
               {preset.label}
             </button>

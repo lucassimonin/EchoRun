@@ -205,7 +205,7 @@ export function AdSettingsForm({ settings }: { settings: AppSettings }) {
       {message ? (
         <p
           className={
-            'mt-6 text-[13px] ' + (message.tone === 'ok' ? 'text-matcha-500' : 'text-clay')
+            'mt-6 text-[13px] font-bold ' + (message.tone === 'ok' ? 'text-black' : 'text-danger')
           }
         >
           {message.text}

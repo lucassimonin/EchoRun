@@ -18,7 +18,7 @@ export function SignOutButton() {
         router.replace('/');
         router.refresh();
       }}
-      className="rounded-full px-3.5 py-2 text-[13px] text-charcoal-muted transition-colors hover:bg-charcoal/[0.04] hover:text-charcoal disabled:opacity-50"
+      className="rounded-lg border-2 border-black bg-white px-3.5 py-2 text-[12px] font-bold uppercase tracking-[0.04em] text-black transition-colors hover:bg-danger hover:text-white disabled:opacity-50"
     >
       {busy ? '…' : 'Se déconnecter'}
     </button>

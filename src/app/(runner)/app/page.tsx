@@ -30,15 +30,15 @@ export default async function RacesPage() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <Eyebrow>Mon espace</Eyebrow>
-          <h1 className="mt-3 text-title text-charcoal">Mes courses</h1>
+          <h1 className="mt-3 text-title uppercase text-charcoal">Mes courses</h1>
         </div>
         <ButtonLink href="/app/races/new">Nouvelle course</ButtonLink>
       </div>
 
       {list.length === 0 ? (
         <Surface className="mt-10 py-16 text-center">
-          <p className="text-[16px] font-medium text-charcoal">Aucune course pour l’instant</p>
-          <p className="mx-auto mt-2 max-w-sm text-[14px] leading-relaxed text-charcoal-muted">
+          <p className="text-[17px] font-bold uppercase text-charcoal">Aucune course pour l’instant</p>
+          <p className="mx-auto mt-3 max-w-sm text-[14px] leading-relaxed text-charcoal-muted">
             Importe le fichier GPX de ta prochaine course, puis envoie le lien à tes proches. Trois
             minutes, une fois.
           </p>
@@ -47,7 +47,7 @@ export default async function RacesPage() {
           </ButtonLink>
         </Surface>
       ) : (
-        <ul className="mt-10 grid gap-3">
+        <ul className="mt-10 grid gap-4">
           {list.map((race) => {
             const status = STATUS_LABEL[race.status as keyof typeof STATUS_LABEL];
             const count =
@@ -57,33 +57,36 @@ export default async function RacesPage() {
               <li key={race.id}>
                 <Link
                   href={'/app/races/' + race.id}
-                  className="group flex items-center justify-between gap-6 rounded-card border border-charcoal/[0.07] bg-paper p-6 shadow-soft transition-[border-color,transform] hover:border-charcoal/15"
+                  className="group flex items-center justify-between gap-6 rounded-lg border-[3px] border-black bg-paper p-5 shadow-[4px_4px_0_0_#000] transition-transform duration-100 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[6px_6px_0_0_#000]"
                 >
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-center gap-2.5">
-                      <h2 className="truncate text-[16.5px] font-semibold tracking-[-0.018em] text-charcoal">
+                      <h2 className="truncate text-[16.5px] font-bold uppercase tracking-[-0.01em] text-charcoal">
                         {race.name}
                       </h2>
                       <Badge tone={status.tone}>{status.label}</Badge>
                     </div>
-                    <p className="mt-1.5 text-[13px] text-charcoal-faint">
-                      {formatRaceDate(race.race_date)} ·{' '}
-                      {race.mode === 'time'
-                        ? formatClock(race.duration_s ?? 0)
-                        : formatDistance(race.distance_m)}{' '}
-                      ·{' '}
-                      {count} message{count === 1 ? '' : 's'}
+                    <p className="mt-2 font-mono text-[12px] uppercase tracking-[0.02em] text-black/70">
+                      {formatRaceDate(race.race_date)}
+                      {' · '}
+                      <span className="tnum">
+                        {race.mode === 'time'
+                          ? formatClock(race.duration_s ?? 0)
+                          : formatDistance(race.distance_m)}
+                      </span>
+                      {' · '}
+                      <span className="tnum">{count}</span> message{count === 1 ? '' : 's'}
                     </p>
                   </div>
                   <span
                     aria-hidden
-                    className="shrink-0 text-charcoal-faint transition-transform group-hover:translate-x-0.5"
+                    className="grid size-9 shrink-0 place-items-center rounded-md border-[3px] border-black bg-yellow text-black transition-transform group-hover:translate-x-0.5"
                   >
                     <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
                       <path
                         d="M7.5 4.5 13 10l-5.5 5.5"
                         stroke="currentColor"
-                        strokeWidth="1.6"
+                        strokeWidth="2.4"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
