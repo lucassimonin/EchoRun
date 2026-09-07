@@ -70,7 +70,7 @@ export function UnlockCard({
   return (
     <Surface>
       <div className="flex items-center justify-between gap-4">
-        <h2 className="text-[16px] font-semibold tracking-[-0.018em] text-charcoal">
+        <h2 className="text-[16px] font-bold uppercase tracking-[-0.01em] text-charcoal">
           Messages de la course
         </h2>
         {unlocked ? (
@@ -83,18 +83,18 @@ export function UnlockCard({
       </div>
 
       <p className="mt-3 text-[14px] text-charcoal">
-        <strong className="font-semibold">
+        <strong className="font-bold">
           {count} / {cap}
         </strong>{' '}
         messages · tes proches ne paient jamais rien.
       </p>
 
       {/* Barre de progression */}
-      <div className="mt-3 h-2 overflow-hidden rounded-full bg-charcoal/[0.07]">
+      <div className="mt-3 h-3 overflow-hidden rounded-md border-2 border-black bg-white">
         <div
           className={
-            'h-full rounded-full transition-all duration-500 ' +
-            (capReached ? 'bg-clay' : 'bg-matcha-500')
+            'h-full transition-all duration-500 ' +
+            (capReached ? 'bg-danger' : 'bg-orange')
           }
           style={{ width: pct + '%' }}
         />
@@ -125,7 +125,13 @@ export function UnlockCard({
                 unlockedCap +
                 ' au total.'}
           </p>
-          <Button className="mt-4" size="md" disabled={busy} onClick={() => void unlock()}>
+          <Button
+            fullWidth
+            size="md"
+            className="mt-4 min-h-12 !h-auto py-3 !whitespace-normal text-center leading-tight"
+            disabled={busy}
+            onClick={() => void unlock()}
+          >
             {busy
               ? 'Redirection…'
               : 'Débloquer jusqu’à ' + unlockedCap + ' messages · ' + priceLabel}
