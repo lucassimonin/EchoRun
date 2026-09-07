@@ -9,7 +9,7 @@
  * Moins de magie de build = comportement previsible le jour J.
  */
 
-const VERSION = 'echorun-v1';
+const VERSION = 'echorun-v2';
 const SHELL_CACHE = `${VERSION}-shell`;
 const ASSET_CACHE = `${VERSION}-assets`;
 
@@ -54,6 +54,21 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
 
   if (url.pathname.startsWith('/api/')) return;
+
+  // Scripts tiers de pub / analytics / tag : on ne les intercepte pas et on
+  // ne les met surtout pas en cache. Ils doivent aller droit au reseau, sinon
+  // un blocage (adblock) ou une reponse opaque se transforme en erreur confuse.
+  const THIRD_PARTY_BYPASS = [
+    'googlesyndication.com',
+    'googletagmanager.com',
+    'google-analytics.com',
+    'googleadservices.com',
+    'doubleclick.net',
+    'adtrafficquality.google',
+  ];
+  if (THIRD_PARTY_BYPASS.some((h) => url.hostname === h || url.hostname.endsWith('.' + h))) {
+    return;
+  }
 
   if (request.mode === 'navigate') {
     event.respondWith(
