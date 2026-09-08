@@ -294,6 +294,35 @@
   outline: none;
 }
 
+/* Sélecteur de fond Plan / Satellite */
+.echo-map .leaflet-control-layers {
+  border: 3px solid var(--color-ink) !important;
+  box-shadow: var(--shadow-hard) !important;
+  border-radius: 8px !important;
+  background: var(--color-off) !important;
+  overflow: hidden;
+}
+.echo-map .leaflet-control-layers-expanded {
+  padding: 8px 12px !important;
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-ink) !important;
+}
+.echo-map .leaflet-control-layers label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 2px 0;
+  cursor: pointer;
+}
+.echo-map .leaflet-control-layers-separator {
+  border-top: 2px solid var(--color-ink);
+  margin: 6px 0;
+}
+
 /* Marqueurs : pastilles à bord noir franc. */
 .echo-pin {
   display: grid;

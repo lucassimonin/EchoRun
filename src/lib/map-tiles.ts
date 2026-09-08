@@ -38,3 +38,17 @@ export function getTileConfig(): TileConfig {
   const maxZoom = Number(process.env.NEXT_PUBLIC_MAP_MAX_ZOOM) || 19;
   return { url, attribution, subdomains, maxZoom };
 }
+
+/** Fond satellite (imagerie aérienne) : Esri World Imagery, gratuit et sans clé.
+ *  Utile pour dessiner un parcours en repérant les sentiers à vue. */
+const DEFAULT_SAT_TILE_URL =
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+const DEFAULT_SAT_ATTRIBUTION = 'Esri, Maxar, Earthstar Geographics, © OpenStreetMap';
+
+export function getSatelliteTileConfig(): TileConfig {
+  const url = process.env.NEXT_PUBLIC_MAP_SAT_TILE_URL?.trim() || DEFAULT_SAT_TILE_URL;
+  const attribution = process.env.NEXT_PUBLIC_MAP_SAT_ATTRIBUTION?.trim() || DEFAULT_SAT_ATTRIBUTION;
+  const subdomains = process.env.NEXT_PUBLIC_MAP_SAT_SUBDOMAINS?.trim() || undefined;
+  const maxZoom = Number(process.env.NEXT_PUBLIC_MAP_SAT_MAX_ZOOM) || 19;
+  return { url, attribution, subdomains, maxZoom };
+}

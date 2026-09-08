@@ -3,7 +3,7 @@
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { getTileConfig } from '@/lib/map-tiles';
+import { getSatelliteTileConfig, getTileConfig } from '@/lib/map-tiles';
 import { haversine } from '@/lib/geo/geometry';
 import { cx, formatDistance } from '@/lib/utils';
 
@@ -92,12 +92,28 @@ export function RouteDrawMap({ onChange, center = [46.6, 2.4], className }: Rout
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 
     const tiles = getTileConfig();
-    L.tileLayer(tiles.url, {
+    const planLayer = L.tileLayer(tiles.url, {
       subdomains: tiles.subdomains ?? 'abc',
       maxZoom: tiles.maxZoom,
       detectRetina: true,
       attribution: tiles.attribution,
     }).addTo(map);
+
+    // Couche satellite en option : bascule Plan / Satellite.
+    const sat = getSatelliteTileConfig();
+    const satelliteLayer = L.tileLayer(sat.url, {
+      subdomains: sat.subdomains ?? 'abc',
+      maxZoom: sat.maxZoom,
+      detectRetina: true,
+      attribution: sat.attribution,
+    });
+    L.control
+      .layers(
+        { Plan: planLayer, Satellite: satelliteLayer },
+        {},
+        { position: 'topright', collapsed: false },
+      )
+      .addTo(map);
 
     layerRef.current = L.layerGroup().addTo(map);
 
