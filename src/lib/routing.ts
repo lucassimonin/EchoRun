@@ -1,30 +1,38 @@
 /**
  * ============================================================================
- * Routage « snap-to-roads » • calcul d'un chemin qui suit les rues
+ * Routage « snap-to-roads » • calcul d'un chemin qui suit les voies réelles
  * ============================================================================
  *
  * Quand le coureur dessine son parcours, chaque segment entre deux clics est
- * calé sur le réseau routier réel par un service de routage compatible OSRM.
+ * calé sur le réseau réel par un service de routage. Deux fournisseurs sont
+ * supportés, choisis par variables d'environnement :
  *
- * Pourquoi OSRM par défaut : le serveur de démonstration public
- * (router.project-osrm.org) est libre et sans clé • parfait pour démarrer et
- * pour le dev. Il n'a AUCUNE garantie de disponibilité et interdit l'usage en
- * production : d'où la configuration par variables d'environnement, pour
- * pointer vers une instance auto-hébergée ou un fournisseur avec clé le jour du
- * lancement, sans toucher au code.
+ *   ROUTING_PROVIDER   'ors' | 'osrm'
+ *                      • Par défaut : 'ors' dès qu'une clé est fournie, sinon
+ *                        'osrm' (repli sans clé).
+ *   ROUTING_API_KEY    clé du fournisseur (obligatoire pour 'ors').
+ *   ROUTING_PROFILE    profil de déplacement.
+ *                      • ORS  : 'foot-hiking' (défaut) — suit sentiers, chemins
+ *                        forestiers et petites voies. 'foot-walking' pour rester
+ *                        sur trottoirs/voies aménagées.
+ *                      • OSRM : 'foot' (défaut).
+ *   ROUTING_BASE_URL   base du service (défaut selon le fournisseur).
  *
- *   ROUTING_BASE_URL   base du service OSRM (defaut : demo public)
- *   ROUTING_PROFILE    profil de deplacement (defaut : foot)
+ * Pourquoi OpenRouteService pour le sentier : son profil `foot-hiking` route
+ * sur le réseau piéton d'OpenStreetMap (footway, path, track…), là où le serveur
+ * OSRM public de démo ne connaît que le réseau routier « voiture ».
  *
- * Ce module est SERVEUR uniquement (cf. /api/route) : le fournisseur et une
- * eventuelle cle ne fuient jamais vers le navigateur.
+ * Ce module est SERVEUR uniquement (cf. /api/route) : le fournisseur et la clé
+ * ne fuient jamais vers le navigateur.
  */
 
-const DEFAULT_BASE_URL = 'https://router.project-osrm.org';
-const DEFAULT_PROFILE = 'foot';
+const OSRM_DEFAULT_BASE_URL = 'https://router.project-osrm.org';
+const OSRM_DEFAULT_PROFILE = 'foot';
+const ORS_DEFAULT_BASE_URL = 'https://api.openrouteservice.org';
+const ORS_DEFAULT_PROFILE = 'foot-hiking';
 
 export interface RoutedSegment {
-  /** Chemin calé sur les routes : [[lat, lng], ...]. */
+  /** Chemin calé sur les voies : [[lat, lng], ...]. */
   points: [number, number][];
   /** Longueur du segment en mètres, telle que calculée par le routeur. */
   distanceM: number;
@@ -53,12 +61,15 @@ function isValidLatLng(p: unknown): p is [number, number] {
   );
 }
 
+/** Fournisseur retenu : explicite, sinon ORS si une clé est fournie, sinon OSRM. */
+function resolveProvider(): 'ors' | 'osrm' {
+  const explicit = process.env.ROUTING_PROVIDER?.toLowerCase();
+  if (explicit === 'ors' || explicit === 'osrm') return explicit;
+  return process.env.ROUTING_API_KEY ? 'ors' : 'osrm';
+}
+
 /**
- * Calcule le chemin routé entre deux points.
- *
- * OSRM attend les coordonnées en `lng,lat` et renvoie une géométrie GeoJSON
- * en `[lng, lat]` : on inverse dans les deux sens pour rester en `[lat, lng]`
- * partout ailleurs dans l'app.
+ * Calcule le chemin routé entre deux points, en `[lat, lng]` partout.
  */
 export async function routeSegment(
   from: [number, number],
@@ -67,9 +78,83 @@ export async function routeSegment(
   if (!isValidLatLng(from) || !isValidLatLng(to)) {
     throw new RoutingError('Coordonnées invalides.', 400);
   }
+  return resolveProvider() === 'ors' ? routeWithOrs(from, to) : routeWithOsrm(from, to);
+}
 
-  const base = (process.env.ROUTING_BASE_URL || DEFAULT_BASE_URL).replace(/\/$/, '');
-  const profile = process.env.ROUTING_PROFILE || DEFAULT_PROFILE;
+/**
+ * OpenRouteService — profil piéton/rando qui suit les sentiers OSM.
+ * L'API attend `[lng, lat]` et renvoie une géométrie GeoJSON en `[lng, lat]`.
+ */
+async function routeWithOrs(
+  from: [number, number],
+  to: [number, number],
+): Promise<RoutedSegment> {
+  const key = process.env.ROUTING_API_KEY;
+  if (!key) {
+    throw new RoutingError('Clé de routage manquante (ROUTING_API_KEY).', 500);
+  }
+  const base = (process.env.ROUTING_BASE_URL || ORS_DEFAULT_BASE_URL).replace(/\/$/, '');
+  const profile = process.env.ROUTING_PROFILE || ORS_DEFAULT_PROFILE;
+  const url = `${base}/v2/directions/${profile}/geojson`;
+
+  let response: Response;
+  try {
+    response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        accept: 'application/json',
+        authorization: key,
+      },
+      body: JSON.stringify({ coordinates: [[from[1], from[0]], [to[1], to[0]]] }),
+      signal: AbortSignal.timeout(8000),
+    });
+  } catch {
+    throw new RoutingError('Service de routage injoignable.', 502);
+  }
+
+  if (response.status === 429) {
+    throw new RoutingError('Quota de routage dépassé, réessaie dans un instant.', 429);
+  }
+  if (!response.ok) {
+    // 404 = aucun itinéraire piéton entre ces deux points : le client
+    // retombera sur un segment droit.
+    if (response.status === 404) {
+      throw new RoutingError('Aucun itinéraire entre ces deux points.', 422);
+    }
+    throw new RoutingError('Le service de routage a refusé la requête.', 502);
+  }
+
+  const data = (await response.json()) as {
+    features?: {
+      geometry?: { coordinates?: [number, number][] };
+      properties?: { summary?: { distance?: number } };
+    }[];
+  };
+
+  const feature = data.features?.[0];
+  const coordinates = feature?.geometry?.coordinates;
+  if (!coordinates || coordinates.length < 2) {
+    throw new RoutingError('Aucun itinéraire entre ces deux points.', 422);
+  }
+
+  return {
+    points: coordinates.map(([lng, lat]) => [lat, lng] as [number, number]),
+    distanceM: Math.round(feature?.properties?.summary?.distance ?? 0),
+  };
+}
+
+/**
+ * OSRM (repli sans clé). Le serveur public de démo ne route que sur le réseau
+ * « voiture » : conservé pour le dev et le repli, pas pour le sentier.
+ * OSRM attend `lng,lat` et renvoie une géométrie GeoJSON `[lng, lat]`.
+ */
+async function routeWithOsrm(
+  from: [number, number],
+  to: [number, number],
+): Promise<RoutedSegment> {
+  const base = (process.env.ROUTING_BASE_URL || OSRM_DEFAULT_BASE_URL).replace(/\/$/, '');
+  const profile = process.env.ROUTING_PROFILE || OSRM_DEFAULT_PROFILE;
 
   const coords = `${from[1]},${from[0]};${to[1]},${to[0]}`;
   const url = `${base}/route/v1/${profile}/${coords}?overview=full&geometries=geojson`;
@@ -78,7 +163,6 @@ export async function routeSegment(
   try {
     response = await fetch(url, {
       headers: { accept: 'application/json' },
-      // Un routage lent ne doit pas bloquer l'UI indéfiniment.
       signal: AbortSignal.timeout(8000),
     });
   } catch {
@@ -96,10 +180,7 @@ export async function routeSegment(
 
   const route = data.routes?.[0];
   const coordinates = route?.geometry?.coordinates;
-
   if (data.code !== 'Ok' || !coordinates || coordinates.length < 2) {
-    // Pas de route trouvée (point en pleine mer, îlot isolé…) : le client
-    // pourra retomber sur un segment droit.
     throw new RoutingError('Aucun itinéraire entre ces deux points.', 422);
   }
 

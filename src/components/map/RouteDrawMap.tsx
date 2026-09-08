@@ -277,14 +277,14 @@ export function RouteDrawMap({ onChange, center = [46.6, 2.4], className }: Rout
         <p className="text-[12.5px] text-charcoal-faint">
           {waypoints.length < 2
             ? 'Ajoute au moins deux points pour tracer un parcours.'
-            : waypoints.length + ' points · le chemin suit les routes'}
+            : waypoints.length + ' points · calé sur les chemins et sentiers'}
         </p>
         <div className="flex gap-1.5">
           <button
             type="button"
             onClick={undo}
             disabled={waypoints.length === 0}
-            className="rounded-full border border-charcoal/10 bg-paper px-3.5 py-1.5 text-[12.5px] text-charcoal-muted transition-colors hover:border-charcoal/20 hover:text-charcoal disabled:opacity-40"
+            className="rounded-md border-2 border-black bg-white px-3.5 py-1.5 text-[12px] font-bold uppercase tracking-[0.02em] text-black transition-colors hover:bg-neon disabled:opacity-40"
           >
             Annuler
           </button>
@@ -292,14 +292,14 @@ export function RouteDrawMap({ onChange, center = [46.6, 2.4], className }: Rout
             type="button"
             onClick={clear}
             disabled={waypoints.length === 0}
-            className="rounded-full border border-charcoal/10 bg-paper px-3.5 py-1.5 text-[12.5px] text-charcoal-muted transition-colors hover:border-charcoal/20 hover:text-charcoal disabled:opacity-40"
+            className="rounded-md border-2 border-black bg-white px-3.5 py-1.5 text-[12px] font-bold uppercase tracking-[0.02em] text-black transition-colors hover:bg-neon disabled:opacity-40"
           >
             Effacer
           </button>
         </div>
       </div>
 
-      {notice ? <p className="text-[12.5px] text-clay">{notice}</p> : null}
+      {notice ? <p className="text-[12.5px] font-bold text-danger">{notice}</p> : null}
     </div>
   );
 }

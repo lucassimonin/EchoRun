@@ -218,8 +218,8 @@ export function NewRaceForm() {
       ) : inputMode === 'draw' ? (
         <div className="mt-5">
           <p className="mb-3 text-[13px] leading-relaxed text-charcoal-muted">
-            Touche la carte pour poser le départ, puis chaque point de passage. Le chemin suit
-            automatiquement les routes.
+            Touche la carte pour poser le départ, puis chaque point de passage. Le chemin
+            suit automatiquement les chemins et sentiers.
           </p>
           <RouteDrawMap
             onChange={(route) => {
