@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import { AdSenseScript } from '@/components/ads/AdSenseScript';
 import { GtmScript, GtmNoScript } from '@/components/analytics/GoogleTagManager';
 import { ConsentProvider } from '@/components/consent/ConsentProvider';
 import { ServiceWorkerRegistrar } from '@/components/ServiceWorkerRegistrar';
@@ -104,6 +103,19 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {adsenseAccount ? (
           <meta name="google-adsense-account" content={adsenseAccount} />
         ) : null}
+        {/* Loader AdSense en balise <script> simple (pas via next/script) : evite
+            le warning « data-nscript » et respecte la pose recommandee en <head>.
+            Le consentement est gere par la CMP Google, livree par ce meme script. */}
+        {adsAvailable && clientId ? (
+          <script
+            async
+            src={
+              'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' +
+              encodeURIComponent(clientId)
+            }
+            crossOrigin="anonymous"
+          />
+        ) : null}
         {/* Typographies brutalistes : titres Space Grotesk, métriques Space Mono. */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -121,7 +133,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {gtmId ? <GtmNoScript id={gtmId} /> : null}
         <ConsentProvider adsAvailable={adsAvailable}>
           {children}
-          <AdSenseScript clientId={clientId} />
         </ConsentProvider>
         <ServiceWorkerRegistrar />
       </body>
