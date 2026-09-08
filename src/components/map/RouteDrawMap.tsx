@@ -61,6 +61,11 @@ export function RouteDrawMap({ onChange, center = [46.6, 2.4], className }: Rout
   const [routing, setRouting] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
 
+  // Recherche d'adresse (géocodage) pour recentrer la carte.
+  const [query, setQuery] = useState('');
+  const [searching, setSearching] = useState(false);
+  const [searchError, setSearchError] = useState<string | null>(null);
+
   // File de clics : on route un segment à la fois, dans l'ordre, pour éviter les
   // conditions de course si l'utilisateur clique vite.
   const busyRef = useRef(false);
@@ -76,11 +81,15 @@ export function RouteDrawMap({ onChange, center = [46.6, 2.4], className }: Rout
     if (!container || mapRef.current) return;
 
     const map = L.map(container, {
-      zoomControl: true,
+      zoomControl: false,
       attributionControl: true,
       scrollWheelZoom: true,
     }).setView(center, 6);
     mapRef.current = map;
+
+    // Zoom +/- en bas à droite (le coin haut-gauche sert à la recherche et au
+    // compteur de distance).
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
 
     const tiles = getTileConfig();
     L.tileLayer(tiles.url, {
@@ -203,6 +212,37 @@ export function RouteDrawMap({ onChange, center = [46.6, 2.4], className }: Rout
     setNotice(null);
   }, []);
 
+  const searchAddress = useCallback(async () => {
+    const q = query.trim();
+    if (q.length < 3) {
+      setSearchError('Tape au moins 3 caractères.');
+      return;
+    }
+    setSearching(true);
+    setSearchError(null);
+    try {
+      const res = await fetch('/api/geocode?q=' + encodeURIComponent(q));
+      const json = (await res.json()) as {
+        results?: { label: string; lat: number; lng: number }[];
+        error?: string;
+      };
+      if (!res.ok) {
+        setSearchError(json.error ?? 'Recherche impossible.');
+        return;
+      }
+      const first = json.results?.[0];
+      if (!first) {
+        setSearchError('Adresse introuvable.');
+        return;
+      }
+      mapRef.current?.setView([first.lat, first.lng], 15);
+    } catch {
+      setSearchError('Recherche indisponible pour le moment.');
+    } finally {
+      setSearching(false);
+    }
+  }, [query]);
+
   // ------------------------------------------ rendu des couches + remontée ---
   useEffect(() => {
     const layer = layerRef.current;
@@ -258,6 +298,34 @@ export function RouteDrawMap({ onChange, center = [46.6, 2.4], className }: Rout
 
   return (
     <div className={cx('space-y-3', className)}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          void searchAddress();
+        }}
+        className="flex gap-2"
+      >
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Rechercher une adresse, une ville…"
+          enterKeyHint="search"
+          className="h-11 min-w-0 flex-1 rounded-lg border-[3px] border-black bg-white px-4 text-[14px] text-black placeholder:text-black/35 focus:outline-none focus:shadow-[3px_3px_0_0_#000]"
+          aria-label="Rechercher une adresse"
+        />
+        <button
+          type="submit"
+          disabled={searching}
+          className="rounded-lg border-[3px] border-black bg-orange px-4 text-[12px] font-bold uppercase tracking-[0.02em] text-black shadow-[4px_4px_0_0_#000] transition-transform active:translate-x-[4px] active:translate-y-[4px] active:shadow-none disabled:opacity-50"
+        >
+          {searching ? '…' : 'Aller'}
+        </button>
+      </form>
+      {searchError ? (
+        <p className="text-[12.5px] font-bold text-danger">{searchError}</p>
+      ) : null}
+
       <div className="relative">
         <div
           ref={containerRef}
