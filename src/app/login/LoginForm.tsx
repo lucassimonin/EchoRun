@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Field, TextInput } from '@/components/ui/Field';
 import { Surface } from '@/components/ui/Surface';
 import { createClient } from '@/lib/supabase/client';
+import { trackEvent } from '@/lib/analytics';
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i;
 
@@ -51,6 +52,7 @@ export function LoginForm({ next }: { next?: string }) {
       }
       return;
     }
+    trackEvent('login_code_requested');
     setEmail(trimmed);
     setCode('');
     setStep('code');

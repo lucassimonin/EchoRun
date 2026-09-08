@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
 import { Badge, Surface } from '@/components/ui/Surface';
+import { trackEvent } from '@/lib/analytics';
 
 interface UnlockCardProps {
   raceId: string;
@@ -12,6 +13,7 @@ interface UnlockCardProps {
   unlockedCap: number;
   unlocked: boolean;
   priceLabel: string;
+  priceCents: number;
 }
 
 /**
@@ -26,6 +28,7 @@ export function UnlockCard({
   unlockedCap,
   unlocked,
   priceLabel,
+  priceCents,
 }: UnlockCardProps) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
@@ -37,12 +40,13 @@ export function UnlockCard({
     const url = new URL(window.location.href);
     if (url.searchParams.get('unlocked') === '1') {
       setJustUnlocked(true);
+      trackEvent('purchase', { value: priceCents / 100, currency: 'EUR', item: 'race_unlock' });
       url.searchParams.delete('unlocked');
       window.history.replaceState({}, '', url.toString());
       const t = setTimeout(() => router.refresh(), 1500);
       return () => clearTimeout(t);
     }
-  }, [router]);
+  }, [router, priceCents]);
 
   const cap = unlocked ? unlockedCap : freeCap;
   const remaining = Math.max(cap - count, 0);

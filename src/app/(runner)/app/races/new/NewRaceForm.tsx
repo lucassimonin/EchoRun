@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/Button';
 import { Field, TextInput } from '@/components/ui/Field';
 import { Surface } from '@/components/ui/Surface';
 import { cx, formatClock } from '@/lib/utils';
+import { trackEvent } from '@/lib/analytics';
 import type { RaceMode } from '@/types';
 import type { DrawnRoute } from '@/components/map/RouteDrawMap';
 
@@ -120,6 +121,7 @@ export function NewRaceForm() {
         if ('debug' in json && json.debug) setDebug(json.debug);
         return;
       }
+      trackEvent('race_created', { race_mode: inputMode });
       router.push('/app/races/' + json.race.id + '?created=1');
     } catch {
       setError('Création interrompue. Vérifie ta connexion.');

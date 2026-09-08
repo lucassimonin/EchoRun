@@ -82,6 +82,7 @@ export default async function RaceDetailPage({ params }: { params: Promise<{ id:
           unlockedCap={settings.unlocked_message_cap}
           unlocked={race.messages_unlocked}
           priceLabel={formatPrice(settings.unlock_price_cents)}
+          priceCents={settings.unlock_price_cents}
         />
 
         {/* --------------------------------------------------- jour de course */}
