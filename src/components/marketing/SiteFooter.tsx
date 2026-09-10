@@ -1,27 +1,29 @@
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import { ManageCookiesButton } from '@/components/consent/ManageCookiesButton';
 import { Wordmark } from '@/components/marketing/Wordmark';
 
-const COLUMNS = [
-  {
-    title: 'Produit',
-    links: [
-      { href: '/comment-ca-marche', label: 'Comment ça marche' },
-      { href: '/login', label: 'Créer une course' },
-    ],
-  },
-  {
-    title: 'Légal',
-    links: [
-      { href: '/confidentialite', label: 'Politique de confidentialité' },
-      { href: '/mentions-legales', label: 'Mentions légales' },
-    ],
-  },
-];
-
 export function SiteFooter() {
+  const t = useTranslations('Footer');
   const year = new Date().getFullYear();
-  const contact = process.env.NEXT_PUBLIC_LEGAL_CONTACT_EMAIL ?? 'lsimonin2@gmail.com';
+  const contact = process.env.NEXT_PUBLIC_LEGAL_CONTACT_EMAIL ?? 'bonjour@echo-run.app';
+
+  const columns = [
+    {
+      title: t('product'),
+      links: [
+        { href: '/comment-ca-marche', label: t('howItWorks') },
+        { href: '/login', label: t('createRace') },
+      ],
+    },
+    {
+      title: t('legal'),
+      links: [
+        { href: '/confidentialite', label: t('privacyPolicy') },
+        { href: '/mentions-legales', label: t('legalNotice') },
+      ],
+    },
+  ];
 
   return (
     <footer className="border-t-[3px] border-black bg-off">
@@ -29,12 +31,11 @@ export function SiteFooter() {
         <div className="space-y-3">
           <Wordmark />
           <p className="max-w-xs text-[13px] leading-relaxed text-charcoal-faint">
-            Les encouragements de tes proches, déclenchés par le GPS aux points exacts de ton
-            parcours.
+            {t('tagline')}
           </p>
         </div>
 
-        {COLUMNS.map((column) => (
+        {columns.map((column) => (
           <div key={column.title} className="space-y-3">
             <p className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-orange">
               {column.title}
@@ -56,10 +57,10 @@ export function SiteFooter() {
       </div>
 
       <div className="mx-auto flex max-w-6xl flex-col gap-2 border-t-2 border-black/15 px-5 py-6 text-[12px] text-charcoal-faint sm:flex-row sm:items-center sm:justify-between sm:px-8">
-        <p>© {year} EchoRun. Tous droits réservés.</p>
+        <p>{t('rights', { year })}</p>
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           {/* Le retrait du consentement doit être aussi simple que le consentement. */}
-          <ManageCookiesButton />
+          <ManageCookiesButton label={t('manageCookies')} />
           <a href={'mailto:' + contact} className="transition-colors hover:text-black">
             {contact}
           </a>

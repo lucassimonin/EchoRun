@@ -1,0 +1,303 @@
+{
+  "Nav": {
+    "howItWorks": "How it works",
+    "privacy": "Privacy",
+    "login": "Log in"
+  },
+  "Footer": {
+    "tagline": "Cheers from your loved ones, triggered by GPS at the exact points along your route.",
+    "product": "Product",
+    "legal": "Legal",
+    "howItWorks": "How it works",
+    "createRace": "Create a race",
+    "privacyPolicy": "Privacy policy",
+    "legalNotice": "Legal notice",
+    "rights": "© {year} EchoRun. All rights reserved.",
+    "manageCookies": "Manage cookies"
+  },
+  "LangSwitcher": {
+    "label": "Switch language"
+  },
+  "Meta": {
+    "tagline": "Your loved ones’ voices, at the right kilometer",
+    "description": "Your loved ones leave a voice message on your route. On race day, your phone plays it at the right kilometer • no network, nothing to read.",
+    "keywords": [
+      "running voice cheer",
+      "marathon voice message",
+      "support a runner remotely",
+      "GPX voice message",
+      "marathon app for loved ones",
+      "trail GPS encouragement"
+    ]
+  },
+  "Landing": {
+    "metaTitle": "EchoRun • your loved ones’ voices, at the right kilometer",
+    "badge": "Geolocated voice cheers",
+    "heroTitle1": "Your loved",
+    "heroTitle2": "ones’ voices,",
+    "heroTitle3": "at the right km.",
+    "heroBody": "Your loved ones leave a voice message on a precise spot of your route. On race day, your phone plays it all by itself as you run past. You just run. They’re right there with you.",
+    "ctaCreate": "Create my race",
+    "ctaHow": "How it works",
+    "heroNote": "Free for your loved ones · {cap} free messages · no app",
+    "modesEyebrow": "Three ways to start",
+    "modesTitle": "With or without a file, there’s always a way",
+    "modes": {
+      "gpx": {
+        "tag": "Most precise",
+        "title": "Import your GPX",
+        "body": "Your race file • the organizer’s or your Strava export. We pull the route from it down to the meter."
+      },
+      "draw": {
+        "tag": "No file",
+        "title": "Draw your route",
+        "body": "Drop your points on the map and EchoRun snaps them to real roads. Perfect for a training run or a home loop."
+      },
+      "time": {
+        "tag": "No route?",
+        "title": "Go by time",
+        "body": "Set your duration • say 2 h • and your loved ones drop their voices on a timeline. The clock triggers them to the exact minute."
+      }
+    },
+    "stepsEyebrow": "The idea",
+    "stepsTitle": "Three minutes to set it all up",
+    "steps": {
+      "create": {
+        "title": "You create your race",
+        "body": "Import your GPX, draw your route on the map, or just set a duration. Three ways, two minutes, no complicated account."
+      },
+      "share": {
+        "title": "You share a link",
+        "body": "One unique link, like a Tricount. Your loved ones have no account to create and no app to install. They open it, they speak, done."
+      },
+      "dayOf": {
+        "title": "Race day does the rest",
+        "body": "During the race, your phone announces “Message from Camille” then plays their voice, right at the right spot • or the right minute. No network needed."
+      }
+    },
+    "useCasesEyebrow": "When it really matters",
+    "useCasesTitle": "A cheer is only worth its timing",
+    "useCases": {
+      "marathon": {
+        "tag": "MARATHON",
+        "title": "The wall at km 30",
+        "body": "In a marathon, everyone knows where it breaks. Place three voices between km 30 and 35: that’s exactly where they help."
+      },
+      "trail": {
+        "tag": "TRAIL",
+        "title": "Where no one can reach",
+        "body": "Passes, forests, aid stations you can’t get to. Your loved ones can’t stand by the trail • but their voice can."
+      },
+      "tenK": {
+        "tag": "10 K",
+        "title": "Your first bib",
+        "body": "The finish line is scary when you’ve never crossed it. A message 500 m from the end changes how the story ends."
+      },
+      "surprise": {
+        "tag": "SURPRISE",
+        "title": "A birthday in a bib",
+        "body": "Running on your 40th birthday and getting ten surprise messages spread along the route. No one sees it coming."
+      }
+    },
+    "benefitsEyebrow": "What it changes",
+    "benefitsTitle": "Built for the only moment that counts: during the effort.",
+    "benefits": {
+      "noApp": {
+        "label": "Zero app for your loved ones",
+        "body": "A web link. It works on your mum’s old iPhone as well as your brother’s Android."
+      },
+      "noNetwork": {
+        "label": "Zero network during the race",
+        "body": "The voice messages are downloaded to your phone the day before. Deep in the forest, it works just the same."
+      },
+      "nothingToTouch": {
+        "label": "Nothing to touch while running",
+        "body": "No notification to read, no screen to unlock. It speaks in your earphones, you keep running."
+      },
+      "youKeep": {
+        "label": "You keep everything",
+        "body": "After the race, the messages stay. It’s the only memory of your race that has a voice."
+      }
+    },
+    "testimonialsEyebrow": "Runner feedback",
+    "testimonialsTitle": "What people tell us at the finish",
+    "testimonials": {
+      "karim": {
+        "quote": "At km 32 I was about to give up. I heard my daughter’s voice: “come on dad, only ten more”. I finished in tears, but I finished.",
+        "author": "Karim",
+        "detail": "Paris Marathon"
+      },
+      "lea": {
+        "quote": "I put messages at every pass for my sister without telling her. She called me that night, she hadn’t figured out where the voices came from.",
+        "author": "Léa",
+        "detail": "6 voice notes on a 45 km trail"
+      },
+      "sophie": {
+        "quote": "The thing is, it comes at the right moment. A cheer at the start is useless. At km 18, it changes everything.",
+        "author": "Sophie",
+        "detail": "Lille Half Marathon"
+      }
+    },
+    "pricingEyebrow": "Pricing",
+    "pricingTitle": "Free to start. {price} if it overflows.",
+    "bibProche": {
+      "label": "Your loved ones",
+      "price": "€0",
+      "note": "Always. They never pay a thing.",
+      "li1": "Up to 5 messages per person",
+      "li2": "No account, all in the browser",
+      "li3": "One-tap recording",
+      "li4": "Up to 30 seconds per message"
+    },
+    "bibCoureur": {
+      "label": "You, the runner",
+      "unit": "free messages / race",
+      "note": "Then {price} to unlock up to {cap}. You pay for everyone.",
+      "li1": "GPX, map drawing or timer mode",
+      "li2": "Unlimited share link",
+      "li3": "Offline playback during the race",
+      "li4": "Archive of every message received"
+    },
+    "finalTitle": "Your next race has a date. Give it voices.",
+    "finalBody": "GPX, drawn route or a simple timer • create your race and send the link to your loved ones. All that’s left is to run.",
+    "finalCta": "Create my race",
+    "preview": {
+      "badge": "ECHORUN // BIB",
+      "live": "LIVE",
+      "messageFrom": "Message from Camille",
+      "messageMeta": "KM 21.3 · 14 S · OFFLINE"
+    }
+  },
+  "Offline": {
+    "metaTitle": "Offline",
+    "title": "No connection",
+    "body": "This page needs a network. That said, if you prepared your race ahead of time, the race screen works offline: your voice messages are already on your phone.",
+    "cta": "Open my races"
+  },
+  "LoginPage": {
+    "metaTitle": "Log in",
+    "metaDescription": "Log in to EchoRun to create a race and share your route.",
+    "title": "Create or find my race",
+    "subtitle": "No password. We send you a one-time code by email.",
+    "terms": "By continuing, you accept the <terms>terms of use</terms> and the <privacy>privacy policy</privacy>."
+  },
+  "LoginForm": {
+    "invalidEmail": "Invalid email address.",
+    "tooManyRequests": "Too many requests in a short time. Wait a few minutes.",
+    "sendFailed": "Couldn’t send. Try again in a moment.",
+    "codeSentTo": "We’ve just sent an 8-digit code to <strong>{email}</strong>. It’s valid for one hour.",
+    "codeLabel": "Code received by email",
+    "connecting": "Connecting…",
+    "connect": "Log me in",
+    "resend": "Resend a code",
+    "changeEmail": "Change address",
+    "enterSixDigits": "Enter the 8 digits received by email.",
+    "wrongCode": "Wrong or expired code. Check it, or resend a code.",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "you@example.com",
+    "sending": "Sending…",
+    "receiveCode": "Get my code"
+  },
+  "RunnerNav": {
+    "myRaces": "My races",
+    "backOffice": "Admin",
+    "signOut": "Log out"
+  },
+  "RaceStatus": {
+    "draft": "Draft",
+    "open": "Open for messages",
+    "live": "Racing",
+    "finished": "Finished"
+  },
+  "Dashboard": {
+    "metaTitle": "My races",
+    "eyebrow": "My space",
+    "title": "My races",
+    "newRace": "New race",
+    "emptyTitle": "No race yet",
+    "emptyBody": "Import the GPX file of your next race, then send the link to your loved ones. Three minutes, once.",
+    "emptyCta": "Import a GPX",
+    "messages": "{count, plural, =1 {message} other {messages}}"
+  },
+  "NewRacePage": {
+    "metaTitle": "New race",
+    "back": "My races",
+    "eyebrow": "Single step",
+    "title": "Import your route",
+    "body": "The .gpx file of your race. The organizer almost always provides it; otherwise export it from Strava, Garmin Connect, Komoot or OpenRunner."
+  },
+  "RaceDetail": {
+    "metaTitle": "My race",
+    "back": "My races",
+    "objective": "Target {clock}",
+    "messagesSuffix": "messages",
+    "dayTitle": "On race day",
+    "dayBody": "Prepare the race the day before, on wifi: the app downloads all the voice messages to your phone so it works without a network.",
+    "prepare": "Prepare and run",
+    "viewSummary": "View the summary",
+    "receivedTitle": "Messages received",
+    "sortedBy": "Sorted by point on the route",
+    "emptyMessages": "No one has left a message yet. Send the share link: that’s the only thing missing.",
+    "at": "At {clock}",
+    "km": "Km {km}",
+    "played": "Played",
+    "waiting": "Waiting"
+  },
+  "RaceActions": {
+    "title": "Manage the race",
+    "reopen": "Reopen for messages",
+    "close": "Close submissions",
+    "cancel": "Cancel",
+    "deleteConfirm": "Delete permanently",
+    "delete": "Delete the race",
+    "warning": "This erases the race and every voice message received. Irreversible."
+  },
+  "ShareCard": {
+    "title": "The link to send your loved ones",
+    "body": "No account, no app. They open it, they speak — 5 messages max per person.",
+    "ariaLink": "Share link",
+    "copy": "Copy",
+    "copied": "Copied",
+    "share": "Share",
+    "shareTitle": "Leave me a voice message for {race}",
+    "shareText": "I’m running {race}. Drop a voice note on my route, I’ll hear it while running."
+  },
+  "UnlockCard": {
+    "title": "Race messages",
+    "badgeUnlocked": "Unlocked",
+    "badgeCapReached": "Cap reached",
+    "badgeFree": "Free",
+    "countLine": "<b>{count} / {cap}</b> messages · your loved ones never pay a thing.",
+    "paymentConfirmed": "Payment confirmed! Your race now accepts up to {cap} messages.",
+    "capReachedBody": "Your loved ones filled the {freeCap} free messages. Unlock the race to receive up to {cap} in total.",
+    "remainingBody": "{remaining, plural, =1 {1 free message left.} other {# free messages left.}} You can unlock now to go up to {cap} in total.",
+    "unlockBtn": "Unlock up to {cap} messages · {price}",
+    "redirecting": "Redirecting…",
+    "unlockedBody": "Race unlocked: your loved ones can leave up to {cap} messages in total.",
+    "paymentUnavailable": "Payment is temporarily unavailable."
+  },
+  "FinishPage": {
+    "metaTitle": "End of race",
+    "back": "Back to the race",
+    "eyebrow": "Race finished",
+    "summary": "{count, plural, =1 {1 of {total} messages played} other {# of {total} messages played}} during {context}.",
+    "contextTime": "your {clock} race",
+    "contextDistance": "your {distance}",
+    "statHeard": "Voice notes heard",
+    "statContributors": "Loved ones rallied",
+    "statDuration": "Of cheers",
+    "listTitle": "Your messages, in route order",
+    "listBody": "They stay playable here. It’s the only memory of your race that has a voice.",
+    "emptyList": "No message on this race.",
+    "at": "At {clock}",
+    "km": "Km {km}",
+    "heard": "Heard",
+    "missed": "Missed",
+    "nextTitle": "Another race coming up?",
+    "nextBody": "Import the GPX, resend the link. Your loved ones already know how it works.",
+    "nextCta": "Create a new race"
+  },
+  "LivePage": {
+    "metaTitle": "Race mode"
+  }
+}

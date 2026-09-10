@@ -3,6 +3,33 @@ import { SITE_NAME, SITE_TAGLINE } from '@/lib/site';
 export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_CONTENT_TYPE = 'image/png';
 
+type OgLocale = 'fr' | 'en';
+
+const OG_TEXT: Record<OgLocale, {
+  line1: string;
+  line2: string;
+  highlight: string;
+  subtitle: string;
+  badges: string[];
+}> = {
+  fr: {
+    line1: 'LES VOIX DE',
+    line2: 'TES PROCHES,',
+    highlight: 'AU BON KM.',
+    subtitle:
+      'Un message vocal déposé sur ton parcours, déclenché par le GPS pendant ta course.',
+    badges: ['SANS APPLICATION', 'SANS RÉSEAU', '15 MESSAGES OFFERTS'],
+  },
+  en: {
+    line1: 'YOUR LOVED',
+    line2: 'ONES’ VOICES,',
+    highlight: 'AT THE RIGHT KM.',
+    subtitle:
+      'A voice message dropped on your route, triggered by GPS during your race.',
+    badges: ['NO APP', 'NO NETWORK', '15 FREE MESSAGES'],
+  },
+};
+
 /**
  * Visuel Open Graph, partagé par /opengraph-image et /twitter-image.
  *
@@ -15,7 +42,8 @@ export const OG_CONTENT_TYPE = 'image/png';
  * plusieurs enfants. `boxShadow`, `border` et `borderRadius` sont supportés :
  * on s'en sert pour l'esthétique brutaliste (bords noirs, ombres dures).
  */
-export function OgImage() {
+export function OgImage({ locale = 'fr' }: { locale?: string }) {
+  const text = OG_TEXT[locale === 'en' ? 'en' : 'fr'];
   return (
     <div
       style={{
@@ -87,7 +115,7 @@ export function OgImage() {
             color: '#000000',
           }}
         >
-          LES VOIX DE
+          {text.line1}
         </div>
         <div
           style={{
@@ -99,7 +127,7 @@ export function OgImage() {
             marginTop: 2,
           }}
         >
-          TES PROCHES,
+          {text.line2}
         </div>
         <div style={{ display: 'flex', marginTop: 14 }}>
           <div
@@ -120,7 +148,7 @@ export function OgImage() {
                 color: '#ffffff',
               }}
             >
-              AU BON KM.
+              {text.highlight}
             </span>
           </div>
         </div>
@@ -136,13 +164,13 @@ export function OgImage() {
             maxWidth: 840,
           }}
         >
-          Un message vocal déposé sur ton parcours, déclenché par le GPS pendant ta course.
+          {text.subtitle}
         </div>
       </div>
 
       {/* Pied : arguments en badges bordés */}
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        {['SANS APPLICATION', 'SANS RÉSEAU', '15 MESSAGES OFFERTS'].map((label) => (
+        {text.badges.map((label) => (
           <div
             key={label}
             style={{

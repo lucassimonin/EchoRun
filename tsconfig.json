@@ -38,6 +38,7 @@
   "exclude": [
     "node_modules",
     "capacitor.config.ts",
-    "native"
+    "native",
+    "_to_delete"
   ]
 }

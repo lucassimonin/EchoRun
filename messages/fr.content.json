@@ -1,0 +1,247 @@
+{
+  "ContentPage": {
+    "updatedLabel": "Dernière mise à jour : "
+  },
+  "HowItWorks": {
+    "metaTitle": "Comment ça marche",
+    "metaDescription": "Le détail du fonctionnement d’EchoRun : trois façons de créer sa course (import GPX, tracé dessiné, mode chrono), lien de partage, enregistrement des vocaux par vos proches, déclenchement pendant la course et lecture hors-ligne.",
+    "eyebrow": "Guide",
+    "title": "Comment ça marche, précisément",
+    "lede": "Pas de magie : vous créez votre course (par GPX, en la dessinant, ou en mode chrono), vous partagez un lien, et le jour J votre téléphone déclenche les voix au bon endroit. Voici chaque étape, y compris ce qui peut mal se passer.",
+    "aside": {
+      "title": "Prêt à essayer ?",
+      "body": "La création d’une course prend trois minutes et ne coûte rien.",
+      "cta": "Créer ma course"
+    },
+    "faq": {
+      "q0": "Faut-il un fichier GPX pour créer une course ?",
+      "a0": "Non. Trois options s’offrent à vous : importer un GPX, dessiner votre parcours directement sur la carte (il est calé sur les vraies routes), ou choisir le mode chrono si vous n’avez pas de tracé • vous annoncez une durée et vos proches déposent leurs voix sur une frise temporelle.",
+      "q1": "Faut-il des écouteurs ?",
+      "a1": "C’est fortement conseillé, en particulier des écouteurs à conduction osseuse ou ouverts, qui laissent entendre l’environnement. Sans écouteurs, le message sort du haut-parleur du téléphone : audible sur une route de campagne, inaudible dans un peloton.",
+      "q2": "Et si je porte une montre GPS ?",
+      "a2": "EchoRun n’interfère pas avec votre montre : ce sont deux appareils indépendants. Continuez à enregistrer votre course comme d’habitude.",
+      "q3": "Combien de messages peut-on recevoir ?",
+      "a3": "Chaque course accueille 15 messages offerts. Si vos proches en déposent plus, on prévient le coureur par e-mail : pour 1,99 €, il débloque la course jusqu’à 50 messages. Chaque personne est limitée à 5 messages, pour laisser de la place à tout le monde.",
+      "q4": "Mes proches voient-ils les messages des autres ?",
+      "a4": "Ils voient qu’un point (ou un moment, en mode chrono) est déjà pris et par qui • utile pour se répartir le parcours • mais ils ne peuvent pas écouter les messages des autres. Seul le coureur les entend.",
+      "q5": "Est-ce que ça fonctionne sans réseau ?",
+      "a5": "Oui, et c’est le point central. Les vocaux et le tracé sont téléchargés sur le téléphone avant la course, puis lus depuis le stockage local. Vous pouvez courir en mode avion : les messages se déclencheront quand même.",
+      "q6": "Faut-il garder l’écran allumé pendant la course ?",
+      "a6": "Dans la version web (PWA), oui : un site n’a pas accès au GPS en arrière-plan, c’est une restriction d’iOS et d’Android. L’application maintient donc l’écran allumé et doit rester au premier plan (comptez environ 12 % de batterie par heure). L’application mobile native, elle, suit votre position en arrière-plan : écran éteint, téléphone dans la poche."
+    },
+    "s1": {
+      "title": "1. Le coureur crée sa course • trois façons",
+      "intro": "Selon ce que vous avez sous la main, vous choisissez la méthode la plus simple. Les trois aboutissent au même résultat : une course prête à partager.",
+      "gpx": "<strong>Importer un GPX.</strong> C’est le plus précis. Le <code>.gpx</code> est le format universel des traces GPS : l’organisateur de votre course le met presque toujours à disposition, et vous pouvez aussi exporter n’importe quelle sortie depuis Strava, Garmin Connect, Komoot ou OpenRunner.",
+      "draw": "<strong>Dessiner le parcours sur la carte.</strong> Pas de fichier ? Posez vos points sur la carte : EchoRun les relie en suivant les vraies routes (calage automatique). Idéal pour un entraînement ou une boucle maison.",
+      "time": "<strong>Le mode chrono.</strong> Aucun tracé du tout ? Annoncez simplement une durée prévue • disons 2 h • et vos proches déposeront leurs voix sur une <strong>frise temporelle</strong> plutôt que sur une carte. Le déclenchement se fait alors à la minute de course choisie, pas à un kilomètre.",
+      "simplify": "Pour un GPX ou un tracé dessiné, nous ne conservons que la suite des coordonnées du tracé. Les points sont <strong>simplifiés</strong> (algorithme de Douglas-Peucker) pour passer d’un fichier qui peut contenir 40 000 points à environ 1 500 • assez pour un tracé fidèle au mètre près, assez léger pour s’afficher instantanément sur un téléphone. La distance totale et la distance cumulée de chaque point sont calculées à ce moment-là."
+    },
+    "s2": {
+      "title": "2. Le lien de partage",
+      "p1": "Chaque course reçoit une adresse courte et non devinable, du type <code>echo-run.app/e/k7m2pq9xr4tz</code>. C’est le même principe qu’un Tricount : qui a le lien peut participer, sans compte ni installation. Vous le diffusez comme vous voulez • SMS, WhatsApp, groupe familial, mail.",
+      "p2": "Ce lien n’est pas indexé par les moteurs de recherche et ne peut pas être retrouvé par tâtonnement. Vous pouvez le fermer à tout moment depuis votre espace : personne ne peut plus déposer de message, mais ceux déjà enregistrés restent."
+    },
+    "s3": {
+      "title": "3. Vos proches choisissent leur moment",
+      "p1": "En ouvrant le lien, votre proche renseigne son prénom. Puis, selon le type de course : sur une course avec tracé, il voit le parcours sur une carte et <strong>clique sur le point</strong> où il veut que son message se déclenche ; en mode chrono, il fait <strong>glisser un curseur sur la frise</strong> jusqu’à la minute de course voulue. Dans les deux cas, il enregistre ensuite jusqu’à trente secondes de voix directement dans son navigateur.",
+      "p2": "Sur une carte, le clic n’a pas besoin d’être précis : la position est automatiquement recalée sur le point du tracé le plus proche. C’est important, car le déclenchement en course dépend de cette précision.",
+      "p3": "Chaque proche peut déposer <strong>jusqu’à 5 messages</strong>, gratuitement et sans compte. Une course accueille <strong>15 messages offerts</strong> ; au-delà, c’est le<strong> coureur</strong> • prévenu par e-mail • qui débloque la course pour 1,99 € (jusqu’à 50 messages). Vos proches, eux, ne paient jamais rien.",
+      "recordingTitle": "Ce qu’il faut savoir sur l’enregistrement",
+      "rec1": "Le navigateur demande l’autorisation d’accéder au micro. Sur iPhone, cela n’est possible que dans Safari ou Chrome, pas dans le navigateur intégré à certaines applications de messagerie : si le bouton ne répond pas, ouvrez le lien dans un vrai navigateur.",
+      "rec2": "Le fichier produit est compressé (Opus, ou AAC sur les appareils Apple) : un message de trente secondes pèse moins de 200 ko.",
+      "rec3": "Vous pouvez réécouter votre message avant de l’envoyer, et le refaire autant de fois que vous voulez : rien n’est envoyé tant que vous n’avez pas validé."
+    },
+    "s4": {
+      "title": "4. La veille de la course : la préparation",
+      "p1": "C’est l’étape que personne ne devrait sauter. Depuis votre espace, vous lancez la <strong>préparation de la course</strong>. L’application télécharge alors sur votre téléphone : le tracé (ou la frise, en mode chrono), la liste des déclenchements, et <strong>tous les fichiers audio</strong>.",
+      "p2": "Tout est stocké localement (IndexedDB pour les audios, cache du navigateur pour l’application elle-même). Conséquence directe : le jour J, vous pouvez courir en mode avion, dans un tunnel ou au fond d’une vallée sans réseau • les messages se déclencheront quand même. Nous demandons également au navigateur un stockage persistant, pour éviter que le système ne vide le cache entre la préparation et le départ."
+    },
+    "s5": {
+      "title": "5. Pendant la course : le déclenchement",
+      "p1": "Vous appuyez sur <strong>Démarrer la course</strong>. Ce geste est indispensable, et pas seulement pour des raisons d’ergonomie : les navigateurs mobiles n’autorisent la lecture audio et la synthèse vocale qu’après une action explicite de l’utilisateur. C’est à cet instant que l’application « débloque » le son pour toute la durée de la course.",
+      "p2": "Ensuite, la boucle dépend du type de course :",
+      "route": "<strong>Course avec tracé :</strong> le GPS remonte votre position en continu et, pour chaque message en attente, l’application calcule la distance jusqu’à son point de déclenchement. Le rayon par défaut est de 70 mètres, et il s’élargit automatiquement si le GPS annonce une position imprécise.",
+      "chrono": "<strong>Mode chrono :</strong> pas de GPS du tout. Un chronomètre démarre au top départ, et chaque message se déclenche à la minute de course que votre proche a choisie sur la frise.",
+      "announce": "Quand le moment arrive, la synthèse vocale annonce <strong>« Message de Camille »</strong>, puis le vocal de Camille est lu immédiatement après.",
+      "order": "Si deux messages sont proches, ils sont lus <strong>l’un après l’autre</strong>, dans l’ordre. Jamais en même temps.",
+      "lost": "Si le signal GPS se perd juste au mauvais moment, l’application s’en aperçoit dès qu’elle vous retrouve au-delà du point et joue le message en léger différé. Un message n’est jamais perdu.",
+      "screenTitle": "L’écran allumé : une limite de la version web, pas de l’app",
+      "screen1": "Nous préférons être francs plutôt que de vous laisser le découvrir sur un dossard. Une application <strong>web</strong> (celle que vos proches et vous ouvrez dans le navigateur) n’a <strong>pas</strong> accès au GPS en arrière-plan : c’est une restriction du système, pas un manque de notre part. Sur iPhone, la géolocalisation s’arrête dès que Safari passe en arrière-plan ou que l’écran se verrouille ; sur Android, elle survit quelques minutes puis est coupée pour économiser la batterie.",
+      "screen2": "En version web, notre réponse est donc que l’application maintient elle-même l’écran allumé (API Screen Wake Lock) et vous demande de garder EchoRun au premier plan. Le téléphone reste dans le brassard ou la poche, écran actif. Comptez environ 12 % de batterie par heure sur un appareil récent avec la luminosité réduite ; sur un marathon, partez à 100 %.",
+      "screen3": "C’est précisément pour lever cette contrainte qu’existe l’<strong>application mobile native</strong> : elle, a le droit de suivre votre position en arrière-plan. Vous démarrez la course, vous rangez le téléphone écran éteint, et les messages se déclenchent quand même • sans vider la batterie. Le mode chrono, lui, n’a jamais eu besoin de l’écran allumé, puisqu’il ne dépend pas du GPS."
+    },
+    "s6": {
+      "title": "6. Après l'arrivée",
+      "p1": "Tous les messages restent accessibles dans votre espace, réécoutables autant de fois que vous voulez. Vous voyez lesquels se sont déclenchés, à quel kilomètre (ou à quelle minute), et à quelle heure. C’est aussi la page que la plupart des gens envoient à leurs proches pour les remercier."
+    },
+    "faqTitle": "Questions fréquentes",
+    "privacyLink": "Pour le détail du traitement des données, voyez notre <link>politique de confidentialité</link>."
+  },
+  "LegalNotice": {
+    "metaTitle": "Mentions légales et conditions d’utilisation",
+    "metaDescription": "Éditeur, hébergeur, conditions générales d’utilisation, propriété intellectuelle et responsabilité du service EchoRun.",
+    "eyebrow": "Legal",
+    "title": "Mentions légales et conditions d’utilisation",
+    "lede": "Qui édite ce service, qui l’héberge, et les règles du jeu pour l’utiliser.",
+    "updatedAt": "4 septembre 2026",
+    "editor": {
+      "title": "Éditeur du site",
+      "block": "<strong>{entity}</strong><br></br>Forme juridique : à compléter<br></br>Siège social : à compléter<br></br>RCS / SIREN : à compléter<br></br>TVA intracommunautaire : à compléter<br></br>Directeur de la publication : à compléter<br></br>Contact : <mail>{contact}</mail>"
+    },
+    "hosting": {
+      "title": "Hébergement",
+      "body": "L’application est hébergée par <strong>Vercel Inc.</strong>, 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.<br></br>La base de données, l’authentification et les fichiers audio sont hébergés par <strong>Supabase</strong>, sur une infrastructure située dans l’Union européenne."
+    },
+    "cgu": {
+      "title": "Conditions générales d’utilisation"
+    },
+    "s1": {
+      "title": "1. Objet",
+      "body": "EchoRun est un service permettant à un coureur de partager le tracé d’une course afin que ses proches y déposent des messages vocaux, déclenchés par géolocalisation pendant l’épreuve. L’utilisation du service implique l’acceptation sans réserve des présentes conditions."
+    },
+    "s2": {
+      "title": "2. Accès au service",
+      "body": "La création d’un compte coureur est gratuite et nécessite une adresse e-mail valide. Le dépôt d’un message vocal par un proche ne nécessite aucun compte. Le service est fourni « en l’état », accessible 7 jours sur 7 sous réserve des opérations de maintenance et des aléas techniques inhérents à Internet."
+    },
+    "s3": {
+      "title": "3. Tarifs et paiement",
+      "body": "Le service est gratuit pour le coureur. Chaque course dispose de 15 messages vocaux offerts ; au-delà, le coureur peut débloquer la course pour en recevoir davantage, au tarif indiqué avant paiement, sans abonnement ni reconduction. Les paiements sont opérés par Stripe. Une facture est disponible sur demande.",
+      "retract": "<strong>Droit de rétractation.</strong> S’agissant d’un contenu numérique fourni immédiatement, l’acheteur reconnaît, en validant son achat, renoncer à son droit de rétractation de quatorze jours dès l’enregistrement effectif du message. Un crédit acheté et non utilisé est remboursable sur simple demande dans les quatorze jours."
+    },
+    "s4": {
+      "title": "4. Contenu déposé par les utilisateurs",
+      "p1": "Chaque personne déposant un message vocal reste seule responsable de son contenu. Sont strictement interdits : les propos injurieux, diffamatoires, haineux, menaçants, à caractère sexuel, incitant à la violence ou à la discrimination, ainsi que tout contenu portant atteinte aux droits de tiers, notamment l’utilisation d’enregistrements musicaux protégés.",
+      "p2": "Le coureur destinataire peut supprimer à tout moment un message reçu et signaler un contenu abusif. Nous nous réservons le droit de retirer sans préavis tout contenu signalé comme manifestement illicite et de bloquer l’accès au service concerné."
+    },
+    "s5": {
+      "title": "5. Sécurité pendant la pratique sportive",
+      "body": "L’utilisation du service pendant une activité sportive relève de la seule responsabilité de l’utilisateur. Il lui appartient de rester attentif à son environnement, de respecter le règlement de l’épreuve à laquelle il participe • certains organisateurs interdisent le port d’écouteurs • et le code de la route. Nous recommandons des écouteurs laissant passer les sons extérieurs."
+    },
+    "s6": {
+      "title": "6. Limitation de responsabilité",
+      "body": "Le déclenchement des messages dépend de la qualité du signal GPS, du matériel et du système d’exploitation de l’utilisateur, ainsi que du respect des consignes de préparation (téléchargement préalable, application au premier plan, écran actif). Nous ne garantissons pas que chaque message sera lu au mètre près, ni qu’aucun message ne sera manqué. Notre responsabilité ne saurait être engagée en cas de non-déclenchement, de contre-performance sportive, de décharge de batterie ou de dommage indirect."
+    },
+    "s7": {
+      "title": "7. Propriété intellectuelle",
+      "p1": "La marque EchoRun, le nom de domaine, l’interface, les textes et le code source sont la propriété exclusive de l’éditeur. Toute reproduction non autorisée est interdite. Les utilisateurs conservent l’intégralité des droits sur les messages vocaux qu’ils déposent et n’accordent à l’éditeur qu’une licence technique, strictement limitée à l’hébergement et à la diffusion du message au coureur destinataire.",
+      "p2": "Les fonds cartographiques sont fournis par OpenStreetMap (licence ODbL) et CARTO. Les tracés GPX importés restent la propriété de leurs auteurs ou organisateurs."
+    },
+    "s8": {
+      "title": "8. Suspension et résiliation",
+      "body": "L’utilisateur peut supprimer son compte à tout moment depuis son espace ou par simple demande. Nous pouvons suspendre un compte en cas de manquement grave aux présentes conditions, après information de l’intéressé sauf urgence."
+    },
+    "s9": {
+      "title": "9. Données personnelles",
+      "body": "Le traitement des données est détaillé dans notre <link>politique de confidentialité</link>, qui fait partie intégrante des présentes conditions."
+    },
+    "s10": {
+      "title": "10. Droit applicable et litiges",
+      "body": "Les présentes conditions sont soumises au droit français. En cas de litige, une solution amiable sera recherchée avant toute action judiciaire. Le consommateur peut recourir gratuitement à un médiateur de la consommation. À défaut d’accord, les tribunaux français sont compétents."
+    },
+    "access": {
+      "title": "Accessibilité",
+      "body": "Nous visons la conformité au RGAA. Si vous rencontrez une difficulté d’accès à une fonctionnalité, signalez-la à <mail>{contact}</mail> : nous traitons ces signalements en priorité."
+    }
+  },
+  "Privacy": {
+    "metaTitle": "Politique de confidentialité",
+    "metaDescription": "Comment EchoRun traite vos données : position GPS traitée localement sur votre appareil, stockage des messages vocaux, durées de conservation et exercice de vos droits RGPD.",
+    "eyebrow": "Confidentialité",
+    "title": "Politique de confidentialité",
+    "lede": "EchoRun manipule deux catégories de données sensibles : votre position pendant une course, et la voix de vos proches. Voici exactement ce qu’il en advient.",
+    "updatedAt": "4 septembre 2026",
+    "aside": {
+      "title": "En une phrase",
+      "body": "Votre trace GPS de course ne quitte jamais votre téléphone. Les messages vocaux sont stockés chiffrés, audibles uniquement par le coureur destinataire, et supprimés sur simple demande."
+    },
+    "s1": {
+      "title": "1. Qui est responsable du traitement",
+      "body": "Le responsable de traitement est <strong>{entity}</strong>, éditeur du service EchoRun, joignable à l’adresse <mail>{contact}</mail>. Les coordonnées complètes figurent dans les <link>mentions légales</link>."
+    },
+    "s2": {
+      "title": "2. Le point le plus important : votre position",
+      "p1": "Pendant une course, l’application lit votre position GPS en continu pour savoir quand déclencher un message. <strong>Ces coordonnées ne sont jamais transmises à nos serveurs.</strong>",
+      "p2": "Le calcul de proximité s’exécute entièrement dans votre navigateur : le tracé et les points de déclenchement ont été téléchargés au préalable, et la comparaison « suis-je à moins de 70 mètres de ce point ? » se fait localement, sur votre appareil. La position est conservée en mémoire vive le temps du calcul, puis remplacée par la suivante. Elle n’est ni journalisée, ni historisée, ni envoyée à un tiers.",
+      "p3": "Conséquence pratique : nous sommes techniquement incapables de reconstituer votre itinéraire, votre allure ou vos horaires de passage. La seule information qui remonte, et uniquement si le réseau est disponible, est <strong>le fait qu’un message a été lu</strong> • un identifiant et un horodatage, sans coordonnées."
+    },
+    "s3": {
+      "title": "3. Données que nous traitons effectivement",
+      "runnerTitle": "Pour le coureur (compte)",
+      "runner1": "<strong>Adresse e-mail</strong> : pour l’authentification par lien magique et les messages de service. Base légale : exécution du contrat.",
+      "runner2": "<strong>Nom ou pseudonyme d’affichage</strong> : affiché à vos proches sur la page de dépôt, pour qu’ils sachent à qui ils parlent.",
+      "racesTitle": "Pour les courses",
+      "races1": "<strong>Tracé issu du fichier GPX</strong> que vous importez : coordonnées du parcours, distance, nom de la course, date. Un tracé de course est une donnée publique d’organisateur, pas un historique de vos déplacements.",
+      "races2": "<strong>Le fichier GPX d’origine</strong>, conservé pour permettre un réimport. Vous pouvez le supprimer sans supprimer la course.",
+      "lovedTitle": "Pour les proches (sans compte)",
+      "loved1": "<strong>Le prénom ou pseudonyme saisi</strong>. Nous ne demandons ni e-mail, ni téléphone, ni identité vérifiée.",
+      "loved2": "<strong>Le message vocal enregistré</strong> et sa durée. Base légale : consentement, matérialisé par l’acte d’enregistrer et d’envoyer.",
+      "loved3": "<strong>Le point du parcours choisi</strong> • une position sur un tracé, pas la position du proche, qui n’est jamais demandée.",
+      "loved4": "<strong>Un jeton technique</strong> déposé dans le stockage local de son navigateur, qui lui permet de retrouver ses messages et son quota s’il revient. Ce jeton n’est pas un cookie publicitaire et ne permet aucun suivi entre sites.",
+      "paymentsTitle": "Pour les paiements",
+      "payments": "Les paiements sont opérés par <strong>Stripe Payments Europe</strong>. Nous ne voyons jamais et ne stockons jamais de numéro de carte : la saisie a lieu sur les pages de Stripe. Nous conservons uniquement l’identifiant de la transaction, le montant, la devise et le statut, pour la comptabilité et le service après-vente."
+    },
+    "s4": {
+      "title": "4. Les messages vocaux : qui peut les écouter",
+      "p1": "Les fichiers audio sont stockés dans un espace <strong>privé</strong>. Ils ne sont accessibles par aucune URL publique : chaque lecture passe par un lien signé, temporaire, généré uniquement pour le coureur destinataire authentifié.",
+      "li1": "Le coureur destinataire peut les écouter.",
+      "li2": "Les autres proches ne peuvent pas les écouter. Ils voient seulement qu’un point du parcours est occupé, et par quel prénom.",
+      "li3": "Nos équipes n’y accèdent pas, sauf réquisition judiciaire ou signalement d’un contenu illicite par le coureur.",
+      "p2": "Un proche qui souhaite retirer son message peut le faire depuis le lien de partage tant que la course n’a pas eu lieu, ou nous écrire. Le coureur peut supprimer tout message reçu."
+    },
+    "s5": {
+      "title": "5. Durées de conservation",
+      "li1": "<strong>Messages vocaux</strong> : 12 mois après la date de la course, puis suppression automatique. Le coureur est averti un mois avant et peut demander une prolongation ou télécharger ses fichiers.",
+      "li2": "<strong>Tracés et courses</strong> : jusqu’à la suppression du compte.",
+      "li3": "<strong>Compte</strong> : supprimé sur demande, ou après 36 mois d’inactivité totale.",
+      "li4": "<strong>Données de facturation</strong> : 10 ans, obligation légale de conservation comptable.",
+      "li5": "<strong>Journaux techniques</strong> (erreurs serveur, adresses IP) : 30 jours."
+    },
+    "s6": {
+      "title": "6. Sous-traitants et hébergement",
+      "li1": "<strong>Supabase</strong> • base de données, authentification et stockage des fichiers. Hébergement dans l’Union européenne.",
+      "li2": "<strong>Vercel</strong> • hébergement de l’application web.",
+      "li3": "<strong>Stripe Payments Europe</strong> • traitement des paiements.",
+      "li4": "<strong>Google AdSense</strong> • affichage de publicités, lorsque cette fonctionnalité est activée (voir section suivante)."
+    },
+    "s7": {
+      "title": "7. Cookies et traceurs",
+      "intro": "Le service utilise deux catégories de traceurs, et deux seulement. Il n’y a ni outil de mesure d’audience tiers, ni bouton de réseau social, ni enregistrement de session.",
+      "necessaryTitle": "Strictement nécessaires • pas de consentement requis",
+      "necessaryIntro": "Ces traceurs sont exemptés de consentement car le service ne peut pas fonctionner sans eux. Aucun n’est utilisé à des fins publicitaires.",
+      "nec1": "<strong>Cookie de session</strong> (déposé par Supabase Auth) : vous maintient connecté. Durée : la session, renouvelée à chaque visite.",
+      "nec2": "<strong>Jeton de dépôt de vocal</strong> (stockage local, pas un cookie) : permet à un proche de retrouver ses messages et son quota sans créer de compte. Reste sur son appareil, ne nous est transmis qu’au moment d’un envoi.",
+      "nec3": "<strong>Mémorisation de votre choix de cookies</strong> (stockage local) : pour ne pas vous reposer la question à chaque page.",
+      "nec4": "<strong>Cache de course</strong> (IndexedDB) : le tracé et les fichiers audio téléchargés avant l’épreuve, pour la lecture hors-ligne. Supprimable depuis les réglages de votre navigateur.",
+      "adsTitle": "Publicité • soumis à votre consentement",
+      "ads1": "Le service peut afficher des publicités Google AdSense sur les pages publiques, sur la page de dépôt de message et sur la page de fin de course. <strong>Aucune publicité n’est affichée pendant une course.</strong>",
+      "ads2": "Tant que vous n’avez pas répondu à la bannière, <strong>aucun script publicitaire n’est chargé</strong> et aucune requête n’est envoyée à Google. Si vous refusez, les annonces deviennent contextuelles : elles s’affichent toujours, mais sans cookie publicitaire ni profilage. Nous transmettons ce refus à Google via le mécanisme « Consent Mode », qui l’applique également à ses partenaires.",
+      "ads3": "Le service est intégralement fonctionnel dans les deux cas : refuser ne dégrade aucune fonctionnalité.",
+      "revisitTitle": "Revenir sur votre choix",
+      "revisit1": "Vous pouvez modifier ou retirer votre consentement à tout moment, sans justification et sans conséquence sur votre utilisation du service. Le lien est également présent en pied de chaque page.",
+      "manageLabel": "Ouvrir mes préférences de cookies",
+      "revisit2": "Indépendamment de ce choix, les réglages publicitaires de votre compte Google sont modifiables sur <adssettings>adssettings.google.com</adssettings>, et votre navigateur permet de bloquer ou supprimer les cookies déjà déposés.",
+      "stats": "Nos statistiques internes (nombre de courses, de messages, chiffre d’affaires) sont des compteurs agrégés calculés directement en base, sans identifiant individuel ni traceur."
+    },
+    "s8": {
+      "title": "8. Vos droits",
+      "p1": "Conformément au RGPD, vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation, d’opposition et de portabilité de vos données, ainsi que du droit de retirer votre consentement à tout moment.",
+      "p2": "Pour les exercer, écrivez à <mail>{contact}</mail>. Nous répondons sous 30 jours. Si notre réponse ne vous satisfait pas, vous pouvez saisir la CNIL (<cnil>cnil.fr</cnil>)."
+    },
+    "s9": {
+      "title": "9. Sécurité",
+      "li1": "Chiffrement en transit (HTTPS) et au repos sur l’ensemble du service.",
+      "li2": "Cloisonnement par <em>Row Level Security</em> en base : un coureur ne peut techniquement pas lire les données d’un autre, même en cas de faille applicative.",
+      "li3": "Fichiers audio dans un espace privé, servis exclusivement par liens signés éphémères.",
+      "li4": "Aucun mot de passe stocké : l’authentification se fait par lien à usage unique."
+    },
+    "s10": {
+      "title": "10. Mineurs",
+      "body": "Le service n’est pas destiné aux enfants de moins de 15 ans. Un enfant peut évidemment enregistrer un message pour un parent, sous la responsabilité de l’adulte qui lui confie l’appareil."
+    },
+    "s11": {
+      "title": "11. Modifications",
+      "body": "Toute évolution substantielle de cette politique est signalée par e-mail aux titulaires de compte au moins 15 jours avant son entrée en vigueur."
+    }
+  }
+}

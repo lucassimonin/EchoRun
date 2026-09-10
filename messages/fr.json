@@ -1,0 +1,303 @@
+{
+  "Nav": {
+    "howItWorks": "Comment ça marche",
+    "privacy": "Confidentialité",
+    "login": "Se connecter"
+  },
+  "Footer": {
+    "tagline": "Les encouragements de tes proches, déclenchés par le GPS aux points exacts de ton parcours.",
+    "product": "Produit",
+    "legal": "Légal",
+    "howItWorks": "Comment ça marche",
+    "createRace": "Créer une course",
+    "privacyPolicy": "Politique de confidentialité",
+    "legalNotice": "Mentions légales",
+    "rights": "© {year} EchoRun. Tous droits réservés.",
+    "manageCookies": "Gérer les cookies"
+  },
+  "LangSwitcher": {
+    "label": "Changer de langue"
+  },
+  "Meta": {
+    "tagline": "Les voix de tes proches, au bon kilomètre",
+    "description": "Tes proches déposent un message vocal sur ton parcours. Le jour J, ton téléphone le déclenche au bon kilomètre • sans réseau, sans rien à lire.",
+    "keywords": [
+      "encouragement vocal course",
+      "message vocal marathon",
+      "supporter coureur à distance",
+      "GPX message vocal",
+      "application marathon proches",
+      "trail encouragement GPS"
+    ]
+  },
+  "Landing": {
+    "metaTitle": "EchoRun • les voix de tes proches, au bon kilomètre",
+    "badge": "Encouragements vocaux géolocalisés",
+    "heroTitle1": "Les voix de",
+    "heroTitle2": "tes proches,",
+    "heroTitle3": "au bon km.",
+    "heroBody": "Tes proches déposent un message vocal sur un point précis de ton parcours. Le jour de la course, ton téléphone le déclenche tout seul quand tu passes devant. Toi, tu cours. Eux, ils sont là.",
+    "ctaCreate": "Créer ma course",
+    "ctaHow": "Comment ça marche",
+    "heroNote": "Gratuit pour tes proches · {cap} messages offerts · zéro appli",
+    "modesEyebrow": "Trois façons de démarrer",
+    "modesTitle": "Avec ou sans fichier, il y a toujours un moyen",
+    "modes": {
+      "gpx": {
+        "tag": "Le plus précis",
+        "title": "Importe ton GPX",
+        "body": "Le fichier de ta course • celui de l’organisateur ou ton export Strava. On en tire le tracé au mètre près."
+      },
+      "draw": {
+        "tag": "Sans fichier",
+        "title": "Dessine ton parcours",
+        "body": "Pose tes points sur la carte, EchoRun les cale sur les vraies routes. Idéal pour un entraînement ou une boucle maison."
+      },
+      "time": {
+        "tag": "Pas de tracé ?",
+        "title": "Cale sur le temps",
+        "body": "Annonce ta durée • disons 2 h • et tes proches déposent leurs voix sur une frise. Le chrono les déclenche à la minute pile."
+      }
+    },
+    "stepsEyebrow": "Le principe",
+    "stepsTitle": "Trois minutes pour tout mettre en place",
+    "steps": {
+      "create": {
+        "title": "Tu crées ta course",
+        "body": "Importe ton GPX, dessine ton tracé sur la carte, ou fixe simplement une durée. Trois façons, deux minutes, aucun compte compliqué."
+      },
+      "share": {
+        "title": "Tu partages un lien",
+        "body": "Un lien unique, comme un Tricount. Tes proches n’ont ni compte à créer ni application à installer. Ils ouvrent, ils parlent, c’est fini."
+      },
+      "dayOf": {
+        "title": "Le jour J fait le reste",
+        "body": "Pendant la course, ton téléphone annonce « Message de Camille » puis joue son vocal, pile au bon endroit • ou à la bonne minute. Sans réseau."
+      }
+    },
+    "useCasesEyebrow": "Quand ça sert vraiment",
+    "useCasesTitle": "Un encouragement ne vaut que par son timing",
+    "useCases": {
+      "marathon": {
+        "tag": "MARATHON",
+        "title": "Le mur du 30ᵉ",
+        "body": "Sur un marathon, tout le monde sait où ça casse. Place trois voix entre le 30 et le 35 : c’est exactement là qu’elles servent."
+      },
+      "trail": {
+        "tag": "TRAIL",
+        "title": "Là où personne ne vient",
+        "body": "Cols, forêts, ravitaillements inaccessibles. Tes proches ne peuvent pas être au bord du chemin • leur voix, si."
+      },
+      "tenK": {
+        "tag": "10 KM",
+        "title": "Ton premier dossard",
+        "body": "La ligne d’arrivée fait peur quand on ne l’a jamais franchie. Un message à 500 m du bout change la fin de l’histoire."
+      },
+      "surprise": {
+        "tag": "SURPRISE",
+        "title": "Un anniv en dossard",
+        "body": "Courir le jour de ses 40 ans, et recevoir dix messages surprises échelonnés sur le parcours. Personne ne le voit venir."
+      }
+    },
+    "benefitsEyebrow": "Ce que ça change",
+    "benefitsTitle": "Pensé pour le seul moment qui compte : pendant l’effort.",
+    "benefits": {
+      "noApp": {
+        "label": "Zéro appli pour tes proches",
+        "body": "Un lien web. Ça marche sur le vieil iPhone de ta mère comme sur l’Android de ton frère."
+      },
+      "noNetwork": {
+        "label": "Zéro réseau en course",
+        "body": "Les vocaux sont téléchargés sur ton téléphone la veille. En pleine forêt, ça fonctionne pareil."
+      },
+      "nothingToTouch": {
+        "label": "Rien à toucher en courant",
+        "body": "Pas de notif à lire, pas d’écran à déverrouiller. Ça parle dans tes écouteurs, tu continues à courir."
+      },
+      "youKeep": {
+        "label": "Tu gardes tout",
+        "body": "Après la course, les messages restent. C’est le seul souvenir de ta course qui a une voix."
+      }
+    },
+    "testimonialsEyebrow": "Retours de coureurs",
+    "testimonialsTitle": "Ce qu’on nous raconte à l’arrivée",
+    "testimonials": {
+      "karim": {
+        "quote": "Au 32ᵉ, j’étais en train de lâcher. J’ai entendu la voix de ma fille : « allez papa, plus que dix ». J’ai fini en pleurant, mais j’ai fini.",
+        "author": "Karim",
+        "detail": "Marathon de Paris"
+      },
+      "lea": {
+        "quote": "J’ai mis des messages à chaque col pour ma sœur sans lui dire. Elle m’a appelée le soir, elle n’avait pas compris d’où venaient les voix.",
+        "author": "Léa",
+        "detail": "6 vocaux sur un trail de 45 km"
+      },
+      "sophie": {
+        "quote": "Le truc, c’est que ça arrive au bon moment. Un encouragement au départ ne sert à rien. Au 18ᵉ, ça change tout.",
+        "author": "Sophie",
+        "detail": "Semi de Lille"
+      }
+    },
+    "pricingEyebrow": "Tarifs",
+    "pricingTitle": "Gratuit pour commencer. {price} si ça déborde.",
+    "bibProche": {
+      "label": "Tes proches",
+      "price": "0 €",
+      "note": "Toujours. Ils ne paient jamais rien.",
+      "li1": "Jusqu’à 5 messages par personne",
+      "li2": "Aucun compte, tout dans le navigateur",
+      "li3": "Enregistrement en un geste",
+      "li4": "Jusqu’à 30 secondes par message"
+    },
+    "bibCoureur": {
+      "label": "Toi, le coureur",
+      "unit": "messages offerts / course",
+      "note": "Puis {price} pour débloquer jusqu’à {cap}. Tu paies pour tout le monde.",
+      "li1": "GPX, dessin sur carte ou mode chrono",
+      "li2": "Lien de partage illimité",
+      "li3": "Lecture hors-ligne pendant la course",
+      "li4": "Archive de tous les messages reçus"
+    },
+    "finalTitle": "Ta prochaine course a une date. Donne-lui des voix.",
+    "finalBody": "GPX, tracé dessiné ou simple chrono • crée ta course et envoie le lien à tes proches. Il te reste juste à courir.",
+    "finalCta": "Créer ma course",
+    "preview": {
+      "badge": "ECHORUN // DOSSARD",
+      "live": "LIVE",
+      "messageFrom": "Message de Camille",
+      "messageMeta": "KM 21,3 · 14 S · OFFLINE"
+    }
+  },
+  "Offline": {
+    "metaTitle": "Hors connexion",
+    "title": "Pas de connexion",
+    "body": "Cette page a besoin du réseau. En revanche, si tu as préparé ta course à l’avance, l’écran de course fonctionne hors-ligne : tes vocaux sont déjà sur ton téléphone.",
+    "cta": "Ouvrir mes courses"
+  },
+  "LoginPage": {
+    "metaTitle": "Connexion",
+    "metaDescription": "Connecte-toi à EchoRun pour créer une course et partager ton parcours.",
+    "title": "Créer ou retrouver ma course",
+    "subtitle": "Pas de mot de passe. On t’envoie un code à usage unique par e-mail.",
+    "terms": "En continuant, tu acceptes les <terms>conditions d’utilisation</terms> et la <privacy>politique de confidentialité</privacy>."
+  },
+  "LoginForm": {
+    "invalidEmail": "Adresse e-mail invalide.",
+    "tooManyRequests": "Trop de demandes en peu de temps. Attends quelques minutes.",
+    "sendFailed": "Envoi impossible. Réessaie dans un instant.",
+    "codeSentTo": "On vient d’envoyer un code à 8 chiffres à <strong>{email}</strong>. Il est valable une heure.",
+    "codeLabel": "Code reçu par e-mail",
+    "connecting": "Connexion…",
+    "connect": "Me connecter",
+    "resend": "Renvoyer un code",
+    "changeEmail": "Changer d’adresse",
+    "enterSixDigits": "Entre les 8 chiffres reçus par e-mail.",
+    "wrongCode": "Code incorrect ou expiré. Vérifie, ou renvoie un code.",
+    "emailLabel": "Adresse e-mail",
+    "emailPlaceholder": "toi@exemple.fr",
+    "sending": "Envoi…",
+    "receiveCode": "Recevoir mon code"
+  },
+  "RunnerNav": {
+    "myRaces": "Mes courses",
+    "backOffice": "Back-office",
+    "signOut": "Se déconnecter"
+  },
+  "RaceStatus": {
+    "draft": "Brouillon",
+    "open": "Ouverte aux messages",
+    "live": "En course",
+    "finished": "Terminée"
+  },
+  "Dashboard": {
+    "metaTitle": "Mes courses",
+    "eyebrow": "Mon espace",
+    "title": "Mes courses",
+    "newRace": "Nouvelle course",
+    "emptyTitle": "Aucune course pour l’instant",
+    "emptyBody": "Importe le fichier GPX de ta prochaine course, puis envoie le lien à tes proches. Trois minutes, une fois.",
+    "emptyCta": "Importer un GPX",
+    "messages": "{count, plural, =1 {message} other {messages}}"
+  },
+  "NewRacePage": {
+    "metaTitle": "Nouvelle course",
+    "back": "Mes courses",
+    "eyebrow": "Étape unique",
+    "title": "Importe ton parcours",
+    "body": "Le fichier .gpx de ta course. L’organisateur le fournit presque toujours ; sinon, exporte-le depuis Strava, Garmin Connect, Komoot ou OpenRunner."
+  },
+  "RaceDetail": {
+    "metaTitle": "Ma course",
+    "back": "Mes courses",
+    "objective": "Objectif {clock}",
+    "messagesSuffix": "messages",
+    "dayTitle": "Le jour de la course",
+    "dayBody": "Prépare la course la veille, sur le wifi : l’application télécharge tous les vocaux sur ton téléphone pour fonctionner sans réseau.",
+    "prepare": "Préparer et courir",
+    "viewSummary": "Voir le récapitulatif",
+    "receivedTitle": "Messages reçus",
+    "sortedBy": "Classés par point du parcours",
+    "emptyMessages": "Personne n’a encore déposé de message. Envoie le lien de partage : c’est la seule chose qui manque.",
+    "at": "À {clock}",
+    "km": "Km {km}",
+    "played": "Écouté",
+    "waiting": "En attente"
+  },
+  "RaceActions": {
+    "title": "Gérer la course",
+    "reopen": "Réouvrir aux messages",
+    "close": "Clôturer les dépôts",
+    "cancel": "Annuler",
+    "deleteConfirm": "Supprimer définitivement",
+    "delete": "Supprimer la course",
+    "warning": "Cette action efface la course et tous les messages vocaux reçus. Irréversible."
+  },
+  "ShareCard": {
+    "title": "Le lien à envoyer à tes proches",
+    "body": "Aucun compte, aucune application. Ils ouvrent, ils parlent — 5 messages max par personne.",
+    "ariaLink": "Lien de partage",
+    "copy": "Copier",
+    "copied": "Copié",
+    "share": "Partager",
+    "shareTitle": "Laisse-moi un message vocal pour {race}",
+    "shareText": "Je cours {race}. Dépose un vocal sur mon parcours, je l’entendrai en courant."
+  },
+  "UnlockCard": {
+    "title": "Messages de la course",
+    "badgeUnlocked": "Débloquée",
+    "badgeCapReached": "Plafond atteint",
+    "badgeFree": "Offert",
+    "countLine": "<b>{count} / {cap}</b> messages · tes proches ne paient jamais rien.",
+    "paymentConfirmed": "Paiement confirmé ! Ta course accepte désormais jusqu’à {cap} messages.",
+    "capReachedBody": "Tes proches ont rempli les {freeCap} messages offerts. Débloque la course pour en recevoir jusqu’à {cap} au total.",
+    "remainingBody": "{remaining, plural, =1 {Il reste 1 message offert.} other {Il reste # messages offerts.}} Tu peux débloquer dès maintenant pour monter jusqu’à {cap} au total.",
+    "unlockBtn": "Débloquer jusqu’à {cap} messages · {price}",
+    "redirecting": "Redirection…",
+    "unlockedBody": "Course débloquée : tes proches peuvent déposer jusqu’à {cap} messages en tout.",
+    "paymentUnavailable": "Le paiement est momentanément indisponible."
+  },
+  "FinishPage": {
+    "metaTitle": "Fin de course",
+    "back": "Retour à la course",
+    "eyebrow": "Course terminée",
+    "summary": "{count, plural, =1 {1 message sur {total} s’est déclenché} other {# messages sur {total} se sont déclenchés}} pendant {context}.",
+    "contextTime": "ta course de {clock}",
+    "contextDistance": "tes {distance}",
+    "statHeard": "Vocaux entendus",
+    "statContributors": "Proches mobilisés",
+    "statDuration": "D’encouragements",
+    "listTitle": "Tes messages, dans l’ordre du parcours",
+    "listBody": "Ils restent écoutables ici. C’est le seul souvenir de ta course qui a une voix.",
+    "emptyList": "Aucun message sur cette course.",
+    "at": "À {clock}",
+    "km": "Km {km}",
+    "heard": "Entendu",
+    "missed": "Manqué",
+    "nextTitle": "Une prochaine course en vue ?",
+    "nextBody": "Importe le GPX, renvoie le lien. Tes proches savent déjà comment ça marche.",
+    "nextCta": "Créer une nouvelle course"
+  },
+  "LivePage": {
+    "metaTitle": "Mode course"
+  }
+}

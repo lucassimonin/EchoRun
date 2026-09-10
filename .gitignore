@@ -21,3 +21,6 @@ supabase/.branches
 _to_delete
 .idea
 ios
+
+# Fichiers en attente de suppression manuelle
+_to_delete/

@@ -1,0 +1,247 @@
+{
+  "ContentPage": {
+    "updatedLabel": "Last updated: "
+  },
+  "HowItWorks": {
+    "metaTitle": "How it works",
+    "metaDescription": "How EchoRun works in detail: three ways to create your race (GPX import, drawn route, timer mode), the share link, voice messages recorded by your friends and family, triggering during the race, and offline playback.",
+    "eyebrow": "Guide",
+    "title": "How it works, precisely",
+    "lede": "No magic: you create your race (via GPX, by drawing it, or in timer mode), you share a link, and on race day your phone plays the voices at the right spot. Here's every step, including what can go wrong.",
+    "aside": {
+      "title": "Ready to try it?",
+      "body": "Creating a race takes three minutes and costs nothing.",
+      "cta": "Create my race"
+    },
+    "faq": {
+      "q0": "Do I need a GPX file to create a race?",
+      "a0": "No. You have three options: import a GPX, draw your route directly on the map (it snaps to the actual roads), or choose timer mode if you have no route • you announce a duration and your friends drop their voices onto a timeline.",
+      "q1": "Do I need headphones?",
+      "a1": "It's strongly recommended, especially bone-conduction or open-ear headphones, which let you hear your surroundings. Without headphones, the message comes out of the phone's speaker: audible on a country road, inaudible in a pack.",
+      "q2": "What if I wear a GPS watch?",
+      "a2": "EchoRun doesn't interfere with your watch: they're two independent devices. Keep recording your run as usual.",
+      "q3": "How many messages can you receive?",
+      "a3": "Each race includes 15 free messages. If your friends drop more, we notify the runner by email: for €1.99, they unlock the race up to 50 messages. Each person is limited to 5 messages, to leave room for everyone.",
+      "q4": "Can my friends hear each other's messages?",
+      "a4": "They can see that a point (or a moment, in timer mode) is already taken and by whom • handy for splitting up the route • but they can't listen to other people's messages. Only the runner hears them.",
+      "q5": "Does it work without a network?",
+      "a5": "Yes, and that's the whole point. The voice messages and the route are downloaded to the phone before the race, then played from local storage. You can run in airplane mode: the messages will still trigger.",
+      "q6": "Do I have to keep the screen on during the race?",
+      "a6": "In the web version (PWA), yes: a website can't access GPS in the background — that's a restriction imposed by iOS and Android. The app therefore keeps the screen on and must stay in the foreground (expect around 12% battery per hour). The native mobile app, on the other hand, tracks your position in the background: screen off, phone in your pocket."
+    },
+    "s1": {
+      "title": "1. The runner creates their race • three ways",
+      "intro": "Depending on what you have on hand, you pick the simplest method. All three lead to the same result: a race ready to share.",
+      "gpx": "<strong>Import a GPX.</strong> This is the most precise. The <code>.gpx</code> is the universal format for GPS tracks: your race organizer almost always makes one available, and you can also export any activity from Strava, Garmin Connect, Komoot or OpenRunner.",
+      "draw": "<strong>Draw the route on the map.</strong> No file? Drop your points on the map: EchoRun connects them by following the actual roads (automatic snapping). Ideal for a training run or a homemade loop.",
+      "time": "<strong>Timer mode.</strong> No route at all? Simply announce an expected duration • say 2h • and your friends will drop their voices onto a <strong>timeline</strong> rather than a map. Triggering then happens at the chosen minute of the race, not at a given kilometer.",
+      "simplify": "For a GPX or a drawn route, we keep only the sequence of the route coordinates. The points are <strong>simplified</strong> (Douglas-Peucker algorithm) to go from a file that may contain 40,000 points down to about 1,500 • enough for a route accurate to the meter, light enough to display instantly on a phone. The total distance and the cumulative distance of each point are computed at that moment."
+    },
+    "s2": {
+      "title": "2. The share link",
+      "p1": "Each race gets a short, unguessable address, of the form <code>echo-run.app/e/k7m2pq9xr4tz</code>. It's the same principle as a Tricount: whoever has the link can take part, with no account or install. You share it however you like • text, WhatsApp, family group, email.",
+      "p2": "This link is not indexed by search engines and cannot be found by trial and error. You can close it at any time from your dashboard: no one can drop a message anymore, but those already recorded stay."
+    },
+    "s3": {
+      "title": "3. Your friends choose their moment",
+      "p1": "When opening the link, your friend enters their first name. Then, depending on the type of race: on a race with a route, they see the course on a map and <strong>click on the point</strong> where they want their message to trigger; in timer mode, they <strong>drag a slider along the timeline</strong> to the desired minute of the race. In either case, they then record up to thirty seconds of voice directly in their browser.",
+      "p2": "On a map, the click doesn't need to be precise: the position is automatically snapped to the nearest point on the route. This matters, because triggering during the race depends on this accuracy.",
+      "p3": "Each friend can drop <strong>up to 5 messages</strong>, free and without an account. A race includes <strong>15 free messages</strong>; beyond that, it is the<strong> runner</strong> • notified by email • who unlocks the race for €1.99 (up to 50 messages). Your friends never pay anything.",
+      "recordingTitle": "What you should know about recording",
+      "rec1": "The browser asks for permission to access the microphone. On iPhone, this is only possible in Safari or Chrome, not in the browser built into some messaging apps: if the button doesn't respond, open the link in a real browser.",
+      "rec2": "The resulting file is compressed (Opus, or AAC on Apple devices): a thirty-second message weighs less than 200 KB.",
+      "rec3": "You can listen back to your message before sending it, and redo it as many times as you want: nothing is sent until you confirm."
+    },
+    "s4": {
+      "title": "4. The day before the race: preparation",
+      "p1": "This is the step no one should skip. From your dashboard, you launch the <strong>race preparation</strong>. The app then downloads to your phone: the route (or the timeline, in timer mode), the list of triggers, and <strong>all the audio files</strong>.",
+      "p2": "Everything is stored locally (IndexedDB for the audio, browser cache for the app itself). The direct consequence: on race day, you can run in airplane mode, in a tunnel or deep in a valley with no network • the messages will still trigger. We also ask the browser for persistent storage, to prevent the system from clearing the cache between preparation and the start."
+    },
+    "s5": {
+      "title": "5. During the race: triggering",
+      "p1": "You tap <strong>Start the race</strong>. This action is essential, and not only for ergonomics: mobile browsers only allow audio playback and speech synthesis after an explicit user action. It is at this moment that the app \"unlocks\" sound for the entire duration of the race.",
+      "p2": "After that, the loop depends on the type of race:",
+      "route": "<strong>Race with a route:</strong> the GPS reports your position continuously and, for each pending message, the app computes the distance to its trigger point. The default radius is 70 meters, and it automatically widens if the GPS reports an imprecise position.",
+      "chrono": "<strong>Timer mode:</strong> no GPS at all. A stopwatch starts at the gun, and each message triggers at the minute of the race your friend chose on the timeline.",
+      "announce": "When the moment comes, speech synthesis announces <strong>\"Message from Camille\"</strong>, then Camille's voice message plays immediately after.",
+      "order": "If two messages are close together, they play <strong>one after the other</strong>, in order. Never at the same time.",
+      "lost": "If the GPS signal drops at just the wrong moment, the app notices as soon as it finds you again past the point and plays the message slightly delayed. A message is never lost.",
+      "screenTitle": "The screen staying on: a limit of the web version, not of the app",
+      "screen1": "We'd rather be upfront than let you discover it on race day. A <strong>web</strong> app (the one you and your friends open in the browser) does <strong>not</strong> have background access to GPS: it's a system restriction, not a shortcoming on our part. On iPhone, geolocation stops as soon as Safari goes to the background or the screen locks; on Android, it survives a few minutes then is cut off to save battery.",
+      "screen2": "In the web version, our answer is therefore that the app itself keeps the screen on (Screen Wake Lock API) and asks you to keep EchoRun in the foreground. The phone stays in your armband or pocket, screen active. Expect around 12% battery per hour on a recent device with reduced brightness; for a marathon, start at 100%.",
+      "screen3": "It's precisely to lift this constraint that the <strong>native mobile app</strong> exists: it is allowed to track your position in the background. You start the race, put the phone away with the screen off, and the messages still trigger • without draining the battery. Timer mode, for its part, never needed the screen on, since it doesn't rely on GPS."
+    },
+    "s6": {
+      "title": "6. After the finish",
+      "p1": "All the messages remain accessible in your dashboard, replayable as many times as you want. You can see which ones triggered, at what kilometer (or at what minute), and at what time. This is also the page most people send to their friends to thank them."
+    },
+    "faqTitle": "Frequently asked questions",
+    "privacyLink": "For the details of how data is processed, see our <link>privacy policy</link>."
+  },
+  "LegalNotice": {
+    "metaTitle": "Legal notice and terms of use",
+    "metaDescription": "Publisher, host, general terms of use, intellectual property and liability for the EchoRun service.",
+    "eyebrow": "Legal",
+    "title": "Legal notice and terms of use",
+    "lede": "Who publishes this service, who hosts it, and the rules for using it.",
+    "updatedAt": "September 4, 2026",
+    "editor": {
+      "title": "Site publisher",
+      "block": "<strong>{entity}</strong><br></br>Legal form: to be completed<br></br>Registered office: to be completed<br></br>Trade register / company number: to be completed<br></br>EU VAT number: to be completed<br></br>Publication director: to be completed<br></br>Contact: <mail>{contact}</mail>"
+    },
+    "hosting": {
+      "title": "Hosting",
+      "body": "The application is hosted by <strong>Vercel Inc.</strong>, 440 N Barranca Ave #4133, Covina, CA 91723, United States.<br></br>The database, authentication and audio files are hosted by <strong>Supabase</strong>, on infrastructure located in the European Union."
+    },
+    "cgu": {
+      "title": "General terms of use"
+    },
+    "s1": {
+      "title": "1. Purpose",
+      "body": "EchoRun is a service that lets a runner share the route of a race so that their friends and family can leave voice messages on it, triggered by geolocation during the event. Using the service implies unreserved acceptance of these terms."
+    },
+    "s2": {
+      "title": "2. Access to the service",
+      "body": "Creating a runner account is free and requires a valid email address. Leaving a voice message as a friend requires no account. The service is provided \"as is\", available 7 days a week subject to maintenance operations and the technical uncertainties inherent to the Internet."
+    },
+    "s3": {
+      "title": "3. Pricing and payment",
+      "body": "The service is free for the runner. Each race comes with 15 free voice messages; beyond that, the runner can unlock the race to receive more, at the rate shown before payment, with no subscription or renewal. Payments are processed by Stripe. An invoice is available on request.",
+      "retract": "<strong>Right of withdrawal.</strong> As this is digital content supplied immediately, the buyer acknowledges, by confirming their purchase, that they waive their fourteen-day right of withdrawal as soon as the message is effectively recorded. A credit purchased and not used is refundable on simple request within fourteen days."
+    },
+    "s4": {
+      "title": "4. Content posted by users",
+      "p1": "Each person leaving a voice message remains solely responsible for its content. The following are strictly forbidden: insulting, defamatory, hateful, threatening or sexual remarks, incitement to violence or discrimination, as well as any content infringing the rights of third parties, notably the use of protected musical recordings.",
+      "p2": "The recipient runner can delete a received message at any time and report abusive content. We reserve the right to remove without notice any content reported as manifestly unlawful and to block access to the service concerned."
+    },
+    "s5": {
+      "title": "5. Safety during physical activity",
+      "body": "Using the service during physical activity is the sole responsibility of the user. It is up to them to stay attentive to their surroundings, to comply with the rules of the event they take part in • some organizers prohibit wearing headphones • and with traffic laws. We recommend headphones that let outside sounds through."
+    },
+    "s6": {
+      "title": "6. Limitation of liability",
+      "body": "The triggering of messages depends on GPS signal quality, on the user's hardware and operating system, and on compliance with the preparation instructions (prior download, app in the foreground, active screen). We do not guarantee that every message will play to the meter, nor that no message will be missed. We cannot be held liable for a non-trigger, poor sporting performance, battery drain, or indirect damage."
+    },
+    "s7": {
+      "title": "7. Intellectual property",
+      "p1": "The EchoRun brand, the domain name, the interface, the texts and the source code are the exclusive property of the publisher. Any unauthorized reproduction is forbidden. Users retain all rights to the voice messages they leave and grant the publisher only a technical license, strictly limited to hosting and delivering the message to the recipient runner.",
+      "p2": "The map backgrounds are provided by OpenStreetMap (ODbL license) and CARTO. Imported GPX routes remain the property of their authors or organizers."
+    },
+    "s8": {
+      "title": "8. Suspension and termination",
+      "body": "The user can delete their account at any time from their dashboard or by simple request. We may suspend an account in the event of a serious breach of these terms, after informing the person concerned except in an emergency."
+    },
+    "s9": {
+      "title": "9. Personal data",
+      "body": "Data processing is detailed in our <link>privacy policy</link>, which forms an integral part of these terms."
+    },
+    "s10": {
+      "title": "10. Governing law and disputes",
+      "body": "These terms are governed by French law. In the event of a dispute, an amicable solution will be sought before any legal action. Consumers may use a consumer mediator free of charge. Failing agreement, the French courts have jurisdiction."
+    },
+    "access": {
+      "title": "Accessibility",
+      "body": "We aim for compliance with the RGAA (the French accessibility standard). If you run into a difficulty accessing a feature, report it to <mail>{contact}</mail>: we handle these reports as a priority."
+    }
+  },
+  "Privacy": {
+    "metaTitle": "Privacy policy",
+    "metaDescription": "How EchoRun handles your data: GPS position processed locally on your device, storage of voice messages, retention periods and how to exercise your GDPR rights.",
+    "eyebrow": "Privacy",
+    "title": "Privacy policy",
+    "lede": "EchoRun handles two categories of sensitive data: your position during a race, and the voices of your friends and family. Here is exactly what happens to them.",
+    "updatedAt": "September 4, 2026",
+    "aside": {
+      "title": "In one sentence",
+      "body": "Your race GPS track never leaves your phone. Voice messages are stored encrypted, audible only to the recipient runner, and deleted on simple request."
+    },
+    "s1": {
+      "title": "1. Who is the data controller",
+      "body": "The data controller is <strong>{entity}</strong>, publisher of the EchoRun service, reachable at <mail>{contact}</mail>. The full contact details appear in the <link>legal notice</link>."
+    },
+    "s2": {
+      "title": "2. The most important point: your position",
+      "p1": "During a race, the app reads your GPS position continuously to know when to trigger a message. <strong>These coordinates are never transmitted to our servers.</strong>",
+      "p2": "The proximity computation runs entirely in your browser: the route and the trigger points were downloaded beforehand, and the comparison \"am I within 70 meters of this point?\" happens locally, on your device. The position is kept in memory for the duration of the computation, then replaced by the next one. It is neither logged, nor stored in a history, nor sent to a third party.",
+      "p3": "The practical consequence: we are technically unable to reconstruct your route, your pace or your passing times. The only information that comes back, and only if the network is available, is <strong>the fact that a message was played</strong> • an identifier and a timestamp, with no coordinates."
+    },
+    "s3": {
+      "title": "3. Data we actually process",
+      "runnerTitle": "For the runner (account)",
+      "runner1": "<strong>Email address</strong>: for magic-link authentication and service messages. Legal basis: performance of the contract.",
+      "runner2": "<strong>Display name or nickname</strong>: shown to your friends on the drop page, so they know who they are talking to.",
+      "racesTitle": "For races",
+      "races1": "<strong>Route from the GPX file</strong> you import: route coordinates, distance, race name, date. A race route is public organizer data, not a history of your movements.",
+      "races2": "<strong>The original GPX file</strong>, kept to allow a re-import. You can delete it without deleting the race.",
+      "lovedTitle": "For friends and family (no account)",
+      "loved1": "<strong>The first name or nickname entered</strong>. We ask for no email, no phone number, and no verified identity.",
+      "loved2": "<strong>The recorded voice message</strong> and its duration. Legal basis: consent, given by the act of recording and sending.",
+      "loved3": "<strong>The chosen point on the route</strong> • a position on a route, not the friend's position, which is never requested.",
+      "loved4": "<strong>A technical token</strong> stored in their browser's local storage, which lets them find their messages and their quota if they come back. This token is not an advertising cookie and enables no cross-site tracking.",
+      "paymentsTitle": "For payments",
+      "payments": "Payments are processed by <strong>Stripe Payments Europe</strong>. We never see and never store any card number: entry takes place on Stripe's pages. We keep only the transaction identifier, the amount, the currency and the status, for accounting and customer support."
+    },
+    "s4": {
+      "title": "4. Voice messages: who can listen to them",
+      "p1": "The audio files are stored in a <strong>private</strong> space. They are not accessible through any public URL: each playback goes through a signed, temporary link, generated only for the authenticated recipient runner.",
+      "li1": "The recipient runner can listen to them.",
+      "li2": "Other friends cannot listen to them. They only see that a point on the route is taken, and by which first name.",
+      "li3": "Our team does not access them, except on a court order or a report of unlawful content by the runner.",
+      "p2": "A friend who wants to withdraw their message can do so from the share link as long as the race has not taken place, or write to us. The runner can delete any received message."
+    },
+    "s5": {
+      "title": "5. Retention periods",
+      "li1": "<strong>Voice messages</strong>: 12 months after the date of the race, then automatic deletion. The runner is notified one month before and can request an extension or download their files.",
+      "li2": "<strong>Routes and races</strong>: until the account is deleted.",
+      "li3": "<strong>Account</strong>: deleted on request, or after 36 months of total inactivity.",
+      "li4": "<strong>Billing data</strong>: 10 years, a legal accounting retention obligation.",
+      "li5": "<strong>Technical logs</strong> (server errors, IP addresses): 30 days."
+    },
+    "s6": {
+      "title": "6. Processors and hosting",
+      "li1": "<strong>Supabase</strong> • database, authentication and file storage. Hosted in the European Union.",
+      "li2": "<strong>Vercel</strong> • hosting of the web application.",
+      "li3": "<strong>Stripe Payments Europe</strong> • payment processing.",
+      "li4": "<strong>Google AdSense</strong> • display of ads, when this feature is enabled (see next section)."
+    },
+    "s7": {
+      "title": "7. Cookies and trackers",
+      "intro": "The service uses two categories of trackers, and only two. There is no third-party audience-measurement tool, no social-network button, and no session recording.",
+      "necessaryTitle": "Strictly necessary • no consent required",
+      "necessaryIntro": "These trackers are exempt from consent because the service cannot work without them. None is used for advertising purposes.",
+      "nec1": "<strong>Session cookie</strong> (set by Supabase Auth): keeps you logged in. Duration: the session, renewed on each visit.",
+      "nec2": "<strong>Voice-drop token</strong> (local storage, not a cookie): lets a friend find their messages and quota without creating an account. Stays on their device, transmitted to us only at the moment of a send.",
+      "nec3": "<strong>Remembering your cookie choice</strong> (local storage): so we don't ask you again on every page.",
+      "nec4": "<strong>Race cache</strong> (IndexedDB): the route and audio files downloaded before the event, for offline playback. Removable from your browser settings.",
+      "adsTitle": "Advertising • subject to your consent",
+      "ads1": "The service may display Google AdSense ads on the public pages, on the message-drop page and on the race-finish page. <strong>No ads are shown during a race.</strong>",
+      "ads2": "As long as you have not responded to the banner, <strong>no advertising script is loaded</strong> and no request is sent to Google. If you decline, the ads become contextual: they still show, but with no advertising cookie or profiling. We pass this refusal on to Google via the \"Consent Mode\" mechanism, which also applies it to its partners.",
+      "ads3": "The service is fully functional in both cases: declining degrades no feature.",
+      "revisitTitle": "Changing your choice",
+      "revisit1": "You can change or withdraw your consent at any time, without justification and with no impact on your use of the service. The link is also present at the foot of every page.",
+      "manageLabel": "Open my cookie preferences",
+      "revisit2": "Regardless of this choice, the advertising settings of your Google account can be changed at <adssettings>adssettings.google.com</adssettings>, and your browser lets you block or delete cookies already set.",
+      "stats": "Our internal statistics (number of races, of messages, revenue) are aggregate counters computed directly in the database, with no individual identifier or tracker."
+    },
+    "s8": {
+      "title": "8. Your rights",
+      "p1": "In accordance with the GDPR, you have a right of access, rectification, erasure, restriction, objection and portability of your data, as well as the right to withdraw your consent at any time.",
+      "p2": "To exercise them, write to <mail>{contact}</mail>. We respond within 30 days. If our response does not satisfy you, you can refer the matter to the CNIL (<cnil>cnil.fr</cnil>)."
+    },
+    "s9": {
+      "title": "9. Security",
+      "li1": "Encryption in transit (HTTPS) and at rest across the entire service.",
+      "li2": "<em>Row Level Security</em> partitioning in the database: one runner cannot technically read another's data, even in the event of an application flaw.",
+      "li3": "Audio files in a private space, served exclusively via ephemeral signed links.",
+      "li4": "No password stored: authentication is done via a single-use link."
+    },
+    "s10": {
+      "title": "10. Minors",
+      "body": "The service is not intended for children under 15. A child can of course record a message for a parent, under the responsibility of the adult who entrusts them with the device."
+    },
+    "s11": {
+      "title": "11. Changes",
+      "body": "Any substantial change to this policy is announced by email to account holders at least 15 days before it takes effect."
+    }
+  }
+}

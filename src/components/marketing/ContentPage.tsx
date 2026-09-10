@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useTranslations } from 'next-intl';
 import { SiteFooter } from '@/components/marketing/SiteFooter';
 import { SiteHeader } from '@/components/marketing/SiteHeader';
 import { Eyebrow } from '@/components/ui/Surface';
@@ -19,6 +20,7 @@ export function ContentPage({
   children: ReactNode;
   aside?: ReactNode;
 }) {
+  const t = useTranslations('ContentPage');
   return (
     <>
       <SiteHeader />
@@ -31,7 +33,8 @@ export function ContentPage({
           {lede ? <p className="mt-5 max-w-2xl text-lede text-charcoal-muted">{lede}</p> : null}
           {updatedAt ? (
             <p className="mt-6 text-[12.5px] text-charcoal-faint">
-              Dernière mise à jour&nbsp;: {updatedAt}
+              {t('updatedLabel')}
+              {updatedAt}
             </p>
           ) : null}
         </header>

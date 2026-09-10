@@ -3,6 +3,11 @@ export function cx(...parts: (string | false | null | undefined)[]): string {
   return parts.filter(Boolean).join(' ');
 }
 
+/** Locale -> tag BCP-47 pour Intl. Défaut français. */
+function intlLocale(locale?: string): string {
+  return locale === 'en' ? 'en-GB' : 'fr-FR';
+}
+
 /** Slug court, non devinable, pour les liens de partage (alphabet sans ambiguite). */
 export function generateShareSlug(length = 12): string {
   const alphabet = 'abcdefghijkmnpqrstuvwxyz23456789';
@@ -13,10 +18,11 @@ export function generateShareSlug(length = 12): string {
   return out;
 }
 
-export function formatDistance(metres: number): string {
+export function formatDistance(metres: number, locale?: string): string {
+  const decimal = locale === 'en' ? '.' : ',';
   if (metres < 1000) return Math.round(metres) + ' m';
   const km = metres / 1000;
-  return km.toFixed(km < 10 ? 2 : 1).replace('.', ',') + ' km';
+  return km.toFixed(km < 10 ? 2 : 1).replace('.', decimal) + ' km';
 }
 
 export function formatDuration(ms: number): string {
@@ -26,13 +32,15 @@ export function formatDuration(ms: number): string {
   return m + ':' + String(s).padStart(2, '0');
 }
 
-export function formatPrice(cents: number, currency = 'EUR'): string {
-  return new Intl.NumberFormat('fr-FR', { style: 'currency', currency }).format(cents / 100);
+export function formatPrice(cents: number, locale?: string, currency = 'EUR'): string {
+  return new Intl.NumberFormat(intlLocale(locale), { style: 'currency', currency }).format(
+    cents / 100,
+  );
 }
 
-export function formatRaceDate(iso: string | null): string {
-  if (!iso) return 'Date a definir';
-  return new Intl.DateTimeFormat('fr-FR', {
+export function formatRaceDate(iso: string | null, locale?: string): string {
+  if (!iso) return locale === 'en' ? 'Date to be set' : 'Date à définir';
+  return new Intl.DateTimeFormat(intlLocale(locale), {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -58,10 +66,14 @@ export function sanitizeName(raw: string): string {
 }
 
 /** Formate une durée en secondes façon chronomètre : « 1 h 45 » ou « 45 min ». */
-export function formatClock(totalSeconds: number): string {
+export function formatClock(totalSeconds: number, locale?: string): string {
   const s = Math.max(0, Math.round(totalSeconds));
   const h = Math.floor(s / 3600);
   const m = Math.floor((s % 3600) / 60);
+  if (locale === 'en') {
+    if (h > 0) return h + 'h ' + String(m).padStart(2, '0');
+    return m + ' min';
+  }
   if (h > 0) return h + ' h ' + String(m).padStart(2, '0');
   return m + ' min';
 }
