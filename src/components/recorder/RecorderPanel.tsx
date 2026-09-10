@@ -38,6 +38,9 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
   const [authorizing, setAuthorizing] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [supported, setSupported] = useState(true);
+  const [hintKey, setHintKey] = useState<
+    'allowHintSafariIos' | 'allowHintIosOther' | 'allowHintChromium' | 'allowHintGeneric'
+  >('allowHintGeneric');
 
   const messageFor = useCallback(
     (kind: ErrorKind): string => {
@@ -63,6 +66,26 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
 
   useEffect(() => {
     setSupported(isRecordingSupported());
+
+    // La marche à suivre pour réautoriser le micro dépend du navigateur : on
+    // choisit le bon texte d'aide. Sur iPhone, seul Safari enregistre de façon
+    // fiable ; les autres navigateurs iOS (Chrome/Firefox/Edge) sont limités.
+    const ua = navigator.userAgent;
+    const isIOS =
+      /iP(hone|ad|od)/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    const isIOSOther = isIOS && /CriOS|FxiOS|EdgiOS|OPiOS|GSA/.test(ua);
+    const isIOSSafari = isIOS && !isIOSOther;
+    const isChromium = !isIOS && /Chrome|Chromium|Edg\//.test(ua);
+    setHintKey(
+      isIOSSafari
+        ? 'allowHintSafariIos'
+        : isIOSOther
+          ? 'allowHintIosOther'
+          : isChromium
+            ? 'allowHintChromium'
+            : 'allowHintGeneric',
+    );
+
     return () => {
       recorderRef.current?.cancel();
       if (previewUrlRef.current) URL.revokeObjectURL(previewUrlRef.current);
@@ -157,6 +180,14 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
 
   return (
     <div className="space-y-5">
+      {/* iPhone hors Safari : la capture micro est bridée par iOS. On prévient
+          en amont plutôt que de laisser le contributeur buter sur un refus. */}
+      {hintKey === 'allowHintIosOther' && !recording ? (
+        <p className="rounded-lg border-[3px] border-black bg-yellow px-4 py-3 text-[13px] font-medium leading-relaxed text-black shadow-[3px_3px_0_0_#000]">
+          {t('iosSafariNotice')}
+        </p>
+      ) : null}
+
       {!recording ? (
         <div className="flex flex-col items-center gap-4 py-2">
           <div className="relative grid place-items-center">
@@ -263,7 +294,7 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
           >
             {t('allowMic')}
           </Button>
-          <p className="text-[12px] leading-relaxed text-charcoal-muted">{t('allowHint')}</p>
+          <p className="text-[12px] leading-relaxed text-charcoal-muted">{t(hintKey)}</p>
         </div>
       ) : null}
     </div>

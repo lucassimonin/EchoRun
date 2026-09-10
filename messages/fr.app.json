@@ -234,6 +234,10 @@
     "errTooShort": "Message trop court, réessaie.",
     "errGeneric": "Micro indisponible.",
     "allowMic": "Autoriser le micro",
-    "allowHint": "Touche « Autoriser le micro » et accepte la demande du navigateur. Si rien ne s’affiche, le micro est bloqué : sur iPhone, touche « aA » à gauche de la barre d’adresse → Réglages du site → Microphone → Autoriser."
+    "allowHintSafariIos": "Touche « Autoriser le micro » et accepte la demande. Si rien ne s’affiche, sur iPhone touche « aA » à gauche de la barre d’adresse → Réglages du site → Microphone → Autoriser.",
+    "allowHintIosOther": "Sur iPhone, l’enregistrement ne marche que dans Safari. Touche l’icône Partager puis « Ouvrir dans Safari » — ou copie le lien et colle-le dans Safari.",
+    "allowHintChromium": "Touche « Autoriser le micro » et accepte la demande. Si rien ne s’affiche, clique sur l’icône de micro (ou le cadenas) à gauche de l’adresse → autorise le micro, puis réessaie.",
+    "allowHintGeneric": "Touche « Autoriser le micro » et accepte la demande. Si rien ne s’affiche, autorise le micro depuis l’icône dans la barre d’adresse, puis réessaie.",
+    "iosSafariNotice": "Sur iPhone, l’enregistrement d’un vocal ne fonctionne que dans Safari. Ouvre ce lien dans Safari : touche l’icône Partager, puis « Ouvrir dans Safari »."
   }
 }
