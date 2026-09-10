@@ -1,15 +1,19 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import {
   MAX_RECORDING_MS,
   RecorderError,
   VoiceRecorder,
   isRecordingSupported,
+  requestMicrophoneAccess,
   type RecordingResult,
 } from '@/lib/audio/recorder';
 import { Button } from '@/components/ui/Button';
 import { cx, formatDuration } from '@/lib/utils';
+
+type ErrorKind = RecorderError['kind'];
 
 interface RecorderPanelProps {
   disabled?: boolean;
@@ -23,14 +27,39 @@ interface RecorderPanelProps {
  * 70 ans utilisent depuis un lien reçu par SMS.
  */
 export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanelProps) {
+  const t = useTranslations('Recorder');
   const recorderRef = useRef<VoiceRecorder | null>(null);
   const previewUrlRef = useRef<string | null>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const [level, setLevel] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const [errorKind, setErrorKind] = useState<ErrorKind | null>(null);
+  const [authorizing, setAuthorizing] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [supported, setSupported] = useState(true);
+
+  const messageFor = useCallback(
+    (kind: ErrorKind): string => {
+      switch (kind) {
+        case 'unsupported':
+          return t('errUnsupported');
+        case 'no-device':
+          return t('errNoDevice');
+        case 'busy':
+          return t('errBusy');
+        case 'too-short':
+          return t('errTooShort');
+        case 'failed':
+          return t('errFailed');
+        case 'denied':
+          return t('errDenied');
+        default:
+          return t('errGeneric');
+      }
+    },
+    [t],
+  );
 
   useEffect(() => {
     setSupported(isRecordingSupported());
@@ -63,17 +92,20 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
       onRecorded(result);
     } catch (err) {
       onRecorded(null);
-      setError(err instanceof RecorderError ? err.message : 'Enregistrement impossible.');
+      const kind: ErrorKind = err instanceof RecorderError ? err.kind : 'failed';
+      setErrorKind(kind);
+      setError(messageFor(kind));
     } finally {
       recorderRef.current = null;
       setIsRecording(false);
       setLevel(0);
       setElapsed(0);
     }
-  }, [onRecorded]);
+  }, [onRecorded, messageFor]);
 
   const start = useCallback(async () => {
     setError(null);
+    setErrorKind(null);
     onRecorded(null);
 
     const recorder = new VoiceRecorder({
@@ -88,15 +120,34 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
       setIsRecording(true);
     } catch (err) {
       recorderRef.current = null;
-      setError(err instanceof RecorderError ? err.message : 'Micro indisponible.');
+      const kind: ErrorKind = err instanceof RecorderError ? err.kind : 'denied';
+      setErrorKind(kind);
+      setError(messageFor(kind));
     }
-  }, [onRecorded, stop]);
+  }, [onRecorded, stop, messageFor]);
+
+  // Bouton « Autoriser le micro » : déclenche la demande de permission, puis
+  // enchaîne directement sur l'enregistrement si elle est accordée.
+  const authorize = useCallback(async () => {
+    setAuthorizing(true);
+    setError(null);
+    setErrorKind(null);
+    try {
+      await requestMicrophoneAccess();
+      await start();
+    } catch (err) {
+      const kind: ErrorKind = err instanceof RecorderError ? err.kind : 'denied';
+      setErrorKind(kind);
+      setError(messageFor(kind));
+    } finally {
+      setAuthorizing(false);
+    }
+  }, [start, messageFor]);
 
   if (!supported) {
     return (
       <p className="rounded-lg border-[3px] border-black bg-danger/10 p-4 text-[13px] font-medium leading-relaxed text-danger">
-        Ce navigateur ne permet pas d’enregistrer un vocal. Ouvre ce lien dans Safari (iPhone) ou
-        Chrome (Android) plutôt que dans le navigateur intégré de ta messagerie.
+        {t('errUnsupported')}
       </p>
     );
   }
@@ -122,9 +173,9 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
             )}
             <button
               type="button"
-              disabled={disabled}
+              disabled={disabled || authorizing}
               onClick={() => (isRecording ? void stop() : void start())}
-              aria-label={isRecording ? 'Arrêter l’enregistrement' : 'Démarrer l’enregistrement'}
+              aria-label={isRecording ? t('stopAria') : t('startAria')}
               className={cx(
                 'relative grid size-24 place-items-center rounded-full border-[3px] border-black transition-[transform,background-color] duration-200',
                 'active:scale-95 disabled:opacity-40 disabled:pointer-events-none',
@@ -163,12 +214,12 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
                   <span className="text-charcoal-faint">/ {formatDuration(MAX_RECORDING_MS)}</span>
                 </p>
                 <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.04em] text-black/55">
-                  {nearLimit ? 'Bientôt la fin, conclus !' : 'Appuie pour arrêter'}
+                  {nearLimit ? t('nearLimit') : t('pressToStop')}
                 </p>
               </>
             ) : (
               <p className="font-mono text-[12px] uppercase tracking-[0.04em] text-black/55">
-                Appuie et parle · 30 secondes maximum
+                {t('pressToSpeak')}
               </p>
             )}
           </div>
@@ -182,22 +233,39 @@ export function RecorderPanel({ disabled, onRecorded, recording }: RecorderPanel
                 controls
                 preload="metadata"
                 className="h-9 w-full"
-                aria-label="Réécouter mon message"
+                aria-label={t('replayAria')}
               />
             ) : null}
           </div>
           <div className="flex items-center justify-between gap-3">
             <p className="font-mono text-[11px] uppercase tracking-[0.04em] text-black/55">
-              {formatDuration(recording.durationMs)} enregistré
+              {t('recorded', { duration: formatDuration(recording.durationMs) })}
             </p>
             <Button variant="ghost" size="sm" onClick={() => onRecorded(null)}>
-              Refaire
+              {t('redo')}
             </Button>
           </div>
         </div>
       )}
 
       {error ? <p className="text-[13px] font-bold text-danger">{error}</p> : null}
+
+      {/* Accès refusé : on propose explicitement de (re)demander l'autorisation,
+          plus la marche à suivre si le navigateur l'a bloqué pour de bon. */}
+      {errorKind === 'denied' && !recording ? (
+        <div className="space-y-2.5">
+          <Button
+            variant="secondary"
+            size="md"
+            fullWidth
+            disabled={disabled || authorizing}
+            onClick={() => void authorize()}
+          >
+            {t('allowMic')}
+          </Button>
+          <p className="text-[12px] leading-relaxed text-charcoal-muted">{t('allowHint')}</p>
+        </div>
+      ) : null}
     </div>
   );
 }

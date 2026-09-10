@@ -216,5 +216,24 @@
     "priceError": "Entre 50 et 5000 centimes.",
     "saving": "Enregistrement…",
     "save": "Enregistrer"
+  },
+  "Recorder": {
+    "errUnsupported": "Ce navigateur ne permet pas d’enregistrer un vocal. Ouvre ce lien dans Safari (iPhone) ou Chrome (Android) plutôt que dans le navigateur intégré de ta messagerie.",
+    "pressToSpeak": "Appuie et parle · 30 secondes maximum",
+    "pressToStop": "Appuie pour arrêter",
+    "nearLimit": "Bientôt la fin, conclus !",
+    "startAria": "Démarrer l’enregistrement",
+    "stopAria": "Arrêter l’enregistrement",
+    "replayAria": "Réécouter mon message",
+    "recorded": "{duration} enregistré",
+    "redo": "Refaire",
+    "errDenied": "Accès au micro refusé.",
+    "errNoDevice": "Aucun micro détecté sur cet appareil.",
+    "errBusy": "Le micro est utilisé par une autre application. Ferme-la puis réessaie.",
+    "errFailed": "L’enregistrement a échoué. Réessaie.",
+    "errTooShort": "Message trop court, réessaie.",
+    "errGeneric": "Micro indisponible.",
+    "allowMic": "Autoriser le micro",
+    "allowHint": "Touche « Autoriser le micro » et accepte la demande du navigateur. Si rien ne s’affiche, le micro est bloqué : sur iPhone, touche « aA » à gauche de la barre d’adresse → Réglages du site → Microphone → Autoriser."
   }
 }

@@ -26,7 +26,7 @@ export interface RecordingResult {
 export class RecorderError extends Error {
   constructor(
     message: string,
-    readonly kind: 'unsupported' | 'denied' | 'too-short' | 'failed',
+    readonly kind: 'unsupported' | 'denied' | 'no-device' | 'busy' | 'too-short' | 'failed',
   ) {
     super(message);
     this.name = 'RecorderError';
@@ -39,6 +39,36 @@ export function isRecordingSupported(): boolean {
     typeof MediaRecorder !== 'undefined' &&
     !!navigator.mediaDevices?.getUserMedia
   );
+}
+
+/** Traduit l'échec de getUserMedia en cause exploitable par l'UI. */
+function toRecorderError(err: unknown): RecorderError {
+  const name = (err as { name?: string } | null)?.name;
+  if (name === 'NotFoundError' || name === 'DevicesNotFoundError') {
+    return new RecorderError('no-device', 'no-device');
+  }
+  if (name === 'NotReadableError' || name === 'TrackStartError' || name === 'AbortError') {
+    return new RecorderError('busy', 'busy');
+  }
+  return new RecorderError('denied', 'denied');
+}
+
+/**
+ * Demande l'accès micro sans démarrer d'enregistrement : sert au bouton
+ * « Autoriser le micro », qui déclenche la demande de permission du navigateur
+ * puis relâche aussitôt le flux.
+ */
+export async function requestMicrophoneAccess(): Promise<void> {
+  if (!isRecordingSupported()) {
+    throw new RecorderError('unsupported', 'unsupported');
+  }
+  let stream: MediaStream;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  } catch (err) {
+    throw toRecorderError(err);
+  }
+  stream.getTracks().forEach((t) => t.stop());
 }
 
 function pickMimeType(): string {
@@ -91,11 +121,8 @@ export class VoiceRecorder {
           autoGainControl: true,
         },
       });
-    } catch {
-      throw new RecorderError(
-        "Acces au micro refuse. Autorise-le puis reessaie.",
-        'denied',
-      );
+    } catch (err) {
+      throw toRecorderError(err);
     }
 
     const mimeType = pickMimeType();
