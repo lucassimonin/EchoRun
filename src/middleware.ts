@@ -33,7 +33,7 @@ export async function middleware(request: NextRequest) {
   const skipI18n =
     pathname.startsWith('/api') || pathname.startsWith('/auth') || pathname.includes('.');
 
-  let response = skipI18n ? NextResponse.next({ request }) : handleI18n(request);
+  const response = skipI18n ? NextResponse.next({ request }) : handleI18n(request);
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
