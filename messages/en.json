@@ -274,7 +274,10 @@
     "unlockBtn": "Unlock up to {cap} messages · {price}",
     "redirecting": "Redirecting…",
     "unlockedBody": "Race unlocked: your loved ones can leave up to {cap} messages in total.",
-    "paymentUnavailable": "Payment is temporarily unavailable."
+    "paymentUnavailable": "Payment is temporarily unavailable.",
+    "adminRemoveLimit": "Remove the limit (admin)",
+    "adminRemoving": "Removing…",
+    "adminError": "Action failed, try again."
   },
   "FinishPage": {
     "metaTitle": "End of race",

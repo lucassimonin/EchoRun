@@ -15,6 +15,7 @@ interface UnlockCardProps {
   unlocked: boolean;
   priceLabel: string;
   priceCents: number;
+  isAdmin?: boolean;
 }
 
 /**
@@ -30,10 +31,12 @@ export function UnlockCard({
   unlocked,
   priceLabel,
   priceCents,
+  isAdmin,
 }: UnlockCardProps) {
   const router = useRouter();
   const t = useTranslations('UnlockCard');
   const [busy, setBusy] = useState(false);
+  const [adminBusy, setAdminBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [justUnlocked, setJustUnlocked] = useState(false);
 
@@ -70,6 +73,24 @@ export function UnlockCard({
       setError(t('paymentUnavailable'));
     } finally {
       setBusy(false);
+    }
+  };
+
+  // Admin : lève le plafond sans paiement (bascule côté serveur via service_role).
+  const adminUnlock = async () => {
+    setAdminBusy(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/races/' + raceId + '/admin-unlock', { method: 'POST' });
+      if (!res.ok) {
+        setError(t('adminError'));
+        return;
+      }
+      router.refresh();
+    } catch {
+      setError(t('adminError'));
+    } finally {
+      setAdminBusy(false);
     }
   };
 
@@ -130,6 +151,22 @@ export function UnlockCard({
             {busy ? t('redirecting') : t('unlockBtn', { cap: unlockedCap, price: priceLabel })}
           </Button>
           {error ? <p className="mt-3 text-[13px] text-clay">{error}</p> : null}
+          {isAdmin ? (
+            <div className="mt-4 border-t-2 border-black/10 pt-4">
+              <p className="mb-2 font-mono text-[10px] font-bold uppercase tracking-[0.1em] text-black/50">
+                Admin
+              </p>
+              <Button
+                variant="secondary"
+                size="sm"
+                fullWidth
+                disabled={adminBusy}
+                onClick={() => void adminUnlock()}
+              >
+                {adminBusy ? t('adminRemoving') : t('adminRemoveLimit')}
+              </Button>
+            </div>
+          ) : null}
         </>
       ) : (
         <p className="mt-4 text-[13.5px] leading-relaxed text-charcoal-muted">

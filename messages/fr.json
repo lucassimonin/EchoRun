@@ -274,7 +274,10 @@
     "unlockBtn": "Débloquer jusqu’à {cap} messages · {price}",
     "redirecting": "Redirection…",
     "unlockedBody": "Course débloquée : tes proches peuvent déposer jusqu’à {cap} messages en tout.",
-    "paymentUnavailable": "Le paiement est momentanément indisponible."
+    "paymentUnavailable": "Le paiement est momentanément indisponible.",
+    "adminRemoveLimit": "Supprimer la limite (admin)",
+    "adminRemoving": "Suppression…",
+    "adminError": "Action impossible, réessaie."
   },
   "FinishPage": {
     "metaTitle": "Fin de course",

@@ -42,6 +42,16 @@ export default async function RaceDetailPage({
 
   const supabase = await createServerSupabase();
 
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  const { data: adminProfile } = await supabase
+    .from('profiles')
+    .select('is_admin')
+    .eq('id', user?.id ?? '')
+    .maybeSingle();
+  const isAdmin = !!adminProfile?.is_admin;
+
   const { data: race } = await supabase
     .from('races')
     .select('id, name, race_date, status, mode, distance_m, duration_s, share_slug, messages_unlocked')
@@ -101,6 +111,7 @@ export default async function RaceDetailPage({
           unlocked={race.messages_unlocked}
           priceLabel={formatPrice(settings.unlock_price_cents, locale)}
           priceCents={settings.unlock_price_cents}
+          isAdmin={isAdmin}
         />
 
         {/* --------------------------------------------------- jour de course */}
